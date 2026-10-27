@@ -4,6 +4,15 @@ import { globalBookingStore } from '@/lib/booking-store';
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
+
+    // Patient self-service: lookup by secure token
+    const token = searchParams.get('token');
+    if (token) {
+      const booking = globalBookingStore.getBookingBySecureToken(token);
+      if (!booking) return NextResponse.json({ error: 'Booking not found' }, { status: 404 });
+      return NextResponse.json({ success: true, booking });
+    }
+
     const role = searchParams.get('role');
     const practitionerId = searchParams.get('practitioner_id');
     const status = searchParams.get('status');
