@@ -29,3 +29,7 @@ jobs:
 
       - name: Verify TypeScript Build
         run: npx tsc --noEmit
+
+      - name: Build Next.js Application
+        run: npm run build
+
