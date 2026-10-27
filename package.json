@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "opennextjs-cloudflare build",
+    "build:next": "next build",
     "start": "next start",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:worker": "opennextjs-cloudflare build",
-    "deploy:worker": "opennextjs-cloudflare build && wrangler deploy",
-    "preview:worker": "opennextjs-cloudflare build && wrangler dev"
+    "deploy": "opennextjs-cloudflare build && wrangler deploy",
+    "preview": "opennextjs-cloudflare build && wrangler dev"
   },
   "repository": {
     "type": "git",
