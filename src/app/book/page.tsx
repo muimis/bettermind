@@ -337,7 +337,7 @@ function StepTimes({
                       }}
                     >
                       <Building2 size={14} />
-                      <span>Indiranagar Clinic</span>
+                      <span>In-Person Clinic Hub</span>
                     </button>
                   </div>
                 )}
@@ -431,7 +431,7 @@ function StepTimes({
                 <div className="tsc-selected-slot-bar">
                   <CheckCircle2 size={16} className="bar-check" />
                   <span>
-                    Selected: <strong>{formatIST(item.start_time)}</strong> ({item.mode === 'online' ? 'Online Video' : 'Indiranagar Clinic'})
+                    Selected: <strong>{formatIST(item.start_time)}</strong> ({item.mode === 'online' ? 'Online Video' : 'In-Person Clinic Hub'})
                   </span>
                 </div>
               )}
@@ -691,7 +691,7 @@ function StepReview({
                   <div>
                     <h4 className="rsr-name">{item.service.name}</h4>
                     <div className="rsr-meta">
-                      <span>{item.mode === 'online' ? '💻 Online Video Session' : '🏥 Indiranagar Clinic Visit'}</span>
+                      <span>{item.mode === 'online' ? '💻 Online Video Session' : '🏥 In-Person Clinic Hub Visit'}</span>
                       <span>·</span>
                       <span>{item.service.duration_minutes} min</span>
                     </div>
@@ -972,7 +972,7 @@ export default function BookPage() {
           firstItem.start_time,
           firstItem.end_time,
           `Booking Reference: ${confirmed.reference}\nPractitioner: ${firstItem.practitioner?.name || 'Specialist'}\nBetter Mind Clinic`,
-          firstItem.mode === 'online' ? 'Online Video Room' : '14th Main Rd, Indiranagar, Bengaluru'
+          firstItem.mode === 'online' ? 'Online Video Room' : 'Partner Clinic Hub (Location to confirm)'
         )
       : '#';
 
@@ -1002,7 +1002,7 @@ export default function BookPage() {
                     <div className="cic-top">
                       <div className="cic-service-name">{item.service?.name || 'Care Session'}</div>
                       <div className="cic-mode">
-                        {item.mode === 'online' ? '💻 Online Video' : '🏥 Indiranagar Clinic'}
+                        {item.mode === 'online' ? '💻 Online Video' : '🏥 In-Person Clinic Hub'}
                       </div>
                     </div>
                     <div className="cic-doctor">
@@ -1051,7 +1051,7 @@ export default function BookPage() {
               <h4 className="cpt-title">Preparing for your session:</h4>
               <ul>
                 <li><strong>Online Video:</strong> Join from a quiet, private room with headphones and stable internet.</li>
-                <li><strong>Indiranagar Clinic:</strong> Please arrive 10 minutes prior at 14th Main Rd, HAL 2nd Stage. Valet assistance available.</li>
+                <li><strong>In-Person Clinic Hub:</strong> Please arrive 10 minutes prior at your confirmed partner clinic center.</li>
                 <li><strong>Need to reschedule?</strong> You can reschedule free of charge up to 4 hours in advance via your patient hub.</li>
               </ul>
             </div>
@@ -1071,7 +1071,7 @@ export default function BookPage() {
             <div>
               <h1 className="bhs-title">Book an Appointment</h1>
               <p className="bhs-sub">
-                Online video sessions across India and in-person visits at Indiranagar, Bengaluru. All times in IST.
+                Online video sessions across India and in-person visits at partner clinic hubs. All times in IST.
               </p>
             </div>
             <div className="bhs-contact-support">

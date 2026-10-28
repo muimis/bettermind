@@ -1,4 +1,5 @@
 import './globals.css';
+import './luxury-clinic.css';
 import React from 'react';
 import CrisisBar from '../components/CrisisBar';
 import Navbar from '../components/Navbar';
@@ -6,8 +7,8 @@ import Footer from '../components/Footer';
 
 export const metadata = {
   title: 'Better Mind | Integrated Mental Health & Whole-Person Wellness Clinic',
-  description: 'Evidence-based psychiatry, clinical psychology, gut-brain nutrition, and somatic therapy in one seamless, coordinated care plan. Consult online across India or in person at our Indiranagar clinic in Bengaluru.',
-  keywords: 'mental health clinic bangalore, psychiatry consultation online, clinical psychologist indiranagar, gut brain nutrition, somatic yoga therapy, integrated therapy india, depression anxiety treatment',
+  description: 'Evidence-based psychiatry, clinical psychology, gut-brain nutrition, and somatic therapy in one seamless, coordinated care plan. Consult online across India or in person at designated partner clinic hubs.',
+  keywords: 'online psychiatry consultation india, clinical psychologist online, gut brain nutrition, somatic yoga therapy, integrated therapy india, depression anxiety treatment, holistic mental health clinic',
   openGraph: {
     title: 'Better Mind | Integrated Mental Health & Wellness Clinic',
     description: 'Whole-person mental healthcare. Coordinate psychiatry, psychotherapy, clinical nutrition, and somatic movement in one booking.',

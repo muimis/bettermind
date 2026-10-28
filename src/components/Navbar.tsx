@@ -44,7 +44,7 @@ export default function Navbar() {
           </div>
           <div className="brand-text-group">
             <span className="brand-title">Better Mind</span>
-            <span className="brand-subtitle">Integrated Clinic · Bengaluru</span>
+            <span className="brand-subtitle">Integrated Online Clinic</span>
           </div>
         </Link>
 
@@ -53,20 +53,17 @@ export default function Navbar() {
           <Link href="/services" className={`nav-link ${pathname === '/services' ? 'active' : ''}`}>
             Services
           </Link>
-          <Link href="/#pathways" className="nav-link">
-            Care Pathways
+          <Link href="/#consultations" className="nav-link">
+            Consultations
           </Link>
-          <Link href="/#philosophy" className="nav-link">
+          <Link href="/#method" className="nav-link">
             Our Method
           </Link>
-          <Link href="/#first-session" className="nav-link">
-            First Session Guide
+          <Link href="/#experience" className="nav-link">
+            Care Experience
           </Link>
-          <Link href="/#team" className="nav-link">
-            Specialists
-          </Link>
-          <Link href="/#pricing-faq" className="nav-link">
-            Pricing & FAQs
+          <Link href="/#faqs" className="nav-link">
+            FAQs
           </Link>
         </nav>
 
@@ -121,28 +118,24 @@ export default function Navbar() {
                 <span>Services Catalogue</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#pathways" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Care Pathways (Mind, Body, Wellness)</span>
+              <Link href="/#consultations" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Focused Consultations</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#philosophy" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Our Integrated Method</span>
+              <Link href="/#method" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Our Unified Method</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#first-session" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>What Happens in a First Session</span>
+              <Link href="/#experience" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Care Experience (Online & Hubs)</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#team" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Our Specialist Team</span>
-                <ArrowRight size={16} />
-              </Link>
-              <Link href="/#pricing-faq" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Transparent Fees & FAQ</span>
+              <Link href="/#faqs" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>FAQs</span>
                 <ArrowRight size={16} />
               </Link>
               <Link href="/staff" className="mobile-nav-item staff-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Clinician & Staff Desk</span>
+                <span>Staff & Clinician Desk</span>
                 <ArrowRight size={16} />
               </Link>
             </div>
@@ -153,7 +146,7 @@ export default function Navbar() {
                 <span>Book an Appointment</span>
               </Link>
               <div className="mobile-clinic-quick-info">
-                <p>📍 14th Main Rd, Indiranagar, Bengaluru</p>
+                <p>🌐 Online Video Pan-India & Partner Clinic Hubs</p>
                 <p>🕒 Mon – Sat: 8:30 AM – 8:30 PM IST</p>
                 <p>📞 <a href="tel:+918047182200">+91 80 4718 2200</a></p>
               </div>

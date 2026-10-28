@@ -49,7 +49,7 @@ const fullServices: ServiceDetail[] = [
     duration: '45 min',
     fee: '₹0 · Complimentary',
     feeNote: 'Free first intake triage for all new patients',
-    modes: 'Online Video or In-Person (Indiranagar)',
+    modes: 'Online Video or Partner Clinic Hub',
     color: '#124E47',
     bg: '#EDF6F4',
     icon: Compass,
@@ -73,7 +73,7 @@ const fullServices: ServiceDetail[] = [
     duration: '50 min',
     fee: '₹1,800',
     feeNote: 'Medical invoice with RCI number provided for insurance reimbursement',
-    modes: 'Online Video or In-Person (Indiranagar)',
+    modes: 'Online Video or Partner Clinic Hub',
     color: '#3949AB',
     bg: '#EEF2FB',
     icon: Brain,
@@ -97,7 +97,7 @@ const fullServices: ServiceDetail[] = [
     duration: '45 min',
     fee: '₹2,200',
     feeNote: 'Compliant with Telemedicine Practice Guidelines (2020)',
-    modes: 'Online Video or In-Person (Indiranagar)',
+    modes: 'Online Video or Partner Clinic Hub',
     color: '#3949AB',
     bg: '#EEF2FB',
     icon: Award,
@@ -121,7 +121,7 @@ const fullServices: ServiceDetail[] = [
     duration: '45 min',
     fee: '₹1,500',
     feeNote: 'Includes personalized 2-week tailored dietary plan & recipe guide',
-    modes: 'Online Video or In-Person (Indiranagar)',
+    modes: 'Online Video or Partner Clinic Hub',
     color: '#2E694F',
     bg: '#EEF7F2',
     icon: Leaf,
@@ -145,7 +145,7 @@ const fullServices: ServiceDetail[] = [
     duration: '60 min',
     fee: '₹1,400',
     feeNote: 'Private 1-on-1 clinical session adapted to all fitness levels',
-    modes: 'Online Video or In-Person (Indiranagar)',
+    modes: 'Online Video or Partner Clinic Hub',
     color: '#2E694F',
     bg: '#EEF7F2',
     icon: Sparkles,
@@ -169,7 +169,7 @@ const fullServices: ServiceDetail[] = [
     duration: '45 min',
     fee: '₹1,200',
     feeNote: 'Includes take-home audio exercises and daily resilience toolkit',
-    modes: 'Online Video or In-Person (Indiranagar)',
+    modes: 'Online Video or Partner Clinic Hub',
     color: '#A36100',
     bg: '#FEF7ED',
     icon: Heart,
@@ -216,7 +216,7 @@ export default function ServicesPage() {
             </div>
             <div className="sqs-item">
               <CheckCircle2 size={16} className="sqs-icon" />
-              <span>Online IST & Indiranagar In-Person</span>
+              <span>Online IST & Partner Clinic Hubs</span>
             </div>
             <div className="sqs-item">
               <CheckCircle2 size={16} className="sqs-icon" />

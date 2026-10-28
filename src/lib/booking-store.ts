@@ -35,7 +35,7 @@ export class BookingStore {
     general: {
       clinic_name: 'Better Mind',
       tagline: 'Integrated Mental Health & Whole-Person Wellbeing',
-      clinic_address: 'Better Mind Clinic, 14th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560038',
+      clinic_address: 'Better Mind Partner Clinic Hub (Location to confirm before launch)',
       phone: '+91 80 4718 2200',
       email: 'care@bettermind.clinic',
       crisis_hotlines: [

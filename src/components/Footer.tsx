@@ -25,8 +25,8 @@ export default function Footer() {
           <div className="strip-item">
             <MapPin size={20} className="strip-icon" />
             <div>
-              <strong>Bengaluru Clinic & Online IST</strong>
-              <span>Quiet therapy rooms in Indiranagar</span>
+              <strong>Online Across India & Partner Hubs</strong>
+              <span>Encrypted video rooms & in-person centers</span>
             </div>
           </div>
         </div>
@@ -38,12 +38,12 @@ export default function Footer() {
           <div className="footer-col brand-col">
             <div className="footer-brand-title">Better Mind</div>
             <p className="footer-brand-desc">
-              An integrated mental health and whole-person wellness clinic. We unite medical psychiatry, evidence-based psychotherapy, gut-brain clinical nutrition, and somatic nervous system therapy into one coordinated journey.
+              An integrated online clinic for mental health and whole-person wellness. We unite medical psychiatry, evidence-based psychotherapy, gut-brain clinical nutrition, and somatic nervous system therapy into one coordinated journey.
             </p>
             <div className="footer-contact-details">
               <div className="f-contact-line">
                 <MapPin size={16} />
-                <span>14th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru, KA 560038</span>
+                <span>Online Video Pan-India · Partner clinic hubs (locations to confirm)</span>
               </div>
               <div className="f-contact-line">
                 <Clock size={16} />

@@ -145,7 +145,7 @@ export default async function BookingPage({ params }: { params: Promise<{ token:
                   item.start_time,
                   item.end_time,
                   `Booking: ${booking.booking_reference}\nDoctor: ${item.practitioner?.name || 'Specialist'}\nBetter Mind Clinic`,
-                  isOnline ? 'Encrypted Video Consultation' : '14th Main Rd, Indiranagar, Bengaluru'
+                  isOnline ? 'Encrypted Video Consultation' : 'Better Mind Partner Clinic Hub'
                 );
 
                 return (
@@ -190,7 +190,7 @@ export default async function BookingPage({ params }: { params: Promise<{ token:
                         <div>
                           <span className="cell-label">Format</span>
                           <strong className="cell-val">
-                            {isOnline ? '💻 Online Video Session' : '🏥 Indiranagar Clinic Visit'}
+                            {isOnline ? '💻 Online Video Session' : '🏥 Partner Clinic Hub'}
                           </strong>
                         </div>
                       </div>
@@ -227,8 +227,8 @@ export default async function BookingPage({ params }: { params: Promise<{ token:
                       <div className="hsc-location-box">
                         <MapPin size={18} />
                         <div>
-                          <strong>Indiranagar Clinic:</strong> 14th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru 560038
-                          <div className="hlb-landmark">Near 100 Feet Road Junction · Valet & elevator available</div>
+                          <strong>Partner Clinic Hub:</strong> Location details and access code sent via WhatsApp & Email prior to session.
+                          <div className="hlb-landmark">Dedicated quiet consultation suite · Confidential reception</div>
                         </div>
                       </div>
                     )}
