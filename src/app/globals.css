@@ -6122,4 +6122,660 @@ a {
   }
 }
 
+/* ========================================================
+   CREATIVE EXTREME MINIMALISM STYLING (.bm-minimal-site)
+   ======================================================== */
+.bm-minimal-site {
+  background-color: #FAFAF7;
+  color: #1A2421;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+/* 1. Hero */
+.min-hero {
+  padding: 100px 0 72px;
+  text-align: center;
+  background: radial-gradient(50% 50% at 50% 20%, #F0F4F2 0%, #FAFAF7 100%);
+}
+
+.min-hero-container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.min-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid #E5E3DA;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #124E47;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.min-pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: #2E694F;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(46, 105, 79, 0.2);
+}
+
+.min-hero-title {
+  font-family: var(--font-serif);
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #141E20;
+  margin-bottom: 22px;
+}
+
+.min-hero-title em {
+  font-style: italic;
+  font-family: var(--font-serif);
+  color: #124E47;
+}
+
+.min-hero-lead {
+  font-size: 19px;
+  line-height: 1.65;
+  color: #556561;
+  max-width: 620px;
+  margin: 0 auto 36px;
+}
+
+.min-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.btn-min-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #124E47;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 15.5px;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(18, 78, 71, 0.18);
+}
+
+.btn-min-primary:hover {
+  background: #0B3731;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(18, 78, 71, 0.25);
+}
+
+.btn-min-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #FFFFFF;
+  color: #124E47;
+  border: 1px solid #D5D2C7;
+  font-weight: 600;
+  font-size: 15.5px;
+  padding: 13px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-min-ghost:hover {
+  background: #F3F1EC;
+  border-color: #124E47;
+}
+
+.btn-min-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #FFFFFF;
+  color: #1A2421;
+  border: 1px solid #DCD8CD;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.btn-min-secondary:hover {
+  border-color: #124E47;
+  background: #F8F7F3;
+}
+
+.min-hero-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13.5px;
+  color: #72827E;
+}
+
+/* 2. Disciplines Grid */
+.min-disciplines-section {
+  padding: 80px 0;
+  background: #FFFFFF;
+  border-top: 1px solid #EBE9E1;
+  border-bottom: 1px solid #EBE9E1;
+}
+
+.min-section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+.min-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #124E47;
+  background: #EDF6F4;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.min-section-header h2 {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #141E20;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.min-section-header p {
+  font-size: 16px;
+  color: #63736F;
+}
+
+.min-disciplines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-bottom: 32px;
+}
+
+.min-discipline-card {
+  background: #FAFAF7;
+  border: 1px solid #EAE8DF;
+  border-radius: 16px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.22s ease;
+}
+
+.min-discipline-card:hover {
+  background: #FFFFFF;
+  border-color: #D2CEC1;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.mdc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.mdc-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+
+.mdc-avail {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2E694F;
+  background: #EEF7F2;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.mdc-name {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: #141E20;
+  margin-bottom: 6px;
+}
+
+.mdc-benefit {
+  font-size: 13.5px;
+  color: #556561;
+  line-height: 1.55;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.mdc-clinician {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #FFFFFF;
+  border: 1px solid #EBE8DF;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.mdc-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mdc-clinician div {
+  display: flex;
+  flex-direction: column;
+}
+
+.mdc-clinician strong {
+  font-size: 13px;
+  color: #141E20;
+}
+
+.mdc-clinician span {
+  font-size: 11px;
+  color: #72827E;
+}
+
+.mdc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid #E8E5DC;
+}
+
+.mdc-price strong {
+  font-size: 19px;
+  font-weight: 800;
+  color: #141E20;
+}
+
+.mdc-price span {
+  font-size: 12px;
+  color: #72827E;
+  margin-left: 2px;
+}
+
+.btn-mdc-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: opacity 0.16s ease;
+}
+
+.btn-mdc-book:hover {
+  opacity: 0.9;
+}
+
+/* Triage Card */
+.min-triage-card {
+  background: #F3F6F5;
+  border: 1px solid #DDE5E2;
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.mtc-left {
+  flex: 1;
+}
+
+.mtc-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #124E47;
+  margin-bottom: 6px;
+}
+
+.mtc-left h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #141E20;
+  margin-bottom: 4px;
+}
+
+.mtc-left p {
+  font-size: 14px;
+  color: #556561;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.mtc-btn {
+  flex-shrink: 0;
+}
+
+/* 3. Promises Grid */
+.min-promises-section {
+  padding: 64px 0;
+  background: #FAFAF7;
+}
+
+.min-promises-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.min-promise-box {
+  background: #FFFFFF;
+  border: 1px solid #EBE8DF;
+  border-radius: 14px;
+  padding: 28px 24px;
+  text-align: left;
+}
+
+.mpb-icon {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.min-promise-box h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #141E20;
+  margin-bottom: 6px;
+}
+
+.min-promise-box p {
+  font-size: 14px;
+  color: #556561;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 4. Sanctuary Section (With real architectural image) */
+.min-sanctuary-section {
+  padding: 88px 0;
+  background: #FFFFFF;
+  border-top: 1px solid #EBE9E1;
+  border-bottom: 1px solid #EBE9E1;
+}
+
+.min-sanctuary-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 52px;
+  align-items: center;
+}
+
+.min-sanctuary-image-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+}
+
+.min-sanctuary-img {
+  width: 100%;
+  height: 100%;
+  max-height: 440px;
+  object-fit: cover;
+  display: block;
+}
+
+.min-sanctuary-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(20, 30, 32, 0.85);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 9999px;
+}
+
+.min-sanctuary-content h2 {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #141E20;
+  margin: 6px 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.min-sanctuary-content p {
+  font-size: 16px;
+  color: #556561;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.min-sanctuary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.msd-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #141E20;
+}
+
+.msd-icon {
+  color: #124E47;
+  flex-shrink: 0;
+}
+
+.min-sanctuary-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* 5. FAQs */
+.min-faq-section {
+  padding: 72px 0;
+  background: #FAFAF7;
+}
+
+.min-faq-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.min-faq-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.min-faq-item {
+  background: #FFFFFF;
+  border: 1px solid #EBE8DF;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.16s ease;
+}
+
+.min-faq-item.active {
+  border-color: #C0D8D3;
+}
+
+.mfaq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: #141E20;
+  gap: 14px;
+}
+
+.mfaq-question:hover {
+  color: #124E47;
+}
+
+.mfaq-chevron {
+  color: #72827E;
+  flex-shrink: 0;
+}
+
+.mfaq-answer {
+  padding: 0 20px 18px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #556561;
+}
+
+/* 6. Call to Action */
+.min-cta-section {
+  padding: 80px 0;
+  background: #FFFFFF;
+  border-top: 1px solid #EBE9E1;
+  text-align: center;
+}
+
+.min-cta-container {
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.min-cta-container h2 {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  font-weight: 400;
+  color: #141E20;
+  margin-bottom: 10px;
+}
+
+.min-cta-container p {
+  font-size: 17px;
+  color: #63736F;
+  margin-bottom: 28px;
+}
+
+.min-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* 7. Crisis Footer */
+.min-crisis-footer {
+  background: #141E20;
+  color: #FFFFFF;
+  padding: 14px 0;
+  font-size: 12.5px;
+}
+
+.min-crisis-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.mcf-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #A4B8B4;
+}
+
+.mcf-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+}
+
+.mcf-right strong {
+  color: #F8E3C0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .min-promises-grid {
+    grid-template-columns: 1fr;
+  }
+  .min-sanctuary-container {
+    grid-template-columns: 1fr;
+  }
+  .min-triage-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .min-hero-title {
+    font-size: 42px;
+  }
+  .min-hero-lead {
+    font-size: 17px;
+  }
+}
+
+
 
