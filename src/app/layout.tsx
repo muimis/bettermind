@@ -1,9 +1,19 @@
 import './globals.css';
 import React from 'react';
+import CrisisBar from '../components/CrisisBar';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export const metadata = {
-  title: 'Better Mind | Integrated Mental Health & Wellness Clinic',
-  description: 'Specialist psychiatry, psychology, nutrition and yoga care in one coordinated clinic plan. Online and in-person sessions in IST.',
+  title: 'Better Mind | Integrated Mental Health & Whole-Person Wellness Clinic',
+  description: 'Evidence-based psychiatry, clinical psychology, gut-brain nutrition, and somatic therapy in one seamless, coordinated care plan. Consult online across India or in person at our Indiranagar clinic in Bengaluru.',
+  keywords: 'mental health clinic bangalore, psychiatry consultation online, clinical psychologist indiranagar, gut brain nutrition, somatic yoga therapy, integrated therapy india, depression anxiety treatment',
+  openGraph: {
+    title: 'Better Mind | Integrated Mental Health & Wellness Clinic',
+    description: 'Whole-person mental healthcare. Coordinate psychiatry, psychotherapy, clinical nutrition, and somatic movement in one booking.',
+    locale: 'en_IN',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -13,15 +23,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
+          rel="stylesheet"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+      </head>
       <body>
-        {/* Mandatory Crisis Help Banner on Every Page (BRIEF.md requirement) */}
-        <aside className="crisis-banner" role="complementary" aria-label="Crisis Support Information">
-          <div style={{ margin: '0 auto', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <span>⚠️ <strong>In acute distress or medical emergency?</strong> Better Mind is not an emergency service.</span>
-            <span>Call 24/7 National Helplines: <strong>Tele-MANAS: <a href="tel:14416">14416</a></strong> (Toll-Free) or <strong>KIRAN: <a href="tel:18005990019">1800-599-0019</a></strong> or visit your nearest hospital casualty.</span>
-          </div>
-        </aside>
-        <main>{children}</main>
+        {/* Mandatory 24/7 National Emergency Crisis Bar */}
+        <CrisisBar />
+
+        {/* Global Responsive Navigation Header */}
+        <Navbar />
+
+        {/* Page Content */}
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
+
+        {/* Authoritative Global Footer */}
+        <Footer />
       </body>
     </html>
   );
