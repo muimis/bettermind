@@ -41,15 +41,13 @@ jobs:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          if [ -z "$CF_TOKEN" ]; then
-            echo "::error ::CLOUDFLARE_API_TOKEN secret is missing in GitHub Repository Secrets. Go to Settings > Secrets and variables > Actions to add it."
-            exit 1
+          if [ -n "$CF_TOKEN" ] && [ -n "$CF_ACCOUNT" ]; then
+            echo "has_secrets=true" >> $GITHUB_OUTPUT
+            echo "Cloudflare credentials found. Deploying to Cloudflare Workers."
+          else
+            echo "has_secrets=false" >> $GITHUB_OUTPUT
+            echo "::warning ::CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID secret is missing in GitHub Repository Secrets. Skipping automated deploy. Tests & build succeeded."
           fi
-          if [ -z "$CF_ACCOUNT" ]; then
-            echo "::error ::CLOUDFLARE_ACCOUNT_ID secret is missing in GitHub Repository Secrets. Go to Settings > Secrets and variables > Actions to add it."
-            exit 1
-          fi
-          echo "has_secrets=true" >> $GITHUB_OUTPUT
 
       - name: Deploy to Cloudflare Workers
         if: steps.check_secrets.outputs.has_secrets == 'true'
@@ -58,3 +56,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
+
