@@ -21,83 +21,96 @@ import {
   Users
 } from '@/components/icons';
 
-// 4 Core Consumer Disciplines (Everything in ONE place: service, clinician, duration, price, and booking link)
-const DISCIPLINES = [
+// Problem-Solution Consultations
+// Directly addresses the exact person, their acute pain point, and the specific consultation we do for them.
+const CONSULTATIONS = [
   {
-    id: 'psychotherapy',
-    tag: 'Talk Therapy',
-    name: 'Clinical Psychology',
-    benefit: 'Safe, non-judgmental psychotherapy for anxiety, depression, burnout, and trauma.',
+    id: 'talk-therapy',
+    pill: 'For Racing Thoughts & Emotional Overwhelm',
+    problem: 'Your thoughts won’t stop spiraling. Anxiety, depression, or old trauma is exhausting your everyday peace.',
+    weDoTitle: 'We do 1-on-1 Clinical Psychology & Psychotherapy for you.',
+    whatHappens: 'Dr. Meera Sen (NIMHANS) creates a safe, confidential space using CBT, ACT, and EMDR to break repetitive negative loops, process relational wounds, and rebuild durable emotional grounding.',
     clinician: 'Dr. Meera Sen, Ph.D.',
-    quals: 'Senior Psychologist · NIMHANS',
+    clinicianRole: 'Senior Clinical Psychologist (NIMHANS)',
     initial: 'MS',
-    fee: '₹1,800',
     duration: '50 min',
+    fee: '₹1,800',
+    mode: 'Online Video or Indiranagar Clinic',
     color: '#3949AB',
     bg: '#EEF2FB',
     icon: Brain,
-    available: 'Tomorrow'
+    availableNext: 'Tomorrow'
   },
   {
     id: 'psychiatry',
-    tag: 'Medical Care',
-    name: 'Psychiatry Consultation',
-    benefit: 'Diagnostic evaluation, adult ADHD, mood stabilization, and mindful medication care.',
+    pill: 'For Severe Mood Swings, Brain Fog & ADHD',
+    problem: 'You can’t focus, your moods swing sharply, or you suspect your brain biology needs an objective medical evaluation.',
+    weDoTitle: 'We do Neuropsychiatry & Medical Diagnostic Evaluation for you.',
+    whatHappens: 'Dr. Arun Nair (MD, NIMHANS) conducts a thorough diagnostic workup of your neurochemistry, adult ADHD markers, and sleep architecture — offering medical clarity and monitored, conservative prescriptions if appropriate.',
     clinician: 'Dr. Arun Nair, MD',
-    quals: 'Senior Psychiatrist · NIMHANS',
+    clinicianRole: 'Senior Consultant Psychiatrist (NIMHANS)',
     initial: 'AN',
-    fee: '₹2,200',
     duration: '45 min',
+    fee: '₹2,200',
+    mode: 'Online Video or Indiranagar Clinic',
     color: '#124E47',
     bg: '#EDF6F4',
     icon: Award,
-    available: 'Today'
+    availableNext: 'Today'
   },
   {
     id: 'nutrition',
-    tag: 'Gut-Brain Axis',
-    name: 'Clinical Nutrition',
-    benefit: 'Microbiome restoration and anti-inflammatory food plans to stabilize mood and energy.',
+    pill: 'For Stress-Induced Gut Distress & Low Energy',
+    problem: 'Chronic stress has disrupted your digestive tract (IBS), sleep quality, or triggered cycles of emotional burnout eating.',
+    weDoTitle: 'We do Gut-Brain Nutritional Psychiatry for you.',
+    whatHappens: 'Over 90% of serotonin is manufactured in the gut. Priya Sharma (RD, Manipal) analyzes your microbiome axis and builds a practical, anti-inflammatory food protocol designed around authentic Indian diets to stabilize neurotransmitters.',
     clinician: 'Priya Sharma, RD',
-    quals: 'Clinical Dietitian · Manipal',
+    clinicianRole: 'Lead Clinical Dietitian (Manipal)',
     initial: 'PS',
-    fee: '₹1,500',
     duration: '45 min',
+    fee: '₹1,500',
+    mode: 'Online Video or Indiranagar Clinic',
     color: '#2E694F',
     bg: '#EEF7F2',
     icon: Leaf,
-    available: 'Fri'
+    availableNext: 'Friday'
   },
   {
     id: 'somatic',
-    tag: 'Nervous System',
-    name: 'Somatic Reset & Breath',
-    benefit: '1-on-1 vagus nerve movement and body breathwork to release physical panic and tension.',
+    pill: 'For Physical Panic, Clenched Tension & Shallow Breathing',
+    problem: 'Your body is locked in fight-or-flight. You feel tight in your chest, carry a clenched jaw, or have panic attacks where talk therapy alone isn’t enough.',
+    weDoTitle: 'We do Somatic Vagus Reset & Nervous System Recalibration for you.',
+    whatHappens: 'Rajesh Kumar (SVYASA) guides you 1-on-1 through polyvagal somatic movement and autonomic breathwork to release trauma held in physical muscle tissue and gently signal safety to your nervous system.',
     clinician: 'Rajesh Kumar, M.Sc.',
-    quals: 'Somatic Practitioner · SVYASA',
+    clinicianRole: 'Certified Somatic Therapist (SVYASA)',
     initial: 'RK',
-    fee: '₹1,400',
     duration: '60 min',
+    fee: '₹1,400',
+    mode: 'Online Video or Indiranagar Clinic',
     color: '#B45330',
     bg: '#FBF1EC',
     icon: Sparkles,
-    available: 'Today'
+    availableNext: 'Today'
   }
 ];
 
-// Essential Consumer FAQs (Only what patients actually care about)
+// Essential Patient FAQs
 const FAQS = [
   {
-    q: 'How do I know which specialist to book first?',
-    a: 'If you’re unsure, book our complimentary Initial Care Assessment (₹0 · 45 min). Our care coordinator, Ananya Roy (TISS), will listen to what you’re experiencing and route you to the right therapist, doctor, or nutritionist.'
+    q: 'How do I know which consultation is right for my current situation?',
+    a: 'If you’re unsure, start with our complimentary Initial Care Intake (₹0 · 45 min). Ananya Roy, MSW (TISS), listens to what you’re experiencing and routes you to the exact psychologist, psychiatrist, or dietitian suited for your situation.'
   },
   {
-    q: 'Can I do my sessions online or visit the clinic in person?',
-    a: 'Both! You can consult from home via private, encrypted video, or visit our quiet, soundproofed clinic in Indiranagar, Bengaluru. You can even combine online therapy with in-person somatic sessions.'
+    q: 'Can I combine multiple consultations on the same day?',
+    a: 'Yes. Our booking system was built specifically so you can schedule therapy and nutrition on the same day without your times clashing. The database guarantees zero schedule overlap.'
   },
   {
-    q: 'Can I reschedule or cancel if something comes up?',
-    a: 'Yes. You can cancel or reschedule with zero fee up to 4 hours before your session directly through your private confirmation link.'
+    q: 'Can I do my sessions from home or at the Indiranagar clinic?',
+    a: 'Both options are open to you. All consultations are available via encrypted HD video calls from home, or at our quiet, acoustic-soundproofed clinic on 14th Main Rd, Indiranagar, Bengaluru.'
+  },
+  {
+    q: 'What if I need to cancel or reschedule my appointment?',
+    a: 'You can reschedule or cancel with zero penalty up to 4 hours before your session directly through your secure confirmation link.'
   }
 ];
 
@@ -105,180 +118,191 @@ export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="bm-minimal-site">
-      {/* 1. HERO SECTION: ICONIC, HUMAN, ZERO-CLUTTER */}
-      <section className="min-hero">
-        <div className="container min-hero-container">
-          <div className="min-hero-pill">
-            <span className="min-pulse-dot"></span>
+    <div className="bm-ps-site">
+      {/* 1. HERO: DIRECT PROBLEM-SOLUTION HOOK */}
+      <section className="ps-hero">
+        <div className="container ps-hero-container">
+          <div className="ps-hero-badge">
+            <span className="ps-dot-pulse"></span>
             <span>Online & Indiranagar Sanctuary, Bengaluru</span>
           </div>
 
-          <h1 className="min-hero-title">
-            Healthcare that listens to the <em>whole</em> of you.
+          <h1 className="ps-hero-title">
+            You’re carrying too much.<br />
+            <em>Let’s find the exact consultation for you.</em>
           </h1>
 
-          <p className="min-hero-lead">
-            Psychiatry, therapy, gut-brain nutrition, and somatic movement — coordinated under one roof. No repeat stories, no schedule clashes.
+          <p className="ps-hero-lead">
+            When your mind is overwhelmed, generic advice doesn’t help. We connect your exact struggle with the specialist trained to resolve it — psychiatry, therapy, nutrition, or somatic care.
           </p>
 
-          <div className="min-hero-actions">
-            <Link href="/book" className="btn-min-primary">
+          <div className="ps-hero-actions">
+            <a href="#consultations" className="btn-ps-primary">
               <Calendar size={17} />
-              <span>Book a Consultation</span>
-            </Link>
-            <Link href="/book" className="btn-min-ghost">
+              <span>Explore Consultations for You</span>
+            </a>
+            <Link href="/book" className="btn-ps-ghost">
               <Compass size={17} />
-              <span>Unsure? Free 15-Min Triage (₹0)</span>
+              <span>Unsure? Free 15-Min Intake (₹0)</span>
             </Link>
           </div>
 
-          <div className="min-hero-trust">
+          <div className="ps-hero-trust-bar">
             <span>🛡️ 100% Confidential</span>
             <span>·</span>
-            <span>🌿 No Referral Needed</span>
+            <span>🌿 No Referral Required</span>
             <span>·</span>
             <span>⏱️ Zero-Clash Scheduling</span>
           </div>
         </div>
       </section>
 
-      {/* 2. THE 4 CORE DISCIPLINES: ALL-IN-ONE CONSUMER CARDS (NO DUPLICATE PRICING TABLE) */}
-      <section className="min-disciplines-section" id="services">
+      {/* 2. CORE PROBLEM-SOLUTION CONSULTATION MATRIX */}
+      <section className="ps-consultations-section" id="consultations">
         <div className="container">
-          <div className="min-section-header">
-            <span className="min-eyebrow">Our Care</span>
-            <h2>Four disciplines. One coordinated practice.</h2>
-            <p>Book a single session or combine multiple disciplines in one appointment.</p>
+          <div className="ps-section-header">
+            <span className="ps-eyebrow">Focused Consultations</span>
+            <h2>We don’t do generic consultations. We do the exact care you need.</h2>
+            <p>Select what you are struggling with right now. See the exact specialist and approach built for you.</p>
           </div>
 
-          <div className="min-disciplines-grid">
-            {DISCIPLINES.map(item => {
-              const IconComponent = item.icon;
+          <div className="ps-cards-stack">
+            {CONSULTATIONS.map(item => {
+              const IconComp = item.icon;
               return (
-                <div key={item.id} className="min-discipline-card" style={{ borderTop: `3px solid ${item.color}` }}>
-                  <div className="mdc-top">
-                    <span className="mdc-tag" style={{ color: item.color, background: item.bg }}>
-                      <IconComponent size={14} />
-                      <span>{item.tag}</span>
+                <div key={item.id} className="ps-consult-card" style={{ borderLeft: `4px solid ${item.color}` }}>
+                  <div className="pcc-left">
+                    <span className="pcc-pill" style={{ color: item.color, background: item.bg }}>
+                      <IconComp size={14} />
+                      <span>{item.pill}</span>
                     </span>
-                    <span className="mdc-avail">Next: {item.available}</span>
+
+                    <div className="pcc-problem-box">
+                      <span className="pcc-problem-label">If your struggle is:</span>
+                      <p className="pcc-problem-text">"{item.problem}"</p>
+                    </div>
+
+                    <h3 className="pcc-we-do-title">{item.weDoTitle}</h3>
+                    <p className="pcc-what-happens">{item.whatHappens}</p>
+
+                    <div className="pcc-doctor-line">
+                      <div className="pcc-avatar" style={{ background: item.color }}>
+                        {item.initial}
+                      </div>
+                      <div>
+                        <strong>{item.clinician}</strong>
+                        <span>{item.clinicianRole}</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="mdc-name">{item.name}</h3>
-                  <p className="mdc-benefit">{item.benefit}</p>
+                  <div className="pcc-right">
+                    <div className="pcc-pricing-box">
+                      <span className="pcc-fee">{item.fee}</span>
+                      <span className="pcc-dur">Per {item.duration} session</span>
+                      <span className="pcc-mode">{item.mode}</span>
+                      <span className="pcc-avail-tag">Next Available: {item.availableNext}</span>
+                    </div>
 
-                  <div className="mdc-clinician">
-                    <div className="mdc-avatar" style={{ background: item.color }}>
-                      {item.initial}
-                    </div>
-                    <div>
-                      <strong>{item.clinician}</strong>
-                      <span>{item.quals}</span>
-                    </div>
-                  </div>
-
-                  <div className="mdc-footer">
-                    <div className="mdc-price">
-                      <strong>{item.fee}</strong>
-                      <span>/ {item.duration}</span>
-                    </div>
-                    <Link href="/book" className="btn-mdc-book" style={{ background: item.color }}>
-                      <span>Book</span>
-                      <ArrowRight size={13} />
+                    <Link href="/book" className="btn-pcc-book" style={{ background: item.color }}>
+                      <span>Book This Consultation</span>
+                      <ArrowRight size={15} />
                     </Link>
+
+                    <span className="pcc-cancel-note">Free cancellation up to 4 hrs</span>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Complimentary Triage Callout */}
-          <div className="min-triage-card">
-            <div className="mtc-left">
-              <div className="mtc-badge">Complimentary · 45 Min</div>
-              <h3>Not sure where to begin? Start with our care coordinator.</h3>
-              <p>
-                Tell us what you’re feeling. Ananya Roy, MSW (TISS), will listen to your symptoms and map out your care roadmap without any sales pressure.
-              </p>
+          {/* Complimentary Triage Intake for Undefined Struggles */}
+          <div className="ps-triage-callout">
+            <div className="ptc-content">
+              <span className="ptc-icon"><Compass size={24} /></span>
+              <div>
+                <span className="ptc-eyebrow">Not Sure What You Need?</span>
+                <h3>We do a Complimentary 15-Minute Intake Consultation for you.</h3>
+                <p>
+                  If everything feels heavy at once and you can’t tell whether you need therapy, a psychiatrist, or a dietitian — spend 45 minutes with our Clinical Care Coordinator, Ananya Roy, MSW (TISS). She will listen to your symptoms and map your care plan without any pressure.
+                </p>
+              </div>
             </div>
-            <Link href="/book" className="btn-min-primary mtc-btn">
-              <span>Start Free Triage (₹0)</span>
+            <Link href="/book" className="btn-ps-primary ptc-btn">
+              <span>Start Free Intake (₹0)</span>
               <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 3. WHY BETTER MIND: 3 CONSUMER PROMISES (NO VERBOSE ACADEMIC LECTURES) */}
-      <section className="min-promises-section">
+      {/* 3. THE PROBLEM WITH FRAGMENTED CARE — AND OUR SOLUTION */}
+      <section className="ps-contrast-section">
         <div className="container">
-          <div className="min-promises-grid">
-            <div className="min-promise-box">
-              <div className="mpb-icon">🤝</div>
-              <h4>One Coordinated Team</h4>
-              <p>Your therapist, psychiatrist, and nutritionist talk to each other. You never have to repeat your story over and over.</p>
+          <div className="ps-contrast-grid">
+            <div className="ps-problem-col">
+              <span className="ps-col-label bad">The Problem with Traditional Healthcare</span>
+              <h3>You repeat your trauma. Doctors never talk.</h3>
+              <p>
+                You visit a psychiatrist in a crowded hospital, a therapist in an app, and your gut or physical panic is dismissed as unrelated. You spend hours coordinating your own care, repeating painful stories over and over.
+              </p>
             </div>
 
-            <div className="min-promise-box">
-              <div className="mpb-icon">⏱️</div>
-              <h4>Zero-Clash Scheduling</h4>
-              <p>Combine talk therapy and nutrition on the same day. Our engine guarantees your times never overlap.</p>
-            </div>
-
-            <div className="min-promise-box">
-              <div className="mpb-icon">🔒</div>
-              <h4>Private & Frictionless</h4>
-              <p>Manage everything through a secure link. No mandatory passwords, no public apps, and 100% medical privacy.</p>
+            <div className="ps-solution-col">
+              <span className="ps-col-label good">The Better Mind Solution</span>
+              <h3>One unified practice. All specialists in sync.</h3>
+              <p>
+                Your psychologist, psychiatrist, dietitian, and somatic therapist operate as one team. They review your care collaboratively, share medical notes securely, and ensure you never have to repeat your story.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. THE INDIRANAGAR SANCTUARY: VISUAL PEACE & SERENITY */}
-      <section className="min-sanctuary-section" id="sanctuary">
-        <div className="container min-sanctuary-container">
-          <div className="min-sanctuary-image-wrap">
+      {/* 4. THE INDIRANAGAR CLINIC SANCTUARY */}
+      <section className="ps-sanctuary-section" id="sanctuary">
+        <div className="container ps-sanctuary-container">
+          <div className="ps-sanctuary-visual">
             <img
               src="/images/sanctuary.jpg"
               alt="Better Mind Clinic Sanctuary Interior in Indiranagar Bengaluru"
-              className="min-sanctuary-img"
+              className="ps-sanctuary-img"
             />
-            <div className="min-sanctuary-badge">Indiranagar Clinic · Bengaluru</div>
+            <div className="ps-sanctuary-tag">Indiranagar Clinic · Bengaluru</div>
           </div>
 
-          <div className="min-sanctuary-content">
-            <span className="min-eyebrow">The Clinic Sanctuary</span>
-            <h2>A quiet place to pause and heal.</h2>
+          <div className="ps-sanctuary-text">
+            <span className="ps-eyebrow">Physical Clinic</span>
+            <h2>A quiet sanctuary designed for emotional safety.</h2>
             <p>
-              Tucked away in Indiranagar, our clinic is architecturally soundproofed with acoustic doors, diffused natural sunlight, and zero clinical waiting-room buzzers.
+              Located in Indiranagar, Bengaluru, our practice is architecturally soundproofed with acoustic seals, natural diffused sunlight, and zero hospital waiting-room noise.
             </p>
 
-            <div className="min-sanctuary-details">
-              <div className="msd-row">
-                <MapPin size={17} className="msd-icon" />
+            <div className="ps-sanctuary-points">
+              <div className="psp-item">
+                <MapPin size={17} className="psp-icon" />
                 <span>14th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru</span>
               </div>
-              <div className="msd-row">
-                <Clock size={17} className="msd-icon" />
-                <span>Monday – Saturday: 8:30 AM – 8:30 PM IST</span>
+              <div className="psp-item">
+                <Clock size={17} className="psp-icon" />
+                <span>Monday to Saturday: 8:30 AM – 8:30 PM IST</span>
               </div>
-              <div className="msd-row">
-                <CheckCircle2 size={17} className="msd-icon" />
-                <span>GST medical invoices provided for corporate wellness & OPD insurance</span>
+              <div className="psp-item">
+                <CheckCircle2 size={17} className="psp-icon" />
+                <span>GST medical invoices provided for corporate wellness and OPD insurance</span>
               </div>
             </div>
 
-            <div className="min-sanctuary-actions">
-              <Link href="/book" className="btn-min-primary">
-                <span>Book In-Person Session</span>
+            <div className="ps-sanctuary-btns">
+              <Link href="/book" className="btn-ps-primary">
+                <span>Book In-Person Consultation</span>
                 <ArrowRight size={15} />
               </Link>
               <a
                 href="https://maps.google.com/?q=Indiranagar+Bengaluru"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-min-secondary"
+                className="btn-ps-secondary"
               >
                 <span>View on Maps</span>
               </a>
@@ -287,33 +311,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. ONLY 3 ESSENTIAL CONSUMER FAQS */}
-      <section className="min-faq-section" id="faqs">
-        <div className="container min-faq-container">
-          <div className="min-section-header">
-            <span className="min-eyebrow">Clear Answers</span>
-            <h2>Common questions</h2>
+      {/* 5. ESSENTIAL PATIENT FAQS */}
+      <section className="ps-faq-section" id="faqs">
+        <div className="container ps-faq-container">
+          <div className="ps-section-header">
+            <span className="ps-eyebrow">Clear Answers</span>
+            <h2>Questions you might have before booking</h2>
           </div>
 
-          <div className="min-faq-stack">
-            {FAQS.map((item, idx) => {
+          <div className="ps-faq-stack">
+            {FAQS.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <div key={idx} className={`min-faq-item ${isOpen ? 'active' : ''}`}>
+                <div key={idx} className={`ps-faq-item ${isOpen ? 'active' : ''}`}>
                   <button
                     type="button"
-                    className="mfaq-question"
+                    className="pfaq-trigger"
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
                     aria-expanded={isOpen}
                   >
-                    <span>{item.q}</span>
-                    <span className="mfaq-chevron">
+                    <span>{faq.q}</span>
+                    <span className="pfaq-icon">
                       {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                     </span>
                   </button>
                   {isOpen && (
-                    <div className="mfaq-answer">
-                      <p>{item.a}</p>
+                    <div className="pfaq-answer">
+                      <p>{faq.a}</p>
                     </div>
                   )}
                 </div>
@@ -323,34 +347,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. CLEAN, SERENE CALL TO ACTION */}
-      <section className="min-cta-section">
-        <div className="container min-cta-container">
-          <h2>Ready to feel supported?</h2>
-          <p>Book your first session today. No referrals required.</p>
-          <div className="min-cta-actions">
-            <Link href="/book" className="btn-min-primary btn-lg">
+      {/* 6. FOCUSED FINAL CTA */}
+      <section className="ps-final-cta">
+        <div className="container ps-cta-container">
+          <h2>Ready to be heard?</h2>
+          <p>Book your first consultation today. No referrals needed, zero clash guaranteed.</p>
+          <div className="ps-cta-buttons">
+            <Link href="/book" className="btn-ps-primary btn-lg">
               <Calendar size={18} />
-              <span>Book an Appointment</span>
+              <span>Book Your Consultation</span>
             </Link>
-            <a href="tel:+918047182200" className="btn-min-secondary btn-lg">
-              <span>Call Us: 080 4718 2200</span>
+            <a href="tel:+918047182200" className="btn-ps-secondary btn-lg">
+              <span>Call Clinic: 080 4718 2200</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* 7. DISCREET 24/7 CRISIS STRIP */}
-      <footer className="min-crisis-footer">
-        <div className="container min-crisis-inner">
-          <div className="mcf-left">
+      {/* 7. DISCREET 24/7 HELPLINE STRIP */}
+      <footer className="ps-crisis-footer">
+        <div className="container ps-crisis-inner">
+          <div className="pcf-left">
             <Shield size={14} />
-            <span>Outpatient clinic. In acute distress, call toll-free:</span>
+            <span>Outpatient clinic. In acute emotional crisis or danger, call toll-free 24/7:</span>
           </div>
-          <div className="mcf-right">
+          <div className="pcf-right">
             <span><strong>Tele-MANAS: 14416</strong></span>
             <span>·</span>
-            <span><strong>KIRAN: 1800-599-0019</strong> (24/7 Govt. of India)</span>
+            <span><strong>KIRAN: 1800-599-0019</strong> (Govt. of India)</span>
           </div>
         </div>
       </footer>
