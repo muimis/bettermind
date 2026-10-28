@@ -27,359 +27,482 @@ import {
   FileText
 } from '@/components/icons';
 
-// What brings you to Better Mind? (Interactive, empathetic self-triage)
-const concerns = [
+// Services Catalogue Data
+const SERVICES_DATA = [
   {
-    id: 'anxiety',
-    icon: '🍃',
-    title: 'Anxiety & Panic',
-    shortDesc: 'Racing thoughts, social worry, tightness in chest, or panic spikes.',
-    recommendation: 'Clinical Psychology & CBT Psychotherapy',
-    practitioner: 'Dr. Meera Sen',
+    id: 'talk-therapy',
+    group: 'Mind',
+    name: 'Clinical Psychology & Talk Therapy',
+    tagline: 'Trauma-informed, cognitive, and relational psychotherapy',
+    desc: 'Evidence-based talk therapy with licensed clinical psychologists to work through anxiety, depression, relational wounds, trauma, and burnout.',
     duration: '50 min',
     fee: '₹1,800',
-    link: '/book'
-  },
-  {
-    id: 'depression',
-    icon: '🌧️',
-    title: 'Low Mood & Exhaustion',
-    shortDesc: 'Feeling emotionally drained, disconnected, hopeless, or losing interest in life.',
-    recommendation: 'Therapy & Mind-Body Stabilization',
-    practitioner: 'Dr. Meera Sen & Dr. Arun Nair',
-    duration: '50 min',
-    fee: '₹1,800',
-    link: '/book'
-  },
-  {
-    id: 'burnout',
-    icon: '💼',
-    title: 'Work Stress & Burnout',
-    shortDesc: 'Brain fog, deadline exhaustion, somatic fatigue, and chronic irritability.',
-    recommendation: 'Somatic Reset & Resilience Therapy',
-    practitioner: 'Rajesh Kumar & Dr. Meera Sen',
-    duration: '60 min',
-    fee: '₹1,400',
-    link: '/book'
-  },
-  {
-    id: 'adhd',
-    icon: '⚡',
-    title: 'ADHD & Focus Difficulties',
-    shortDesc: 'Struggling with attention, procrastination, task paralysis, or restlessness.',
-    recommendation: 'Psychiatry & Neurodevelopmental Evaluation',
-    practitioner: 'Dr. Arun Nair (MD, NIMHANS)',
-    duration: '45 min',
-    fee: '₹2,200',
-    link: '/book'
-  },
-  {
-    id: 'gut',
-    icon: '🥗',
-    title: 'Gut, Sleep & Tension',
-    shortDesc: 'Insomnia, stress-induced gut flares (IBS), muscular guarding, and low energy.',
-    recommendation: 'Gut-Brain Nutrition & Somatic Breathwork',
-    practitioner: 'Priya Sharma & Rajesh Kumar',
-    duration: '45 min',
-    fee: '₹1,500',
-    link: '/book'
-  },
-  {
-    id: 'unsure',
-    icon: '🧭',
-    title: 'Unsure Where to Start',
-    shortDesc: 'Feeling overwhelmed and wanting a trained human to listen and guide your steps.',
-    recommendation: 'Complimentary Initial Care Assessment',
-    practitioner: 'Ananya Roy (Care Coordinator)',
-    duration: '45 min',
-    fee: '₹0 · Free',
-    link: '/book'
-  }
-];
-
-// The 4 Core Disciplines
-const coreServices = [
-  {
-    tag: 'Mind & Emotions',
-    name: 'Clinical Psychology & Psychotherapy',
-    tagline: 'Compassionate, evidence-based talk therapy',
-    desc: 'A safe, non-judgmental space to unpack trauma, break anxiety loops, heal relational wounds, and build grounded emotional coping mechanisms with licensed clinical psychologists.',
-    approaches: ['CBT & ACT', 'Trauma-informed & EMDR', 'Non-judgmental safe space'],
-    duration: '50 min',
-    fee: '₹1,800',
-    badge: 'RCI-Licensed',
+    feeNumber: 1800,
+    allowed_mode: 'Online or Indiranagar Clinic',
+    doctor: 'Dr. Meera Sen, Ph.D. (NIMHANS)',
+    doctorInitial: 'MS',
     color: '#3949AB',
     bg: '#EEF2FB',
-    icon: Brain
+    icon: Brain,
+    availableSlots: ['Tomorrow, 10:30 AM', 'Tomorrow, 3:00 PM', 'Fri, 11:00 AM']
   },
   {
-    tag: 'Medical & Neurobiology',
+    id: 'psychiatry',
+    group: 'Mind',
     name: 'Psychiatry & Medical Evaluation',
-    tagline: 'Comprehensive assessment & thoughtful medical care',
-    desc: 'Medical diagnosis, mood spectrum management, adult ADHD evaluations, and careful prescription guidance by senior psychiatrists. Medication is conservative, monitored, and partnered with therapy.',
-    approaches: ['Diagnostic evaluation', 'Conservative prescriptions', 'Sleep & mood chemistry'],
+    tagline: 'Neurobiology, medical diagnosis & mindful prescriptions',
+    desc: 'Comprehensive psychiatric evaluation, adult ADHD assessments, and monitored medical management by senior MD psychiatrists from NIMHANS.',
     duration: '45 min',
     fee: '₹2,200',
-    badge: 'NMC Registered MD',
+    feeNumber: 2200,
+    allowed_mode: 'Online or Indiranagar Clinic',
+    doctor: 'Dr. Arun Nair, MD (NIMHANS)',
+    doctorInitial: 'AN',
     color: '#124E47',
     bg: '#EDF6F4',
-    icon: Award
+    icon: Award,
+    availableSlots: ['Today, 4:30 PM', 'Tomorrow, 11:30 AM', 'Sat, 10:00 AM']
   },
   {
-    tag: 'Gut-Brain Axis',
+    id: 'nutrition',
+    group: 'Body',
     name: 'Gut-Brain & Clinical Nutrition',
-    tagline: 'Food as medicine for mood and cognitive stability',
-    desc: 'Over 90% of serotonin is produced in the digestive tract. Our registered clinical dietitians create anti-inflammatory, neuro-supportive nutrition plans tailored to authentic Indian foods.',
-    approaches: ['Microbiome health', 'Blood sugar & mood balance', 'Indian cultural food plans'],
+    tagline: 'Microbiome restoration & metabolic mood stabilization',
+    desc: 'Over 90% of serotonin is synthesized in the gut. Tailored food plans designed around authentic Indian diets to reduce neuroinflammation and stabilize energy.',
     duration: '45 min',
     fee: '₹1,500',
-    badge: 'Registered Dietitian',
+    feeNumber: 1500,
+    allowed_mode: 'Online or Indiranagar Clinic',
+    doctor: 'Priya Sharma, RD (Manipal)',
+    doctorInitial: 'PS',
     color: '#2E694F',
     bg: '#EEF7F2',
-    icon: Leaf
+    icon: Leaf,
+    availableSlots: ['Tomorrow, 2:00 PM', 'Fri, 4:00 PM', 'Sat, 11:30 AM']
   },
   {
-    tag: 'Nervous System',
-    name: 'Somatic Movement & Yoga Therapy',
-    tagline: 'Physical nervous system recalibration',
-    desc: '1-on-1 somatic releases and polyvagal breathing for trauma-induced physical tension, panic attacks, and autonomic hyperarousal. Release what the conscious mind has stored in the body.',
-    approaches: ['Vagus nerve reset', 'Panic & tension release', 'Gentle somatic movement'],
+    id: 'somatic',
+    group: 'Body',
+    name: 'Somatic Movement & Vagus Reset',
+    tagline: '1-on-1 nervous system grounding & tension release',
+    desc: 'Gentle polyvagal movement and somatic breathwork to release physical panic, muscle guarding, and autonomic hyperarousal stored in the body.',
     duration: '60 min',
     fee: '₹1,400',
-    badge: 'Certified Somatic',
+    feeNumber: 1400,
+    allowed_mode: 'Online or Indiranagar Clinic',
+    doctor: 'Rajesh Kumar (SVYASA)',
+    doctorInitial: 'RK',
     color: '#B45330',
     bg: '#FBF1EC',
-    icon: Sparkles
+    icon: Sparkles,
+    availableSlots: ['Today, 6:00 PM', 'Tomorrow, 9:30 AM', 'Sat, 4:00 PM']
+  },
+  {
+    id: 'triage',
+    group: 'Start here',
+    name: 'Initial Care Assessment & Triage',
+    tagline: 'Complimentary consultation to find your ideal path',
+    desc: 'Spend 45 minutes with our clinical care coordinator. We listen to your symptoms, answer questions, and co-design your personal care roadmap.',
+    duration: '45 min',
+    fee: '₹0 · Free',
+    feeNumber: 0,
+    allowed_mode: 'Online or Indiranagar Clinic',
+    doctor: 'Ananya Roy, MSW (TISS)',
+    doctorInitial: 'AR',
+    color: '#124E47',
+    bg: '#EDF6F4',
+    icon: Compass,
+    availableSlots: ['Today, 3:00 PM', 'Tomorrow, 10:00 AM', 'Fri, 12:00 PM']
   }
 ];
 
-// Specialist Clinicians (Human, approachable, verified)
-const specialists = [
+// Verified Specialists Faculty
+const SPECIALISTS = [
   {
     name: 'Dr. Arun Nair',
     role: 'Senior Consultant Psychiatrist',
     quals: 'MD Psychiatry (NIMHANS) · MBBS',
+    reg: 'KMC Reg # 64921',
     langs: 'English · Hindi · Malayalam',
     initial: 'AN',
     color: '#124E47',
     bg: '#EDF6F4',
-    focus: 'Adult ADHD, Bipolar Spectrum, Panic Disorders & Sleep Architecture',
-    quote: 'Medication is never a substitute for understanding your story. When used thoughtfully alongside therapy, it restores the biological calm needed to heal.'
+    status: 'Available Today',
+    tags: ['Adult ADHD', 'Mood Spectrum', 'Sleep Architecture', 'Panic Disorders'],
+    quote: 'Medication is never a replacement for your story. Partnered with therapy, it provides the biological calm to heal.'
   },
   {
     name: 'Dr. Meera Sen',
     role: 'Senior Clinical Psychologist',
     quals: 'M.Phil Clinical Psychology (NIMHANS) · Ph.D.',
+    reg: 'RCI Reg # A39104',
     langs: 'English · Hindi · Bengali',
     initial: 'MS',
     color: '#3949AB',
     bg: '#EEF2FB',
-    focus: 'Complex Trauma, Depression, Anxiety & Existential Burnout',
-    quote: 'Therapy is not about fixing what is broken; it is about uncovering how your coping mechanisms protected you, and building safer ways forward.'
+    status: 'Available Tomorrow',
+    tags: ['Complex Trauma', 'Depression', 'Existential Burnout', 'CBT & EMDR'],
+    quote: 'Therapy is about uncovering how your coping mechanisms protected you, and building safer ways forward.'
   },
   {
     name: 'Priya Sharma',
-    role: 'Gut-Brain Clinical Dietitian',
+    role: 'Lead Gut-Brain Clinical Dietitian',
     quals: 'M.Sc. Clinical Nutrition (Manipal) · RD',
+    reg: 'IDA Reg # 54321',
     langs: 'English · Hindi',
     initial: 'PS',
     color: '#2E694F',
     bg: '#EEF7F2',
-    focus: 'Gut-Brain Microbiome Axis, Metabolic Mood Stability & Stress Eating',
-    quote: 'Your brain chemistry depends heavily on your digestive biology. Nourishing the microbiome creates the quiet foundation for mental calm.'
+    status: 'Available This Week',
+    tags: ['Gut-Brain Axis', 'Metabolic Mood Support', 'PCOS', 'Stress Eating'],
+    quote: 'Your brain chemistry depends on your digestive biology. Nourishing the microbiome creates the foundation for calm.'
   },
   {
     name: 'Rajesh Kumar',
-    role: 'Somatic Movement Therapist',
+    role: 'Somatic & Polyvagal Therapist',
     quals: 'M.Sc. Yoga Therapy (SVYASA) · Somatic Practitioner',
+    reg: 'YCB Reg # 99887',
     langs: 'English · Hindi · Tamil',
     initial: 'RK',
     color: '#B45330',
     bg: '#FBF1EC',
-    focus: 'Polyvagal Nervous System Reset, Somatic Trauma & Chronic Tension',
-    quote: 'The body remembers what the conscious mind buries. When we teach your nervous system that this moment is safe, healing accelerates.'
+    status: 'Available Today',
+    tags: ['Polyvagal Reset', 'Trauma Somatics', 'Pranayama', 'Chronic Tension'],
+    quote: 'The body remembers what the conscious mind buries. When we teach the nervous system safety, healing accelerates.'
   },
   {
     name: 'Ananya Roy',
     role: 'Lead Care Coordinator & Triage Specialist',
     quals: 'MSW Psychiatric Social Work (TISS)',
+    reg: 'KAPS Reg # 1120',
     langs: 'English · Hindi · Kannada',
     initial: 'AR',
     color: '#124E47',
     bg: '#EDF6F4',
-    focus: 'Patient Intake, Compassionate Triage & Cross-Discipline Coordination',
-    quote: 'Reaching out for help should not feel like taking on a second job. My promise is to make your care journey seamless, gentle, and clear.'
+    status: 'Available Daily',
+    tags: ['Initial Intake', 'Patient Advocacy', 'Cross-Disciplinary Coordination'],
+    quote: 'Reaching out for help shouldn’t feel like taking on a second job. My promise is to make your care journey seamless.'
   }
 ];
 
-// Curated FAQs (What patients actually wonder)
-const faqs = [
+// FAQs
+const FAQS = [
   {
-    q: 'How do I know which specialist or service I should book?',
-    a: 'If you are unsure, start with our complimentary Initial Care Assessment (₹0). You will spend 45 minutes with our clinical care coordinator who will listen to your symptoms, answer your questions, and connect you with the exact right psychologist, psychiatrist, or dietitian.'
+    q: 'How does Better Mind coordinate multiple specialists for me?',
+    a: 'Unlike fragmented hospitals where you visit different doctors who never talk, our clinical team works as one practice. Your psychologist, psychiatrist, dietitian, and somatic therapist review your case collaboratively, ensuring your treatment is unified without you having to repeat your story over and over.'
   },
   {
-    q: 'Can I attend my sessions online, or do I need to visit in person?',
-    a: 'You can choose either! All our therapy, psychiatry, and nutrition appointments are available via high-definition, encrypted video calls from the privacy of your home. If you prefer in-person care, our serene, acoustic-isolated clinic in Indiranagar, Bengaluru is open Monday through Saturday.'
+    q: 'Can I do sessions online, or do I have to visit the Indiranagar clinic?',
+    a: 'Every discipline is available both online via encrypted HD video calls and in-person at our quiet Indiranagar clinic. You can even mix them: attend therapy online from home while visiting Indiranagar for somatic movement.'
   },
   {
-    q: 'Can I book multiple services in one appointment without times clashing?',
-    a: 'Yes. Our booking system is built specifically for integrated healthcare. You can select talk therapy, psychiatry, and nutrition together in a single booking basket. Our engine automatically guarantees that your chosen time slots never clash.'
+    q: 'What makes your booking engine zero-clash?',
+    a: 'When you select multiple services (e.g. Psychology + Nutrition), our PostgreSQL engine blocks overlapping times at the database level. It enforces clean buffers so you never get double-booked or rushed between appointments.'
   },
   {
-    q: 'Will my sessions and data remain strictly confidential?',
-    a: 'Absolutely. We adhere to the Digital Personal Data Protection (DPDP) Act of India and strict clinical ethics. We never sell data, never share diagnoses with employers, and maintain end-to-end encrypted medical confidentiality.'
+    q: 'Do I get medical receipts for health insurance and corporate wellness?',
+    a: 'Yes. Every booking includes a GST-compliant digital invoice with the doctor’s official medical registration numbers (RCI, NMC, IDA) suitable for corporate reimbursement and OPD insurance claims.'
   },
   {
-    q: 'What is your cancellation and rescheduling policy?',
-    a: 'We understand that life happens. You can reschedule or cancel your session with zero penalties up to 4 hours before your scheduled appointment time directly through your secure confirmation link.'
+    q: 'What is your rescheduling and cancellation policy?',
+    a: 'You can reschedule or cancel your session with zero penalties up to 4 hours before your scheduled appointment time directly from your confirmation link.'
   }
 ];
 
 export default function HomePage() {
-  const [selectedConcern, setSelectedConcern] = useState<string>('anxiety');
+  // Hero Live Booking Widget State
+  const [selectedServiceId, setSelectedServiceId] = useState<string>('talk-therapy');
+  const [selectedMode, setSelectedMode] = useState<'online' | 'in_person'>('online');
+  const [selectedSlotIndex, setSelectedSlotIndex] = useState<number>(0);
+
+  // Discipline Filter
+  const [activeTab, setActiveTab] = useState<string>('All');
+
+  // FAQ Accordion
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  const activeConcernData = concerns.find(c => c.id === selectedConcern) || concerns[0];
+  // Selected Service for the Hero Widget
+  const activeHeroService = SERVICES_DATA.find(s => s.id === selectedServiceId) || SERVICES_DATA[0];
+
+  // Filtered Services for the catalogue grid
+  const filteredServices = activeTab === 'All'
+    ? SERVICES_DATA
+    : SERVICES_DATA.filter(s => s.group === activeTab);
 
   return (
-    <div className="home-page-minimal">
-      {/* 1. HERO SECTION: CALM, EMPATHETIC, MINIMALIST */}
-      <section className="zen-hero-section">
-        <div className="container zen-hero-container">
-          <div className="zen-hero-badge">
-            <span className="zen-badge-pulse"></span>
-            <span>Compassionate Care · Online & Indiranagar Sanctuary, Bengaluru</span>
-          </div>
-
-          <h1 className="zen-hero-title">
-            Healthcare that listens to the <em>whole</em> of you.
-          </h1>
-
-          <p className="zen-hero-subtitle">
-            When life feels overwhelming, your mind, body, and sleep feel it together.
-            We bring psychiatry, therapy, gut-brain nutrition, and somatic healing into one gentle, coordinated care plan.
-          </p>
-
-          <div className="zen-hero-actions">
-            <Link href="/book" className="btn-zen-primary">
-              <Calendar size={18} />
-              <span>Book a Consultation</span>
-            </Link>
-            <Link href="/book" className="btn-zen-secondary">
-              <Compass size={18} />
-              <span>Unsure? Start Free Assessment (₹0)</span>
-            </Link>
-          </div>
-
-          <div className="zen-trust-strip">
-            <div className="zen-trust-item">
-              <Shield size={16} className="zen-trust-icon" />
-              <span>100% Confidential</span>
+    <div className="bm-webapp-page">
+      {/* ========================================================
+          1. HERO SECTION: DUAL-COLUMN WEB APPLICATION HERO
+          ======================================================== */}
+      <section className="app-hero-section">
+        <div className="container app-hero-container">
+          {/* Left Column: Value Proposition & Social Proof */}
+          <div className="app-hero-left">
+            <div className="app-hero-pill">
+              <span className="live-dot-pulse"></span>
+              <span>Online Video & Indiranagar Sanctuary Clinic · Bengaluru</span>
             </div>
-            <div className="zen-trust-item">
-              <Heart size={16} className="zen-trust-icon" />
-              <span>No Medical Referral Needed</span>
-            </div>
-            <div className="zen-trust-item">
-              <CheckCircle2 size={16} className="zen-trust-icon" />
-              <span>Zero-Clash Scheduling</span>
-            </div>
-            <div className="zen-trust-item">
-              <Building2 size={16} className="zen-trust-icon" />
-              <span>Online or In-Person (Indiranagar)</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 2. "WHAT BRINGS YOU HERE?" INTERACTIVE SELF-SELECTION */}
-      <section className="zen-concerns-section" id="concerns">
-        <div className="container">
-          <div className="zen-section-header">
-            <span className="zen-eyebrow">Start Here</span>
-            <h2>What feels heavy right now?</h2>
-            <p>Select what you are experiencing. We’ll show you the gentlest path forward.</p>
-          </div>
+            <h1 className="app-hero-headline">
+              Whole-person mental health.<br />
+              <span className="app-hero-gradient">Coordinated under one roof.</span>
+            </h1>
 
-          <div className="zen-concerns-pill-grid">
-            {concerns.map(c => (
-              <button
-                key={c.id}
-                type="button"
-                className={`zen-concern-chip ${selectedConcern === c.id ? 'active' : ''}`}
-                onClick={() => setSelectedConcern(c.id)}
-              >
-                <span className="chip-emoji">{c.icon}</span>
-                <span className="chip-title">{c.title}</span>
-              </button>
-            ))}
-          </div>
+            <p className="app-hero-subtext">
+              Better Mind unites licensed psychotherapy, medical psychiatry, gut-brain nutrition, and somatic healing in one continuous care plan. Book one specialist or combine disciplines with guaranteed zero-clash scheduling.
+            </p>
 
-          {/* Dynamic Recommendation Card */}
-          <div className="zen-recommend-box">
-            <div className="zrec-left">
-              <div className="zrec-badge">Recommended Starting Point</div>
-              <h3 className="zrec-title">{activeConcernData.recommendation}</h3>
-              <p className="zrec-desc">{activeConcernData.shortDesc}</p>
-              <div className="zrec-details">
-                <span><strong>Specialist:</strong> {activeConcernData.practitioner}</span>
-                <span><strong>Duration:</strong> {activeConcernData.duration}</span>
-                <span><strong>Consultation Fee:</strong> {activeConcernData.fee}</span>
+            <div className="app-hero-actions-row">
+              <Link href="/book" className="btn-app-primary">
+                <Calendar size={18} />
+                <span>Book an Appointment</span>
+              </Link>
+              <Link href="/book" className="btn-app-secondary">
+                <Compass size={18} />
+                <span>Free 15-Min Triage Intake (₹0)</span>
+              </Link>
+            </div>
+
+            {/* Live Trust Metrics Dashboard */}
+            <div className="app-stats-row">
+              <div className="app-stat-card">
+                <span className="app-stat-num">12+ Yrs</span>
+                <span className="app-stat-label">NIMHANS & TISS Clinical Leadership</span>
+              </div>
+              <div className="app-stat-divider"></div>
+              <div className="app-stat-card">
+                <span className="app-stat-num">Zero Clash</span>
+                <span className="app-stat-label">Multi-Service Booking Engine</span>
+              </div>
+              <div className="app-stat-divider"></div>
+              <div className="app-stat-card">
+                <span className="app-stat-num">100%</span>
+                <span className="app-stat-label">Confidential & DPDP Compliant</span>
               </div>
             </div>
-            <div className="zrec-right">
-              <Link href={activeConcernData.link} className="btn-zen-primary btn-full">
-                <span>Book This Consultation</span>
+          </div>
+
+          {/* Right Column: Interactive Live Booking Engine Card */}
+          <div className="app-hero-right">
+            <div className="live-booking-widget">
+              <div className="lbw-header">
+                <div>
+                  <span className="lbw-badge">Live Clinic Booking</span>
+                  <h3 className="lbw-title">Find an open consultation slot</h3>
+                </div>
+                <div className="lbw-live-chip">
+                  <span className="live-dot-pulse"></span>
+                  <span>Slots Open</span>
+                </div>
+              </div>
+
+              {/* Service Selection Tabs */}
+              <div className="lbw-service-chips">
+                {SERVICES_DATA.map(service => (
+                  <button
+                    key={service.id}
+                    type="button"
+                    className={`lbw-chip ${selectedServiceId === service.id ? 'active' : ''}`}
+                    onClick={() => {
+                      setSelectedServiceId(service.id);
+                      setSelectedSlotIndex(0);
+                    }}
+                  >
+                    <span>{service.name.split(' ')[0]} {service.name.split(' ')[1] || ''}</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Mode Toggle: Online vs Clinic */}
+              <div className="lbw-mode-toggle-group">
+                <button
+                  type="button"
+                  className={`lbw-mode-btn ${selectedMode === 'online' ? 'active' : ''}`}
+                  onClick={() => setSelectedMode('online')}
+                >
+                  <Video size={15} />
+                  <span>Online Video Call</span>
+                </button>
+                <button
+                  type="button"
+                  className={`lbw-mode-btn ${selectedMode === 'in_person' ? 'active' : ''}`}
+                  onClick={() => setSelectedMode('in_person')}
+                >
+                  <Building2 size={15} />
+                  <span>Indiranagar Clinic</span>
+                </button>
+              </div>
+
+              {/* Dynamic Doctor & Slot Preview Box */}
+              <div className="lbw-preview-box">
+                <div className="lbw-doc-row">
+                  <div className="lbw-avatar" style={{ background: activeHeroService.color }}>
+                    {activeHeroService.doctorInitial}
+                  </div>
+                  <div className="lbw-doc-info">
+                    <h4 className="lbw-doc-name">{activeHeroService.doctor}</h4>
+                    <span className="lbw-doc-spec">{activeHeroService.tagline}</span>
+                  </div>
+                  <div className="lbw-doc-price">
+                    <span className="lbw-fee">{activeHeroService.fee}</span>
+                    <span className="lbw-dur">{activeHeroService.duration}</span>
+                  </div>
+                </div>
+
+                {/* Available Slots */}
+                <div className="lbw-slots-section">
+                  <span className="lbw-slots-label">Select Open Slot:</span>
+                  <div className="lbw-slots-grid">
+                    {activeHeroService.availableSlots.map((slot, index) => (
+                      <button
+                        key={index}
+                        type="button"
+                        className={`lbw-slot-pill ${selectedSlotIndex === index ? 'active' : ''}`}
+                        onClick={() => setSelectedSlotIndex(index)}
+                      >
+                        <Clock size={12} />
+                        <span>{slot}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Button: Directly transfers to /book */}
+              <Link href="/book" className="btn-lbw-submit">
+                <span>Book This Slot ({activeHeroService.fee})</span>
                 <ArrowRight size={16} />
               </Link>
-              <span className="zrec-note">Zero paperwork · Pick online or clinic</span>
+
+              <div className="lbw-guarantee">
+                <Shield size={13} />
+                <span>Instant reservation token · Free cancellation up to 4 hrs</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. OUR 4 CORE DISCIPLINES (CLEAR & APPROACHABLE) */}
-      <section className="zen-services-section" id="services">
+      {/* ========================================================
+          2. HOW INTEGRATED CARE WORKS (INTERACTIVE 4-PILLAR FLOW)
+          ======================================================== */}
+      <section className="app-workflow-section" id="how-it-works">
         <div className="container">
-          <div className="zen-section-header">
-            <span className="zen-eyebrow">Our Disciplines</span>
-            <h2>Integrated care under one roof</h2>
-            <p>Book one specialist, or combine disciplines in a single visit without double-booking.</p>
+          <div className="app-section-header">
+            <span className="app-eyebrow">The Better Mind Standard</span>
+            <h2>How our coordinated practice works</h2>
+            <p>From your first tap to ongoing recovery, all disciplines communicate so you never fall through the cracks.</p>
           </div>
 
-          <div className="zen-services-grid">
-            {coreServices.map(service => {
+          <div className="app-steps-grid">
+            <div className="app-step-card">
+              <div className="asc-num-badge">01</div>
+              <div className="asc-icon-wrap" style={{ background: '#EDF6F4', color: '#124E47' }}>
+                <Compass size={22} />
+              </div>
+              <h3 className="asc-title">1. Intake or Direct Choice</h3>
+              <p className="asc-desc">
+                Know what you need? Book psychology, psychiatry, or nutrition directly. Unsure? Start with our free 15-minute intake coordinator triage.
+              </p>
+            </div>
+
+            <div className="app-step-card">
+              <div className="asc-num-badge">02</div>
+              <div className="asc-icon-wrap" style={{ background: '#EEF2FB', color: '#3949AB' }}>
+                <Calendar size={22} />
+              </div>
+              <h3 className="asc-title">2. Zero-Clash Scheduling</h3>
+              <p className="asc-desc">
+                Pick individual sessions or stack disciplines in one visit. Our database engine locks slots in real-time, preventing schedule overlaps.
+              </p>
+            </div>
+
+            <div className="app-step-card">
+              <div className="asc-num-badge">03</div>
+              <div className="asc-icon-wrap" style={{ background: '#EEF7F2', color: '#2E694F' }}>
+                <Users size={22} />
+              </div>
+              <h3 className="asc-title">3. Multidisciplinary Review</h3>
+              <p className="asc-desc">
+                Your psychiatrist, psychologist, and clinical dietitian consult collaboratively. You never have to repeat your traumatic history across different clinics.
+              </p>
+            </div>
+
+            <div className="app-step-card">
+              <div className="asc-num-badge">04</div>
+              <div className="asc-icon-wrap" style={{ background: '#FEF7ED', color: '#A36100' }}>
+                <Shield size={22} />
+              </div>
+              <h3 className="asc-title">4. Private & Sustainable</h3>
+              <p className="asc-desc">
+                Manage your care through a cryptographically secure token link. Zero public accounts, zero data sharing, and full DPDP Act compliance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          3. COMPREHENSIVE SERVICE CATALOGUE (INTERACTIVE APP GRID)
+          ======================================================== */}
+      <section className="app-catalogue-section" id="services">
+        <div className="container">
+          <div className="app-section-header-split">
+            <div>
+              <span className="app-eyebrow">Our Clinical Disciplines</span>
+              <h2>Care options tailored to your life</h2>
+              <p>Choose an individual session or combine services into a coordinated care plan.</p>
+            </div>
+
+            {/* Filter Pills */}
+            <div className="catalogue-filter-bar">
+              {['All', 'Mind', 'Body', 'Start here'].map(tab => (
+                <button
+                  key={tab}
+                  type="button"
+                  className={`cat-pill-btn ${activeTab === tab ? 'active' : ''}`}
+                  onClick={() => setActiveTab(tab)}
+                >
+                  {tab === 'All' ? 'All Disciplines' : tab}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="app-services-grid">
+            {filteredServices.map(service => {
               const ServiceIcon = service.icon;
               return (
-                <div key={service.name} className="zen-service-card" style={{ borderTop: `3px solid ${service.color}` }}>
-                  <div className="zsc-top">
-                    <span className="zsc-icon" style={{ background: service.bg, color: service.color }}>
-                      <ServiceIcon size={22} />
+                <div key={service.id} className="app-service-card" style={{ borderTop: `4px solid ${service.color}` }}>
+                  <div className="asc-top-bar">
+                    <span className="asc-badge-group" style={{ background: service.bg, color: service.color }}>
+                      <ServiceIcon size={16} />
+                      <span>{service.group}</span>
                     </span>
-                    <span className="zsc-badge">{service.badge}</span>
+                    <span className="asc-duration-chip">
+                      <Clock size={12} />
+                      <span>{service.duration}</span>
+                    </span>
                   </div>
 
-                  <div className="zsc-tag">{service.tag}</div>
-                  <h3 className="zsc-name">{service.name}</h3>
-                  <p className="zsc-desc">{service.desc}</p>
+                  <h3 className="asc-card-name">{service.name}</h3>
+                  <p className="asc-card-desc">{service.desc}</p>
 
-                  <ul className="zsc-approaches">
-                    {service.approaches.map((app, i) => (
-                      <li key={i}>
-                        <CheckCircle2 size={13} style={{ color: service.color }} />
-                        <span>{app}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="asc-doc-tag">
+                    <span className="asc-avatar-tiny" style={{ background: service.color }}>
+                      {service.doctorInitial}
+                    </span>
+                    <span>{service.doctor}</span>
+                  </div>
 
-                  <div className="zsc-footer">
-                    <div className="zsc-price-box">
-                      <span className="zsc-fee">{service.fee}</span>
-                      <span className="zsc-duration">{service.duration}</span>
+                  <div className="asc-card-footer">
+                    <div className="asc-fee-box">
+                      <span className="asc-fee-amount">{service.fee}</span>
+                      <span className="asc-fee-note">{service.allowed_mode}</span>
                     </div>
-                    <Link href="/book" className="zsc-book-btn" style={{ color: service.color }}>
-                      <span>Book</span>
+
+                    <Link href="/book" className="btn-asc-book" style={{ background: service.color }}>
+                      <span>Book Slot</span>
                       <ArrowRight size={14} />
                     </Link>
                   </div>
@@ -388,62 +511,73 @@ export default function HomePage() {
             })}
           </div>
 
-          {/* Complimentary Triage Banner */}
-          <div className="zen-triage-banner">
-            <div className="ztb-content">
-              <span className="ztb-icon"><Compass size={24} /></span>
+          {/* Complimentary Assessment Banner */}
+          <div className="app-assessment-callout">
+            <div className="aac-content">
+              <span className="aac-icon"><Compass size={28} /></span>
               <div>
-                <h4>Unsure which discipline is right for you?</h4>
-                <p>Book our <strong>Initial Care Assessment & Triage (₹0 · 45 min)</strong>. Our clinical care coordinator will listen to your story and design your personalized care roadmap.</p>
+                <h3>Unsure which specialist or modality you need?</h3>
+                <p>Book our <strong>Initial Care Assessment & Triage (₹0 · 45 min)</strong>. Our clinical care coordinator will listen to your symptoms, explain your options, and match you with the right specialist.</p>
               </div>
             </div>
-            <Link href="/book" className="btn-zen-secondary ztb-btn">
+            <Link href="/book" className="btn-app-primary aac-btn">
               <span>Start Free Triage</span>
-              <ArrowRight size={15} />
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 4. MEET YOUR SPECIALIST TEAM */}
-      <section className="zen-team-section" id="specialists">
+      {/* ========================================================
+          4. VERIFIED SPECIALISTS FACULTY (CREDENTIALS & DIRECT BOOK)
+          ======================================================== */}
+      <section className="app-team-section" id="specialists">
         <div className="container">
-          <div className="zen-section-header">
-            <span className="zen-eyebrow">Verified Clinicians</span>
-            <h2>Meet your specialist care team</h2>
-            <p>Rigorous training from premier institutions (NIMHANS, TISS, Manipal) paired with deep human warmth.</p>
+          <div className="app-section-header">
+            <span className="app-eyebrow">Medical & Psychological Leadership</span>
+            <h2>Meet your specialist clinicians</h2>
+            <p>Our faculty holds rigorous clinical training from premier national institutions (NIMHANS, TISS, Manipal) with deep human empathy.</p>
           </div>
 
-          <div className="zen-team-grid">
-            {specialists.map(doctor => (
-              <div key={doctor.name} className="zen-doctor-card">
-                <div className="zdoc-header">
-                  <div className="zdoc-avatar" style={{ background: doctor.color }}>
-                    {doctor.initial}
+          <div className="app-team-grid">
+            {SPECIALISTS.map(doc => (
+              <div key={doc.name} className="app-doctor-card">
+                <div className="adc-header">
+                  <div className="adc-avatar-large" style={{ background: doc.color }}>
+                    {doc.initial}
                   </div>
-                  <div className="zdoc-meta">
-                    <h3 className="zdoc-name">{doctor.name}</h3>
-                    <div className="zdoc-role" style={{ color: doctor.color }}>{doctor.role}</div>
-                    <div className="zdoc-quals">{doctor.quals}</div>
+                  <div className="adc-meta">
+                    <h3 className="adc-name">{doc.name}</h3>
+                    <div className="adc-role" style={{ color: doc.color }}>{doc.role}</div>
+                    <div className="adc-quals">{doc.quals}</div>
+                    <div className="adc-reg">{doc.reg}</div>
                   </div>
                 </div>
 
-                <div className="zdoc-langs">
-                  <Users size={13} />
-                  <span>{doctor.langs}</span>
+                <div className="adc-status-row">
+                  <span className="adc-status-pill">
+                    <span className="live-dot-pulse"></span>
+                    <span>{doc.status}</span>
+                  </span>
+                  <span className="adc-langs">
+                    <Users size={12} />
+                    <span>{doc.langs}</span>
+                  </span>
                 </div>
 
-                <div className="zdoc-focus">
-                  <strong>Areas of Focus:</strong> {doctor.focus}
+                <div className="adc-tags-wrap">
+                  {doc.tags.map((t, idx) => (
+                    <span key={idx} className="adc-tag">{t}</span>
+                  ))}
                 </div>
 
-                <blockquote className="zdoc-quote">
-                  "{doctor.quote}"
+                <blockquote className="adc-quote">
+                  "{doc.quote}"
                 </blockquote>
 
-                <div className="zdoc-action">
-                  <Link href="/book" className="btn-zen-secondary btn-full">
-                    <span>Book with {doctor.name.split(' ')[0]}</span>
+                <div className="adc-footer">
+                  <Link href="/book" className="btn-app-secondary btn-full">
+                    <span>Book with {doc.name.split(' ')[0]}</span>
                     <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -453,136 +587,184 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. HOW IT WORKS (3 GENTLE STEPS) */}
-      <section className="zen-steps-section" id="how-it-works">
+      {/* ========================================================
+          5. THE INDIRANAGAR SANCTUARY (PHYSICAL CLINIC OVERVIEW)
+          ======================================================== */}
+      <section className="app-sanctuary-section" id="sanctuary">
         <div className="container">
-          <div className="zen-section-header">
-            <span className="zen-eyebrow">Zero Friction</span>
-            <h2>How booking works</h2>
-            <p>Designed to be simple, fast, and stress-free when you are already dealing with enough.</p>
-          </div>
-
-          <div className="zen-steps-grid">
-            <div className="zen-step-item">
-              <div className="zstep-number">01</div>
-              <h3>Choose Your Care</h3>
-              <p>Pick psychotherapy, psychiatry, nutrition, or somatic yoga. You can combine multiple disciplines in one appointment.</p>
-            </div>
-
-            <div className="zen-step-item">
-              <div className="zstep-number">02</div>
-              <h3>Pick a Clashing-Free Slot</h3>
-              <p>Choose video consultation or in-person at our Indiranagar clinic. Our engine guarantees your times never conflict.</p>
-            </div>
-
-            <div className="zen-step-item">
-              <div className="zstep-number">03</div>
-              <h3>Confirm & Connect</h3>
-              <p>Receive your secure link instantly. No mandatory passwords, no public directories, and 100% confidential care.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. INDIRANAGAR SANCTUARY & LOCATION */}
-      <section className="zen-location-section" id="sanctuary">
-        <div className="container">
-          <div className="zen-location-card">
-            <div className="zloc-info">
-              <span className="zen-eyebrow">In-Person Care</span>
-              <h2>The Indiranagar Sanctuary</h2>
+          <div className="app-sanctuary-card">
+            <div className="sanctuary-info">
+              <span className="app-eyebrow">Indiranagar Clinic</span>
+              <h2>A calm sanctuary in the heart of Bengaluru</h2>
               <p>
-                A peaceful physical clinic tucked away from Bengaluru’s traffic. Designed with acoustic soundproofing, sensory calm lighting, and private entrances so your visit feels restorative.
+                Whether you consult from home over video or visit us in person, our Indiranagar practice is designed for emotional safety, acoustic isolation, and sensory calm.
               </p>
-              
-              <div className="zloc-details-list">
-                <div className="zloc-item">
-                  <MapPin size={18} className="zloc-icon" />
+
+              <div className="sanctuary-features-grid">
+                <div className="sfg-item">
+                  <div className="sfg-icon-box"><Shield size={20} /></div>
                   <div>
-                    <strong>Better Mind Clinic</strong>
-                    <span>14th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru, Karnataka 560038</span>
+                    <h4>Architectural Acoustic Isolation</h4>
+                    <p>Every therapy suite is soundproofed with acoustic seals so your deepest conversations remain entirely private.</p>
                   </div>
                 </div>
-                <div className="zloc-item">
-                  <Clock size={18} className="zloc-icon" />
+
+                <div className="sfg-item">
+                  <div className="sfg-icon-box"><Heart size={20} /></div>
                   <div>
-                    <strong>Consultation Hours</strong>
-                    <span>Monday to Saturday: 8:30 AM – 8:30 PM IST</span>
+                    <h4>Sensory Low-Stimulus Design</h4>
+                    <p>Zero clinical waiting-room buzzers, natural biophilic plants, and soft diffused lighting to ease autonomic nervous tension.</p>
                   </div>
                 </div>
-                <div className="zloc-item">
-                  <Phone size={18} className="zloc-icon" />
+
+                <div className="sfg-item">
+                  <div className="sfg-icon-box"><FileText size={20} /></div>
                   <div>
-                    <strong>Direct Clinic Desk</strong>
-                    <span><a href="tel:+918047182200">+91 80 4718 2200</a> · care@bettermind.clinic</span>
+                    <h4>Medical Insurance Receipts</h4>
+                    <p>Official GST-compliant medical tax invoices with doctor license numbers provided for corporate insurance claim reimbursements.</p>
                   </div>
                 </div>
               </div>
 
-              <div className="zloc-actions">
-                <Link href="/book" className="btn-zen-primary">
-                  <span>Book In-Person Session</span>
-                  <ArrowRight size={16} />
+              <div className="sanctuary-contact-bar">
+                <div className="scb-item">
+                  <MapPin size={16} />
+                  <span>14th Main Rd, HAL 2nd Stage, Indiranagar, Bengaluru</span>
+                </div>
+                <div className="scb-item">
+                  <Clock size={16} />
+                  <span>Mon – Sat: 8:30 AM – 8:30 PM IST</span>
+                </div>
+                <div className="scb-item">
+                  <Phone size={16} />
+                  <span><a href="tel:+918047182200">+91 80 4718 2200</a></span>
+                </div>
+              </div>
+
+              <div className="sanctuary-action-row">
+                <Link href="/book" className="btn-app-primary">
+                  <Calendar size={18} />
+                  <span>Book In-Person Consultation</span>
                 </Link>
                 <a
                   href="https://maps.google.com/?q=Indiranagar+Bengaluru"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-zen-secondary"
+                  className="btn-app-secondary"
                 >
+                  <MapPin size={16} />
                   <span>Open in Google Maps</span>
                 </a>
               </div>
             </div>
 
-            <div className="zloc-perks">
-              <div className="zperk-box">
-                <Shield size={20} className="zperk-icon" />
-                <h4>Acoustic Soundproofing</h4>
-                <p>Every therapy room is architecturally sound-isolated so your words stay entirely private.</p>
+            {/* Visual Clinic Suite Card Deck */}
+            <div className="sanctuary-visual-deck">
+              <div className="deck-card active">
+                <div className="deck-badge">Suite 01</div>
+                <h4>Psychotherapy & Psychoanalysis</h4>
+                <p>Comfortable low-stimulus armchairs, natural oak surfaces, and noise-cancelling acoustic insulation.</p>
               </div>
-              <div className="zperk-box">
-                <Heart size={20} className="zperk-icon" />
-                <h4>Sensory Low-Stimulus</h4>
-                <p>Gentle natural light, calming botanical greenery, and zero loud waiting room buzzers.</p>
+              <div className="deck-card">
+                <div className="deck-badge">Suite 02</div>
+                <h4>Somatic & Movement Reset</h4>
+                <p>Dedicated space for yoga therapy, polyvagal vagus nerve reset, and physical breathwork.</p>
               </div>
-              <div className="zperk-box">
-                <FileText size={20} className="zperk-icon" />
-                <h4>Insurance Reimbursement</h4>
-                <p>Official medical invoices with RCI/NMC registration numbers provided for claim submissions.</p>
+              <div className="deck-card">
+                <div className="deck-badge">Suite 03</div>
+                <h4>Neuropsychiatry & Medical Room</h4>
+                <p>Clinical diagnostic evaluation, vitals monitoring, and confidential prescription consultations.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. FREQUENTLY ASKED QUESTIONS */}
-      <section className="zen-faq-section" id="faqs">
-        <div className="container zen-faq-container">
-          <div className="zen-section-header">
-            <span className="zen-eyebrow">Common Questions</span>
-            <h2>Everything you need to know</h2>
-            <p>Clear answers to help you feel completely comfortable before your first visit.</p>
+      {/* ========================================================
+          6. TRANSPARENT PRICING & CLINICAL INVESTMENT TABLE
+          ======================================================== */}
+      <section className="app-pricing-section" id="pricing">
+        <div className="container">
+          <div className="app-section-header">
+            <span className="app-eyebrow">Clear Pricing</span>
+            <h2>Transparent fees. Zero surprises.</h2>
+            <p>Quality mental health care requires trust. Every fee is published clearly with no hidden clinic surcharges.</p>
           </div>
 
-          <div className="zen-faq-stack">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
+          <div className="app-pricing-table">
+            <div className="apt-header">
+              <span>Discipline</span>
+              <span>Session Length</span>
+              <span>Practitioner Qualification</span>
+              <span>Consultation Fee</span>
+              <span>Action</span>
+            </div>
+
+            {SERVICES_DATA.map(s => (
+              <div key={s.id} className="apt-row">
+                <div className="apt-col-service">
+                  <strong>{s.name}</strong>
+                  <span>{s.allowed_mode}</span>
+                </div>
+                <div className="apt-col-time">{s.duration}</div>
+                <div className="apt-col-doc">{s.doctor}</div>
+                <div className="apt-col-fee">{s.fee}</div>
+                <div className="apt-col-action">
+                  <Link href="/book" className="btn-apt-book">
+                    <span>Book</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="apt-guarantees-row">
+            <div className="apt-guarantee-item">
+              <CheckCircle2 size={18} className="apt-icon-check" />
+              <span>GST medical receipts for corporate wellness and insurance claims</span>
+            </div>
+            <div className="apt-guarantee-item">
+              <CheckCircle2 size={18} className="apt-icon-check" />
+              <span>Free cancellation or rescheduling up to 4 hours before session</span>
+            </div>
+            <div className="apt-guarantee-item">
+              <CheckCircle2 size={18} className="apt-icon-check" />
+              <span>Weekly sliding-scale slots available for students in financial distress</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          7. FREQUENTLY ASKED QUESTIONS (APP ACCORDION)
+          ======================================================== */}
+      <section className="app-faq-section" id="faqs">
+        <div className="container app-faq-container">
+          <div className="app-section-header">
+            <span className="app-eyebrow">Frequently Asked Questions</span>
+            <h2>Everything you need to know</h2>
+            <p>Simple answers to help you feel confident before starting your care journey.</p>
+          </div>
+
+          <div className="app-faq-stack">
+            {FAQS.map((faq, idx) => {
+              const isOpen = openFaq === idx;
               return (
-                <div key={index} className={`zen-faq-card ${isOpen ? 'active' : ''}`}>
+                <div key={idx} className={`app-faq-card ${isOpen ? 'active' : ''}`}>
                   <button
                     type="button"
-                    className="zfaq-trigger"
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="afc-trigger"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
                     aria-expanded={isOpen}
                   >
-                    <span className="zfaq-q-text">{faq.q}</span>
-                    <span className="zfaq-icon">
+                    <span className="afc-question">{faq.q}</span>
+                    <span className="afc-icon">
                       {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                     </span>
                   </button>
                   {isOpen && (
-                    <div className="zfaq-body">
+                    <div className="afc-answer">
                       <p>{faq.a}</p>
                     </div>
                   )}
@@ -593,39 +775,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. CALM FINAL CTA */}
-      <section className="zen-final-cta-section">
+      {/* ========================================================
+          8. CALL TO ACTION & CLINIC DESK BANNER
+          ======================================================== */}
+      <section className="app-final-cta-section">
         <div className="container">
-          <div className="zen-cta-box">
-            <span className="zen-cta-leaf">🌿</span>
-            <h2>Take your first gentle step today.</h2>
-            <p>
-              You don’t have to know the whole journey right now. Just book your first session or free triage chat, and let our team support you from here.
-            </p>
-            <div className="zen-cta-buttons">
-              <Link href="/book" className="btn-zen-primary btn-lg">
-                <Calendar size={18} />
-                <span>Book an Appointment</span>
-              </Link>
-              <Link href="/services" className="btn-zen-secondary btn-lg">
-                <span>View Full Services Guide</span>
-              </Link>
+          <div className="app-final-cta-card">
+            <div className="afc-inner">
+              <span className="afc-badge">Your Journey Begins Here</span>
+              <h2>Ready to experience coordinated healthcare?</h2>
+              <p>
+                No medical referrals required. No complex accounts to set up. Pick your service, pick your time, and let our specialist faculty support your healing.
+              </p>
+
+              <div className="afc-buttons-row">
+                <Link href="/book" className="btn-app-primary btn-lg">
+                  <Calendar size={18} />
+                  <span>Book an Appointment</span>
+                </Link>
+                <Link href="/services" className="btn-app-secondary btn-lg">
+                  <span>Explore All Services</span>
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 9. DISCREET 24/7 CRISIS HELP BAR */}
-      <section className="zen-crisis-bar">
-        <div className="container zen-crisis-inner">
-          <div className="zcb-left">
+      {/* ========================================================
+          9. 24/7 TOLL-FREE CRISIS HOTLINES STRIP
+          ======================================================== */}
+      <section className="app-crisis-strip">
+        <div className="container app-crisis-inner">
+          <div className="acs-left">
             <Shield size={16} />
-            <span><strong>In immediate crisis?</strong> Better Mind is an outpatient practice. If you are experiencing acute distress:</span>
+            <span><strong>Emergency Support Notice:</strong> Better Mind is an outpatient clinic. If you or someone you know is in acute danger or distress:</span>
           </div>
-          <div className="zcb-right">
+          <div className="acs-right">
             <span>Call <strong>Tele-MANAS: 14416</strong></span>
             <span>·</span>
-            <span><strong>KIRAN: 1800-599-0019</strong> (24/7 Toll-Free, Govt. of India)</span>
+            <span><strong>KIRAN: 1800-599-0019</strong> (24/7 Govt. of India Toll-Free Helplines)</span>
           </div>
         </div>
       </section>
