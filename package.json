@@ -25,6 +25,9 @@
     "url": "https://github.com/muimis/bettermind/issues"
   },
   "homepage": "https://github.com/muimis/bettermind#readme",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",
     "lucide-react": "^1.62.0",
