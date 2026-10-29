@@ -111,14 +111,14 @@ export default function HomePage() {
       {/* 1. EDITORIAL SANCTUARY HERO */}
       <section className="bm-sanctuary-hero" id="start">
         <div className="container bm-hero-inner">
-          <div className="bm-hero-badge">
-            <span className="bm-live-dot" />
-            <span className="bm-label-mono">Private 1-on-1 Sessions · Online & In-Person · From ₹1,400</span>
+          <div className="bm-hero-eyebrow">
+            <span className="bm-live-beacon" />
+            <span>Sanctuary & Collective · Bangalore Suites & Pan-India Video</span>
           </div>
 
           <h1 className="bm-sanctuary-heading">
-            A quiet place{' '}
-            <span className="bm-heading-serif">for the overloaded mind.</span>
+            A quiet sanctuary <br />
+            <em>for the overloaded mind.</em>
           </h1>
 
           <p className="bm-sanctuary-lead">
@@ -127,24 +127,24 @@ export default function HomePage() {
 
           <div className="bm-sanctuary-cta-row">
             <Link href="/book" className="bm-btn-sanctuary-primary">
-              <Calendar size={16} />
-              <span>Reserve a 1-on-1 Session</span>
-              <ArrowRight size={15} />
+              <Calendar size={15} />
+              <span>Reserve a Session (From ₹1,400)</span>
+              <ArrowRight size={14} />
             </Link>
             <Link href="/book?service=initial-assessment" className="bm-btn-sanctuary-secondary">
-              <Compass size={16} />
+              <Compass size={15} />
               <span>Speak with Ananya (Free 15m)</span>
             </Link>
           </div>
 
           <div className="bm-sanctuary-reassurances">
-            <span>✓ 100% Confidential</span>
+            <span>100% Confidential</span>
             <span className="bm-dot">·</span>
-            <span>✓ Zero Diagnostic Labels</span>
+            <span>Zero Diagnostic Labels</span>
             <span className="bm-dot">·</span>
-            <span>✓ NIMHANS & SVYASA Alumni</span>
+            <span>NIMHANS & SVYASA Alumni</span>
             <span className="bm-dot">·</span>
-            <span>✓ Unhurried Conversations</span>
+            <span>Unhurried 50m Sessions</span>
           </div>
         </div>
       </section>
@@ -181,7 +181,7 @@ export default function HomePage() {
               className="bm-media-img"
             />
             <div className="bm-media-overlay">
-              <span className="bm-label-mono bm-overlay-tag">A Sanctuary Built for Stillness</span>
+              <span className="bm-overlay-tag">Indiranagar · Bangalore Sanctuary Suites</span>
               <h2 className="bm-media-title">Step into a space where the noise of the world stops.</h2>
               <p className="bm-media-text">
                 Whether you connect from your private room on your phone or visit one of our soundproofed metro suites, you experience unhurried human care designed to restore your equilibrium.
@@ -191,13 +191,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. THE THREE CORE DISCIPLINES (EDITORIAL INDEX) */}
+      {/* 4. THE THREE CORE DISCIPLINES (EDITORIAL ATELIER INDEX) */}
       <section className="bm-disciplines-section" id="disciplines">
         <div className="container">
           <div className="bm-section-intro-clean">
-            <span className="bm-label-mono" style={{ color: 'var(--color-mind)' }}>
-              Core Disciplines
-            </span>
+            <span className="bm-eyebrow-label">Practices & Disciplines</span>
             <h2 className="bm-practices-title">Three paths to feeling grounded.</h2>
             <p className="bm-section-sub">
               Choose where your mind or body needs support today. Transparent fees, unhurried sessions, and zero judgment.
@@ -231,7 +229,7 @@ export default function HomePage() {
                   <div className="bm-discipline-meta-action">
                     <span className="bm-discipline-fee">{item.duration} · {item.fee}</span>
                     <Link href={`/book?service=${item.slug}`} className="bm-discipline-cta">
-                      <span>{item.actionText}</span>
+                      <span>Reserve</span>
                       <ArrowRight size={13} />
                     </Link>
                   </div>
@@ -242,13 +240,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. THE SPECIALISTS ROSTER (EDITORIAL GALLERY) */}
+      {/* 5. THE SPECIALISTS ROSTER (EDITORIAL PORTRAIT GALLERY) */}
       <section className="bm-team-section" id="specialists">
         <div className="container">
           <div className="bm-section-intro-clean">
-            <span className="bm-label-mono" style={{ color: 'var(--color-mind)' }}>
-              The Collective
-            </span>
+            <span className="bm-eyebrow-label">The Collective</span>
             <h2 className="bm-practices-title">Quiet expertise in your corner.</h2>
             <p className="bm-section-sub">
               India's foremost mental health practitioners, dedicated to unhurried, human care.
@@ -282,6 +278,14 @@ export default function HomePage() {
       {/* 6. WHERE WE MEET (DUAL SPACES) */}
       <section className="bm-spaces-section" id="spaces">
         <div className="container">
+          <div className="bm-section-intro-clean">
+            <span className="bm-eyebrow-label">Where We Meet</span>
+            <h2 className="bm-practices-title">From your sofa or in our quiet suites.</h2>
+            <p className="bm-section-sub">
+              Care designed around your comfort, without clinical waiting rooms or friction.
+            </p>
+          </div>
+
           <div className="bm-spaces-editorial-grid">
             <div className="bm-space-card">
               <div className="bm-space-img-wrap">
@@ -324,10 +328,10 @@ export default function HomePage() {
       <section className="container bm-intro-chat-section" id="intro">
         <div className="bm-intro-chat-card">
           <div className="bm-intro-chat-content">
-            <span className="bm-label-mono bm-intro-badge">A Gentle First Step</span>
-            <h3 className="bm-intro-heading">Not sure where to begin? Have a 15-minute chat.</h3>
+            <span className="bm-eyebrow-label">A Gentle First Step</span>
+            <h3 className="bm-intro-heading">Not sure where to begin? Have a 15-minute conversation.</h3>
             <p className="bm-intro-desc">
-              Speak privately with our Care Coordinator, Ananya. No cost, no clinical questions, and zero obligation. Just a kind conversation to help you find your footing.
+              Speak privately with our Care Coordinator, Ananya. No cost, no clinical questionnaires, and zero obligation. Just a kind human conversation to help you find your footing.
             </p>
           </div>
           <Link href="/book?service=initial-assessment" className="bm-btn-intro-chat">

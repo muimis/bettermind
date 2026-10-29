@@ -54,7 +54,7 @@ type BasketItem = {
 const STEPS = [
   { num: 1, title: 'Choose Services', sub: 'Select one or more' },
   { num: 2, title: 'Select Times', sub: 'Zero-clash scheduling' },
-  { num: 3, title: 'Patient Details', sub: 'Confidential & secure' },
+  { num: 3, title: 'Your Details', sub: 'Confidential & secure' },
   { num: 4, title: 'Confirm Care Plan', sub: 'Instant confirmation' }
 ];
 
@@ -497,7 +497,7 @@ function StepDetails({
   return (
     <div className="booking-step-content">
       <div className="step-intro-box">
-        <h2 className="step-main-title">Patient Contact & Preferences</h2>
+        <h2 className="step-main-title">Your Contact & Session Preferences</h2>
         <p className="step-sub-desc">
           We collect only the essential details required to coordinate your appointment. Your data is end-to-end encrypted under the DPDP Act.
         </p>
@@ -530,7 +530,7 @@ function StepDetails({
 
         {/* Full Name */}
         <div className="form-group">
-          <label className="form-label" htmlFor="patient-name">Patient Full Name *</label>
+          <label className="form-label" htmlFor="patient-name">Full Name *</label>
           <div className="input-with-icon">
             <User size={16} className="input-icon" />
             <input
@@ -721,16 +721,16 @@ function StepReview({
           </div>
         </div>
 
-        {/* Patient Details Summary */}
+        {/* Contact Details Summary */}
         <div className="review-section-card">
           <div className="rsc-header">
             <User size={18} />
-            <h3>Patient Contact</h3>
+            <h3>Your Contact Details</h3>
           </div>
 
           <div className="review-details-grid">
             <div className="rdg-cell">
-              <span className="rdg-label">Patient Name</span>
+              <span className="rdg-label">Full Name</span>
               <span className="rdg-val">{details.name}</span>
             </div>
             <div className="rdg-cell">
@@ -897,7 +897,20 @@ export default function BookPage() {
     fetch('/api/staff/services')
       .then(r => r.json())
       .then(d => {
-        setServices(d.services || []);
+        const loaded: Service[] = d.services || [];
+        setServices(loaded);
+
+        if (typeof window !== 'undefined') {
+          const params = new URLSearchParams(window.location.search);
+          const serviceParam = params.get('service');
+          if (serviceParam && loaded.length > 0) {
+            const matched = loaded.find(s => s.slug === serviceParam || s.id === serviceParam);
+            if (matched) {
+              const defaultMode = matched.allowed_mode === 'in_person' ? 'in_person' : 'online';
+              setBasket([{ service: matched, mode: defaultMode, start_time: '', end_time: '' }]);
+            }
+          }
+        }
       })
       .catch(() => {});
   }, []);
@@ -1042,7 +1055,7 @@ export default function BookPage() {
               </a>
 
               <Link href={`/booking/${confirmed.token}`} className="btn-primary btn-lg">
-                <span>Manage Booking & Patient Hub →</span>
+                <span>Manage Session in Booking Hub →</span>
               </Link>
             </div>
 
@@ -1052,7 +1065,7 @@ export default function BookPage() {
               <ul>
                 <li><strong>Online Video:</strong> Join from a quiet, private room with headphones and stable internet.</li>
                 <li><strong>In-Person Clinic Hub:</strong> Please arrive 10 minutes prior at your confirmed partner clinic center.</li>
-                <li><strong>Need to reschedule?</strong> You can reschedule free of charge up to 4 hours in advance via your patient hub.</li>
+                <li><strong>Need to reschedule?</strong> You can reschedule free of charge up to 4 hours in advance via your personal booking hub.</li>
               </ul>
             </div>
           </div>

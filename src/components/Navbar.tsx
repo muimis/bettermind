@@ -27,24 +27,18 @@ export default function Navbar() {
     <header className={`site-header ${scrolled ? 'header-scrolled' : ''}`}>
       <div className="container header-container">
         {/* Brand Logo */}
-        <Link href="/" className="brand-logo" aria-label="Better Mind Home">
+        <Link href="/" className="brand-logo" aria-label="Better Mind Sanctuary Home">
           <div className="brand-symbol">
-            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" className="brand-svg">
-              <circle cx="18" cy="18" r="16" fill="url(#teal-grad)" />
-              <path d="M18 8C13.5817 8 10 11.5817 10 16C10 20.4183 14 26 18 28C22 26 26 20.4183 26 16C26 11.5817 22.4183 8 18 8Z" fill="#FFFFFF" fillOpacity="0.22" />
-              <path d="M18 12C15.7909 12 14 13.7909 14 16C14 18.5 17 22 18 23C19 22 22 18.5 22 16C22 13.7909 20.2091 12 18 12Z" fill="#FFFFFF" />
-              <circle cx="18" cy="16" r="2.5" fill="#124E47" />
-              <defs>
-                <linearGradient id="teal-grad" x1="2" y1="2" x2="34" y2="34" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#195B53" />
-                  <stop offset="1" stopColor="#0B3731" />
-                </linearGradient>
-              </defs>
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="brand-svg">
+              <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.3" />
+              <circle cx="13" cy="16" r="6" stroke="currentColor" strokeWidth="1.4" />
+              <circle cx="19" cy="16" r="6" stroke="currentColor" strokeWidth="1.4" />
+              <circle cx="16" cy="16" r="2" fill="currentColor" />
             </svg>
           </div>
           <div className="brand-text-group">
             <span className="brand-title">Better Mind</span>
-            <span className="brand-subtitle">Sanctuary & Clinic</span>
+            <span className="brand-subtitle">Sanctuary & Collective</span>
           </div>
         </Link>
 

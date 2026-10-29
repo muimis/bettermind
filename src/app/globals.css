@@ -343,39 +343,42 @@ a {
   flex-direction: column;
 }
 .brand-title {
-  font-family: var(--font-serif);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--primary);
-  line-height: 1.1;
-  letter-spacing: -0.2px;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 750;
+  color: var(--text-main);
+  line-height: 1.15;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 .brand-subtitle {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-faint);
-  letter-spacing: 0.3px;
+  font-size: 9px;
+  font-weight: 650;
+  color: var(--accent, #8C5835);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 /* Desktop Navigation */
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
 }
 .nav-link {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13.5px;
+  font-weight: 550;
   color: var(--text-muted);
   position: relative;
   padding: 6px 0;
   transition: color 0.15s;
+  letter-spacing: 0.02em;
 }
 .nav-link:hover {
-  color: var(--primary);
+  color: var(--text-main);
 }
 .nav-link.active {
-  color: var(--primary);
+  color: var(--text-main);
 }
 .nav-link.active::after {
   content: '';
@@ -383,8 +386,8 @@ a {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: var(--primary);
+  height: 1.5px;
+  background: var(--text-main);
   border-radius: var(--radius-full);
 }
 
@@ -398,39 +401,41 @@ a {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--text-muted);
   padding: 6px 12px;
   border-radius: var(--radius-full);
-  background: var(--bg-subtle);
+  background: transparent;
+  border: 1px solid var(--border-light);
   transition: all 0.15s;
   white-space: nowrap;
   flex-shrink: 0;
 }
 .header-contact-link:hover {
-  color: var(--primary);
-  background: var(--primary-soft);
+  color: var(--text-main);
+  border-color: var(--text-muted);
 }
 .btn-book-cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--primary);
+  background: #131618;
   color: #FFFFFF;
-  padding: 9px 18px;
-  font-size: 13.5px;
-  font-weight: 700;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   border-radius: var(--radius-full);
-  box-shadow: 0 2px 6px rgba(18, 78, 71, 0.25);
+  box-shadow: 0 4px 14px rgba(19, 22, 24, 0.12);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   flex-shrink: 0;
 }
 .btn-book-cta:hover {
-  background: var(--primary-hover);
+  background: #163A32;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(18, 78, 71, 0.3);
+  box-shadow: 0 6px 20px rgba(22, 58, 50, 0.25);
 }
 .staff-portal-link {
   display: flex;
