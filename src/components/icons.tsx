@@ -289,3 +289,10 @@ export const Smile: React.FC<IconProps> = ({ size = 20, className = '', style, c
     <line x1="15" x2="15.01" y1="9" y2="9" />
   </svg>
 );
+
+export const Star: React.FC<IconProps> = ({ size = 20, className = '', style, color = 'currentColor', strokeWidth = 2 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className} style={style}>
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
+);
+

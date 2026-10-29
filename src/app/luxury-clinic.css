@@ -12,48 +12,266 @@
   overflow-x: hidden;
 }
 
-/* 1. HERO SECTION */
-.lux-hero {
+/* ========================================================
+   DISCREET CRISIS UTILITY BAR
+   ======================================================== */
+.crisis-top-bar {
+  background: #111A18;
+  color: #9AB2AC;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 0;
   position: relative;
-  padding: 110px 0 85px;
-  background: radial-gradient(1100px 600px at 50% -10%, #E3EFE9 0%, #F5F4EE 60%, #FAF9F6 100%);
+  z-index: 950;
+}
+
+.crisis-top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.crisis-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.crisis-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #D3E4E0;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.crisis-text {
+  color: #A0B5B0;
+}
+
+.crisis-phone-link {
+  color: #F8E3C0;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.crisis-phone-link:hover {
+  color: #FFFFFF;
+}
+
+.crisis-info-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #C2D6D2;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.crisis-info-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+}
+
+/* Modal Styling */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 25, 23, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 20px;
+}
+
+.crisis-modal {
+  background: #FFFFFF;
+  border-radius: 20px;
+  max-width: 580px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: 1px solid rgba(18, 78, 71, 0.1);
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.crisis-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 26px;
+  background: #F5F7F6;
+  border-bottom: 1px solid #EAEAE4;
+}
+
+.crisis-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #124E47;
+}
+
+.crisis-modal-title h3 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.modal-close-btn {
+  color: #647571;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #121E1B;
+}
+
+.crisis-modal-body {
+  padding: 26px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #384643;
+}
+
+.crisis-modal-body p {
+  margin-bottom: 14px;
+}
+
+.modal-helpline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.modal-helpline-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #F8FAF9;
+  border: 1px solid #E2EAE7;
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.modal-helpline-card strong {
+  display: block;
+  font-size: 14.5px;
+  color: #141E20;
+}
+
+.modal-helpline-card span {
+  font-size: 12px;
+  color: #6C7D79;
+}
+
+.modal-call-btn {
+  display: inline-flex;
+  align-items: center;
+  background: #124E47;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.modal-call-btn:hover {
+  background: #0B3731;
+}
+
+.modal-footer-note {
+  font-size: 12px;
+  color: #7B8C88;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* ========================================================
+   1. EDITORIAL ASYMMETRICAL HERO WITH LIVE CONCIERGE
+   ======================================================== */
+.lux-hero-editorial {
+  position: relative;
+  padding: 96px 0 88px;
+  background: radial-gradient(1200px 700px at 50% -10%, #E3EFE9 0%, #F6F5F0 60%, #FAF9F6 100%);
   border-bottom: 1px solid rgba(18, 78, 71, 0.08);
-  text-align: center;
   overflow: hidden;
 }
 
 .lux-hero-ambient-glow {
   position: absolute;
-  top: -100px;
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 700px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(18, 78, 71, 0.08) 0%, transparent 70%);
-  filter: blur(50px);
+  width: 800px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(18, 78, 71, 0.09) 0%, transparent 70%);
+  filter: blur(60px);
   pointer-events: none;
 }
 
-.lux-hero-content {
+.lux-hero-layout {
   position: relative;
-  max-width: 860px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.lux-hero-left {
+  display: flex;
+  flex-direction: column;
 }
 
 .lux-hero-pill {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(18, 78, 71, 0.14);
-  padding: 6px 18px;
+  padding: 6px 16px;
   border-radius: 9999px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   color: #124E47;
-  margin-bottom: 28px;
-  box-shadow: 0 2px 10px rgba(18, 78, 71, 0.04);
+  margin-bottom: 24px;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(18, 78, 71, 0.04);
 }
 
 .lux-live-dot {
@@ -61,7 +279,7 @@
   height: 8px;
   background-color: #2E694F;
   border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(46, 105, 79, 0.2);
+  box-shadow: 0 0 0 3px rgba(46, 105, 79, 0.25);
   animation: luxPulse 2s infinite ease-in-out;
 }
 
@@ -76,27 +294,14 @@
   }
 }
 
-.lux-pill-text {
-  letter-spacing: -0.01em;
-}
-
-.lux-pill-divider {
-  color: #B5C6C1;
-}
-
-.lux-pill-sub {
-  color: #61736F;
-  font-weight: 500;
-}
-
 .lux-hero-title {
   font-family: var(--font-serif);
-  font-size: 62px;
+  font-size: 54px;
   font-weight: 400;
   line-height: 1.12;
   letter-spacing: -0.03em;
   color: #121E1B;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .lux-title-italic {
@@ -108,89 +313,31 @@
 }
 
 .lux-hero-lead {
-  font-size: 19.5px;
+  font-size: 18.5px;
   line-height: 1.6;
-  color: #51625E;
-  max-width: 680px;
-  margin: 0 auto 38px;
-  font-weight: 400;
+  color: #4F615D;
+  margin-bottom: 34px;
+  max-width: 580px;
 }
 
-/* Feeling Selector */
-.lux-feeling-selector-box {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(18, 78, 71, 0.1);
-  border-radius: 20px;
-  padding: 18px 22px;
-  margin: 0 auto 36px;
-  max-width: 780px;
-  box-shadow: 0 6px 20px rgba(18, 78, 71, 0.04);
-}
-
-.lux-feeling-label {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #124E47;
-  margin-bottom: 12px;
-}
-
-.lux-feeling-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
-
-.lux-feeling-chip {
-  background: #FFFFFF;
-  border: 1px solid #DCD8CD;
-  color: #384643;
-  padding: 8px 15px;
-  border-radius: 9999px;
-  font-size: 13.5px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.lux-feeling-chip:hover {
-  border-color: #124E47;
-  color: #124E47;
-  background: #F4F8F6;
-  transform: translateY(-1px);
-}
-
-.lux-feeling-chip.active {
-  background: #124E47;
-  color: #FFFFFF;
-  border-color: #124E47;
-  box-shadow: 0 3px 10px rgba(18, 78, 71, 0.2);
-}
-
-/* Actions */
 .lux-hero-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 38px;
+  margin-bottom: 34px;
 }
 
 .lux-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
   background: #124E47;
   color: #FFFFFF;
   font-weight: 600;
-  font-size: 16px;
-  padding: 14px 28px;
+  font-size: 15.5px;
+  padding: 13px 26px;
   border-radius: 9999px;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -207,13 +354,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.95);
   color: #124E47;
   border: 1px solid rgba(18, 78, 71, 0.2);
   font-weight: 600;
-  font-size: 16px;
-  padding: 14px 26px;
+  font-size: 15.5px;
+  padding: 13px 24px;
   border-radius: 9999px;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -227,14 +374,12 @@
   box-shadow: 0 4px 14px rgba(18, 78, 71, 0.08);
 }
 
-/* Trust Strip */
-.lux-trust-strip {
+.lux-hero-trust-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
-  font-size: 13.5px;
+  font-size: 13px;
   color: #6C7D79;
 }
 
@@ -254,7 +399,264 @@
   color: #CAD5D1;
 }
 
-/* 2. CONSULTATION MATRIX SECTION */
+/* ========================================================
+   RIGHT COLUMN: LIVE CONCIERGE WIDGET
+   ======================================================== */
+.lux-concierge-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(18, 78, 71, 0.12);
+  border-radius: 26px;
+  padding: 28px;
+  box-shadow: 0 20px 48px -10px rgba(18, 78, 71, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lux-concierge-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lux-concierge-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.lux-concierge-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #124E47;
+}
+
+.lux-concierge-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #EDF6F4;
+  color: #124E47;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid #C3E2DC;
+}
+
+.lux-pulse-small {
+  width: 6px;
+  height: 6px;
+  background: #2E694F;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(46, 105, 79, 0.25);
+}
+
+.lux-concierge-heading {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 500;
+  color: #121E1B;
+}
+
+.lux-concierge-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.lux-concierge-chip {
+  background: #FAF9F6;
+  border: 1px solid #E2DFD6;
+  color: #384643;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lux-concierge-chip:hover {
+  background: #FFFFFF;
+  border-color: #124E47;
+  color: #124E47;
+  transform: translateY(-1px);
+}
+
+.lux-concierge-chip.active {
+  background: #124E47;
+  color: #FFFFFF;
+  border-color: #124E47;
+  box-shadow: 0 3px 10px rgba(18, 78, 71, 0.2);
+}
+
+/* Concierge Preview Container */
+.lux-concierge-preview {
+  background: #FFFFFF;
+  border: 1px solid rgba(18, 78, 71, 0.15);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.lux-preview-doctor-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lux-preview-avatar-img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(18, 78, 71, 0.15);
+}
+
+.lux-preview-doc-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-doc-title-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lux-doc-title-line strong {
+  font-size: 15.5px;
+  color: #141E20;
+}
+
+.lux-verified-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #2E694F;
+  background: #EEF7F2;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  border: 1px solid #CBE6D6;
+}
+
+.lux-preview-doc-role {
+  font-size: 12.5px;
+  color: #124E47;
+  font-weight: 600;
+}
+
+.lux-preview-doc-cred {
+  font-size: 11.5px;
+  color: #798B87;
+}
+
+.lux-preview-care-promise {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lux-promise-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8C9895;
+}
+
+.lux-preview-care-promise h4 {
+  font-family: var(--font-serif);
+  font-size: 16.5px;
+  font-weight: 600;
+  color: #121E1B;
+  line-height: 1.35;
+}
+
+.lux-preview-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lux-micro-pill {
+  font-size: 11px;
+  font-weight: 600;
+  background: #F4F6F5;
+  color: #4A5B57;
+  padding: 3px 9px;
+  border-radius: 9999px;
+}
+
+.lux-preview-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #EFECE3;
+}
+
+.lux-preview-price {
+  display: flex;
+  flex-direction: column;
+}
+
+.lux-price-big {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: #121E1B;
+  line-height: 1;
+}
+
+.lux-price-sub {
+  font-size: 11.5px;
+  color: #6C7D79;
+}
+
+.lux-slot-available-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2E694F;
+  margin-top: 3px;
+}
+
+.lux-btn-concierge-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.lux-btn-concierge-book:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* ========================================================
+   2. CONSULTATION MATRIX WITH REAL PHOTOGRAPHY
+   ======================================================== */
 .lux-matrix-section {
   padding: 96px 0;
   background: #FFFFFF;
@@ -296,7 +698,6 @@
   color: #5A6B67;
 }
 
-/* Grid of Cards */
 .lux-cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -339,7 +740,6 @@
   border-radius: 9999px;
   font-size: 12.5px;
   font-weight: 700;
-  letter-spacing: 0.02em;
 }
 
 .lux-slot-badge {
@@ -352,7 +752,6 @@
   border-radius: 9999px;
 }
 
-/* Problem Box */
 .lux-problem-box {
   background: #FFFFFF;
   border-left: 3px solid #124E47;
@@ -397,30 +796,25 @@
   flex-grow: 1;
 }
 
-/* Specialist Line */
 .lux-specialist-box {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   padding: 14px 16px;
   background: #FFFFFF;
   border: 1px solid rgba(18, 78, 71, 0.06);
-  border-radius: 14px;
+  border-radius: 16px;
   margin-bottom: 24px;
 }
 
-.lux-specialist-avatar {
-  width: 44px;
-  height: 44px;
+.lux-card-doctor-photo {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 3px 10px rgba(18, 78, 71, 0.12);
 }
 
 .lux-specialist-meta {
@@ -445,7 +839,6 @@
   color: #798B87;
 }
 
-/* Pricing and Direct Book Button */
 .lux-card-footer {
   display: flex;
   align-items: center;
@@ -494,7 +887,9 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* 3. COMPLIMENTARY TRIAGE CARD */
+/* ========================================================
+   3. COMPLIMENTARY TRIAGE CARD
+   ======================================================== */
 .lux-triage-card {
   background: linear-gradient(135deg, #F0F7F4 0%, #FFFFFF 100%);
   border: 1px solid #C3E2DC;
@@ -587,7 +982,9 @@
   box-shadow: 0 6px 18px rgba(18, 78, 71, 0.28);
 }
 
-/* 4. SYNCHRONY ENGINE SECTION */
+/* ========================================================
+   4. SYNCHRONY ENGINE SECTION
+   ======================================================== */
 .lux-synchrony-section {
   padding: 96px 0;
   background: #F4F6F4;
@@ -596,7 +993,7 @@
 
 .lux-sync-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.05fr;
   gap: 56px;
   align-items: center;
 }
@@ -657,8 +1054,7 @@
   box-shadow: 0 12px 36px rgba(18, 78, 71, 0.07);
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  position: relative;
+  gap: 20px;
 }
 
 .lux-sync-patient-badge {
@@ -694,30 +1090,32 @@
 
 .lux-sync-center-node strong {
   display: block;
-  font-size: 17px;
+  font-size: 16.5px;
   font-weight: 600;
 }
 
 .lux-sync-center-node span {
-  font-size: 13px;
+  font-size: 12.5px;
   color: #A8D4CB;
 }
 
 .lux-sync-orbit-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .lux-orbit-item {
   background: #FAF9F6;
   border: 1px solid rgba(18, 78, 71, 0.08);
   border-radius: 14px;
-  padding: 14px;
+  padding: 12px;
   display: flex;
   align-items: center;
   gap: 12px;
-  transition: transform 0.2s ease;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .lux-orbit-item:hover {
@@ -726,21 +1124,49 @@
   border-color: #124E47;
 }
 
+.lux-orbit-item.active {
+  background: #FFFFFF;
+  border-color: #124E47;
+  box-shadow: 0 4px 14px rgba(18, 78, 71, 0.12);
+}
+
+.lux-orbit-doc-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 .lux-orbit-item strong {
   display: block;
-  font-size: 13.5px;
+  font-size: 13px;
   color: #16201D;
 }
 
 .lux-orbit-item span {
-  font-size: 11.5px;
+  font-size: 11px;
   color: #6C7D79;
 }
 
-.item-mind svg { color: #3949AB; }
-.item-brain svg { color: #124E47; }
-.item-gut svg { color: #2E694F; }
-.item-somatic svg { color: #B45330; }
+.lux-sync-active-note {
+  background: #FAF9F6;
+  border-left: 3px solid #124E47;
+  padding: 12px 16px;
+  border-radius: 0 10px 10px 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #3B4B47;
+}
+
+.lux-active-note-tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #124E47;
+  margin-bottom: 2px;
+}
 
 .lux-sync-guarantee-strip {
   display: flex;
@@ -757,7 +1183,9 @@
   color: #124E47;
 }
 
-/* 5. DUAL CARE DELIVERY EXPERIENCE */
+/* ========================================================
+   5. DUAL CARE DELIVERY SHOWCASE (RICH PHOTOGRAPHY)
+   ======================================================== */
 .lux-experience-section {
   padding: 96px 0;
   background: #FFFFFF;
@@ -773,53 +1201,57 @@
 .lux-exp-card {
   background: #FAF9F6;
   border: 1px solid rgba(18, 78, 71, 0.1);
-  border-radius: 22px;
-  padding: 38px;
+  border-radius: 24px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
 }
 
 .lux-exp-card:hover {
-  background: #FFFFFF;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: #124E47;
-  box-shadow: 0 16px 36px -8px rgba(18, 78, 71, 0.1);
+  box-shadow: 0 20px 48px -10px rgba(18, 78, 71, 0.12);
 }
 
-.lux-exp-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
+.lux-exp-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
 }
 
-.lux-exp-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.lux-exp-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-.video-icon {
-  background: #EEF2FB;
-  color: #3949AB;
+.lux-exp-card:hover .lux-exp-cover-img {
+  transform: scale(1.03);
 }
 
-.clinic-icon {
-  background: #EDF6F4;
-  color: #124E47;
-}
-
-.lux-exp-badge {
+.lux-exp-badge-overlay {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: rgba(18, 30, 27, 0.8);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
   font-size: 12px;
   font-weight: 700;
-  color: #124E47;
-  background: #EDF6F4;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 9999px;
+  letter-spacing: 0.02em;
+}
+
+.lux-exp-card-body {
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .lux-exp-title {
@@ -865,23 +1297,26 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
-  background: #FFFFFF;
-  border: 1px solid #124E47;
-  color: #124E47;
+  background: #124E47;
+  color: #FFFFFF;
   font-weight: 600;
   font-size: 15px;
-  padding: 12px;
+  padding: 13px;
   border-radius: 9999px;
   text-decoration: none;
   transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(18, 78, 71, 0.18);
 }
 
 .lux-btn-exp:hover {
-  background: #124E47;
-  color: #FFFFFF;
+  background: #0B3731;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(18, 78, 71, 0.25);
 }
 
-/* 6. FAQS SECTION */
+/* ========================================================
+   6. FAQS SECTION
+   ======================================================== */
 .lux-faq-section {
   padding: 96px 0;
   background: #FAF9F6;
@@ -942,7 +1377,9 @@
   padding-top: 16px;
 }
 
-/* 7. GRAND CLOSING CTA */
+/* ========================================================
+   7. GRAND CLOSING CTA
+   ======================================================== */
 .lux-closing-cta {
   padding: 100px 0;
   background: radial-gradient(1000px 600px at 50% 50%, #0F433C 0%, #082823 100%);
@@ -1033,7 +1470,9 @@
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* 8. CRISIS FOOTER STRIP */
+/* ========================================================
+   8. CRISIS FOOTER STRIP
+   ======================================================== */
 .lux-crisis-bar {
   background: #061A17;
   color: #A0B6B0;
@@ -1070,10 +1509,16 @@
   color: #4A635E;
 }
 
-/* RESPONSIVE DESIGN */
-@media (max-width: 900px) {
+/* ========================================================
+   RESPONSIVE DESIGN
+   ======================================================== */
+@media (max-width: 960px) {
+  .lux-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
   .lux-hero-title {
-    font-size: 42px;
+    font-size: 40px;
   }
   .lux-hero-lead {
     font-size: 17px;

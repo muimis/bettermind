@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PhoneCall, ShieldAlert, X, Info } from './icons';
+import { Shield, X, Info } from './icons';
 
 export default function CrisisBar() {
   const [showModal, setShowModal] = useState(false);
@@ -12,15 +12,16 @@ export default function CrisisBar() {
         <div className="container crisis-top-inner">
           <div className="crisis-content">
             <span className="crisis-tag">
-              <ShieldAlert size={14} className="crisis-icon" /> Emergency Notice
+              <Shield size={13} />
+              <span>Outpatient Care</span>
             </span>
             <span className="crisis-text">
-              Better Mind is an outpatient clinic. In acute psychological distress or medical emergency, call 24/7 National Helplines:
+              In acute emotional distress or self-harm emergency, call 24/7 toll-free:
               {' '}
               <a href="tel:14416" className="crisis-phone-link">
                 <strong>Tele-MANAS: 14416</strong>
               </a>
-              {' '}(Toll-Free) or{' '}
+              {' '}or{' '}
               <a href="tel:18005990019" className="crisis-phone-link">
                 <strong>KIRAN: 1800-599-0019</strong>
               </a>
@@ -33,7 +34,7 @@ export default function CrisisBar() {
             aria-label="View crisis and hospital casualty guidelines"
           >
             <Info size={13} />
-            <span>Casualty Guidelines</span>
+            <span>Crisis & Safety Guide</span>
           </button>
         </div>
       </aside>
@@ -43,8 +44,8 @@ export default function CrisisBar() {
           <div className="crisis-modal" onClick={e => e.stopPropagation()}>
             <div className="crisis-modal-header">
               <div className="crisis-modal-title">
-                <ShieldAlert size={20} className="crisis-modal-icon" />
-                <h3>Immediate Crisis & Casualty Assistance</h3>
+                <Shield size={20} />
+                <h3>Immediate Crisis & Hospital Casualty Support</h3>
               </div>
               <button
                 type="button"
@@ -57,36 +58,37 @@ export default function CrisisBar() {
             </div>
             <div className="crisis-modal-body">
               <p>
-                <strong>Better Mind is a scheduled clinic and cannot provide emergency or round-the-clock crisis intervention.</strong>
+                <strong>Better Mind is a scheduled outpatient clinic and does not provide 24/7 emergency casualty intervention.</strong>
               </p>
               <p>
-                If you or someone you care about is experiencing active suicidal ideation, severe disorientation, psychosis, or imminent risk of self-harm, please take immediate action:
+                If you or a loved one are experiencing acute suicidal thoughts, severe self-harm urges, or extreme medical distress, please contact these verified government helplines or visit your nearest hospital emergency ward immediately:
               </p>
-              <div className="crisis-hotline-list">
-                <div className="hotline-card">
-                  <div className="hotline-name">Tele-MANAS (Govt. of India)</div>
-                  <div className="hotline-number"><a href="tel:14416">14416</a> or <a href="tel:18008914416">1800 891 4416</a></div>
-                  <div className="hotline-desc">24/7 toll-free multilingual psychiatric & crisis counseling</div>
+              <div className="modal-helpline-list">
+                <div className="modal-helpline-card">
+                  <div>
+                    <strong>Tele-MANAS (Govt. of India)</strong>
+                    <span>National Tele Mental Health Programme · 24/7 Toll-Free</span>
+                  </div>
+                  <a href="tel:14416" className="modal-call-btn">Call 14416</a>
                 </div>
-                <div className="hotline-card">
-                  <div className="hotline-name">KIRAN (Dept. of Empowerment of PwDs)</div>
-                  <div className="hotline-number"><a href="tel:18005990019">1800-599-0019</a></div>
-                  <div className="hotline-desc">24/7 dedicated mental health rehabilitation helpline</div>
+                <div className="modal-helpline-card">
+                  <div>
+                    <strong>KIRAN Mental Health Helpline</strong>
+                    <span>Department of Empowerment of Persons with Disabilities</span>
+                  </div>
+                  <a href="tel:18005990019" className="modal-call-btn">Call 1800-599-0019</a>
                 </div>
-                <div className="hotline-card">
-                  <div className="hotline-name">National Emergency Services</div>
-                  <div className="hotline-number"><a href="tel:112">112</a></div>
-                  <div className="hotline-desc">Ambulance and urgent police/medical response</div>
+                <div className="modal-helpline-card">
+                  <div>
+                    <strong>Emergency Services (Police / Ambulance)</strong>
+                    <span>Pan-India Emergency Response Support System</span>
+                  </div>
+                  <a href="tel:112" className="modal-call-btn">Call 112</a>
                 </div>
               </div>
-              <div className="crisis-hospital-note">
-                <strong>In Bengaluru:</strong> Please visit the 24-hour Emergency Psychiatric Casualty at <strong>NIMHANS</strong> (Hosur Road) or the nearest multi-specialty hospital emergency room immediately.
+              <div className="modal-footer-note">
+                Our clinicians operate on scheduled appointment slots. If your booking is upcoming and your distress is escalating, please seek immediate emergency casualty care.
               </div>
-            </div>
-            <div className="crisis-modal-footer">
-              <button type="button" className="btn-primary" onClick={() => setShowModal(false)}>
-                I Understand
-              </button>
             </div>
           </div>
         </div>
