@@ -1985,37 +1985,43 @@
   }
 
   .bm-dock-btn-primary {
-    flex: 1;
+    flex: 1.25;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 7px;
     background: var(--color-text);
     color: #FFFFFF;
-    padding: 12px 14px;
+    padding: 10px 14px;
     border-radius: var(--radius-pill);
     text-decoration: none;
     font-weight: 700;
+    transition: background 0.18s ease;
+  }
+
+  .bm-dock-btn-primary:hover {
+    background: var(--color-mind);
   }
 
   .bm-dock-text-group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    line-height: 1.2;
+    line-height: 1.15;
   }
 
   .bm-dock-main {
-    font-size: 13.5px;
+    font-size: 13px;
   }
 
   .bm-dock-sub {
-    font-size: 10.5px;
+    font-size: 10px;
     opacity: 0.8;
     font-weight: 500;
   }
 
   .bm-dock-btn-secondary {
+    flex: 0.95;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -2023,7 +2029,7 @@
     background: var(--color-surface);
     color: var(--color-text);
     border: 1px solid var(--color-line);
-    padding: 12px 16px;
+    padding: 10px 14px;
     border-radius: var(--radius-pill);
     text-decoration: none;
     font-size: 12.5px;

@@ -44,7 +44,7 @@ export default function Navbar() {
           </div>
           <div className="brand-text-group">
             <span className="brand-title">Better Mind</span>
-            <span className="brand-subtitle">Integrated Online Clinic</span>
+            <span className="brand-subtitle">Sanctuary & Clinic</span>
           </div>
         </Link>
 
