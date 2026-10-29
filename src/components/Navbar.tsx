@@ -51,32 +51,32 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <nav className="desktop-nav" aria-label="Main Navigation">
           <Link href="/services" className={`nav-link ${pathname === '/services' ? 'active' : ''}`}>
-            Services
+            All Services
           </Link>
-          <Link href="/#consultations" className="nav-link">
-            Consultations
+          <Link href="/#practices" className="nav-link">
+            Practices
           </Link>
-          <Link href="/#method" className="nav-link">
-            Our Method
+          <Link href="/#sanctuary" className="nav-link">
+            Sanctuary
           </Link>
-          <Link href="/#experience" className="nav-link">
-            Care Experience
+          <Link href="/#team" className="nav-link">
+            Specialists
           </Link>
-          <Link href="/#faqs" className="nav-link">
-            FAQs
+          <Link href="/#spaces" className="nav-link">
+            Spaces
           </Link>
         </nav>
 
         {/* Action Header Group */}
         <div className="header-actions">
-          <a href="tel:+918047182200" className="header-contact-link" title="Call Clinic Desk">
+          <a href="tel:+918047182200" className="header-contact-link" title="Call Practice Desk">
             <Phone size={15} />
             <span className="contact-number">080 4718 2200</span>
           </a>
 
           <Link href="/book" className="btn-book-cta">
             <Calendar size={16} />
-            <span>Book Consultation</span>
+            <span>Reserve a Session</span>
           </Link>
 
           <Link href="/staff" className="staff-portal-link" title="Staff & Clinician Login">
@@ -102,7 +102,7 @@ export default function Navbar() {
         <div className="mobile-drawer" role="dialog" aria-modal="true">
           <div className="mobile-drawer-inner">
             <div className="mobile-drawer-header">
-              <span className="drawer-clinic-name">Better Mind Navigation</span>
+              <span className="drawer-clinic-name">Better Mind Sanctuary</span>
               <button
                 type="button"
                 className="drawer-close-btn"
@@ -114,28 +114,32 @@ export default function Navbar() {
             </div>
 
             <div className="mobile-nav-links">
-              <Link href="/services" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Services Catalogue</span>
+              <Link href="/book" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Reserve a 1-on-1 Session</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#consultations" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Focused Consultations</span>
+              <Link href="/#practices" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Core Disciplines</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#method" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Our Unified Method</span>
+              <Link href="/#sanctuary" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>The Sanctuary Experience</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#experience" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Care Experience (Online & Hubs)</span>
+              <Link href="/#team" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Our Specialists</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#faqs" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>FAQs</span>
+              <Link href="/#spaces" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Online & Metro Hubs</span>
+                <ArrowRight size={16} />
+              </Link>
+              <Link href="/book?service=initial-assessment" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Free 15-Minute Intro with Ananya</span>
                 <ArrowRight size={16} />
               </Link>
               <Link href="/staff" className="mobile-nav-item staff-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Staff & Clinician Desk</span>
+                <span>Practitioner Desk</span>
                 <ArrowRight size={16} />
               </Link>
             </div>
