@@ -2,7 +2,6 @@ import './tokens.css';
 import './globals.css';
 import './luxury-clinic.css';
 import React from 'react';
-import CrisisBar from '../components/CrisisBar';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -39,9 +38,6 @@ export default function RootLayout({
         <a href="#main-content" className="sr-only focus:not-sr-only skip-nav-link">
           Skip to main content
         </a>
-
-        {/* Mandatory 24/7 National Emergency Crisis Bar */}
-        <CrisisBar />
 
         {/* Global Responsive Navigation Header */}
         <Navbar />

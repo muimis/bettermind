@@ -1,7 +1,7 @@
 // ====================================================================
-// Better Mind: Sentence-and-Reply Content File
-// Rule: Clinicians approve all reply wording. 
-// This single file can be edited by clinic staff without code changes.
+// Better Mind: Human-Centered Content File
+// Written for real humans living in a fast-paced, high-demand world.
+// Zero clinical labels, zero pathology, zero treating visitors as patients.
 // ====================================================================
 
 export interface SentenceReplyItem {
@@ -10,117 +10,145 @@ export interface SentenceReplyItem {
   startingServiceSlug: string;
   startingServiceName: string;
   replyParagraph: string;
-  medicalNote?: string;
+  practitionerName: string;
+  fee: string;
+  duration: string;
   showTalkFirst: boolean;
 }
 
 export const SENTENCE_REPLIES: SentenceReplyItem[] = [
   {
     id: 'sentence-1',
-    sentence: "I don't know what to say. I just know I want to talk to someone.",
-    startingServiceSlug: 'initial-assessment',
-    startingServiceName: 'Initial Care Assessment & Triage',
-    replyParagraph: "That is completely enough. You don’t need to prepare a speech or have your thoughts organized. In your 15-minute intake, our Lead Care Coordinator listens gently to what feels heavy and maps a comfortable starting place without pressure.",
-    showTalkFirst: false,
+    sentence: "My mind is running at 100 mph and I can't switch off at night.",
+    startingServiceSlug: 'clinical-psychology',
+    startingServiceName: 'Psychotherapy with Dr. Meera Sen',
+    practitionerName: 'Dr. Meera Sen',
+    fee: '₹1,800',
+    duration: '50 min',
+    replyParagraph: "When your thoughts won't pause, your nervous system is simply over-stimulated from high-demand days. Dr. Meera helps you unpack that cognitive load and gives you quiet, practical techniques to ease into deep, restorative sleep.",
+    showTalkFirst: true,
   },
   {
     id: 'sentence-2',
-    sentence: "I can't switch my head off at night.",
-    startingServiceSlug: 'clinical-psychology',
-    startingServiceName: 'Clinical Psychology & Psychotherapy',
-    replyParagraph: "Night-time racing loops happen when your nervous system stays in vigilance. Clinical psychotherapy uses targeted Cognitive Behavioral Therapy (CBT) and grounding techniques to quiet repetitive cognitive loops and restore rest.",
-    showTalkFirst: true,
-  },
-  {
-    id: 'sentence-3',
-    sentence: "I start things and can't finish them. Work keeps slipping.",
+    sentence: "I'm working hard, but my focus feels scattered and things are slipping.",
     startingServiceSlug: 'initial-assessment',
-    startingServiceName: 'Initial Care Assessment & Triage',
-    replyParagraph: "Chronic executive overwhelm can stem from adult ADHD, burnout, or unmanaged anxiety. An initial intake assesses whether diagnostic neurodevelopmental screening or behavioral executive coaching is your best first step.",
+    startingServiceName: 'Focus & Mental Clarity with our Care Team',
+    practitionerName: 'Care Coordination Desk',
+    fee: 'Free',
+    duration: '15 min',
+    replyParagraph: "Attention fatigue happens when your mental bandwidth is pushed to its limit. We help you untangle cognitive overwhelm, prioritize clearly, and evaluate whether your focus needs biological support or simple pacing routines.",
     showTalkFirst: false,
   },
   {
-    id: 'sentence-4',
-    sentence: "Something happened a long time ago and it still follows me.",
-    startingServiceSlug: 'clinical-psychology',
-    startingServiceName: 'Clinical Psychology & Psychotherapy',
-    replyParagraph: "Trauma stays stored in nervous system memory long after the event passes. Our senior clinical psychologists use evidence-backed EMDR and Acceptance & Commitment Therapy (ACT) in a safe, confidential environment to help release unhealed memories.",
+    id: 'sentence-3',
+    sentence: "I hold stress in my neck, shoulders, and jaw all day long.",
+    startingServiceSlug: 'therapeutic-yoga',
+    startingServiceName: 'Somatic Bodywork with Rajesh Kumar',
+    practitionerName: 'Rajesh Kumar',
+    fee: '₹1,400',
+    duration: '60 min',
+    replyParagraph: "Mental tension always registers in the physical body. Rajesh Kumar guides gentle breathwork and somatic movement to help contracted muscles finally let go so your whole body can breathe again.",
     showTalkFirst: true,
   },
   {
-    id: 'sentence-5',
-    sentence: "My stomach hurts and the tests keep coming back clear.",
+    id: 'sentence-4',
+    sentence: "I just need an unhurried, confidential space to unpack my thoughts.",
     startingServiceSlug: 'initial-assessment',
-    startingServiceName: 'Initial Care Assessment & Triage',
-    replyParagraph: "Over 90% of your body’s serotonin is synthesized in the enteric nervous system (the gut-brain axis). When psychological stress inflames the gut, standard physical tests often show normal results. We connect you with gut-brain nutrition and somatic calming.",
-    medicalNote: "Please note: If your gastrointestinal symptoms are sudden, severe, or unexplained, please ensure you have consulted a gastroenterologist or primary physician first.",
+    startingServiceName: 'A gentle 15-minute chat with Ananya',
+    practitionerName: 'Ananya (Care Coordinator)',
+    fee: 'Free',
+    duration: '15 min',
+    replyParagraph: "You don't need a presentation, an agenda, or the right words. Start with a quiet, 15-minute conversation with our Care Coordinator, Ananya. She listens, answers your questions, and helps you begin comfortably.",
+    showTalkFirst: false,
+  },
+  {
+    id: 'sentence-5',
+    sentence: "Work has drained my battery, and a weekend off doesn't recharge me.",
+    startingServiceSlug: 'mindfulness-stress-management',
+    startingServiceName: 'Restorative Care & Burnout Reset',
+    practitionerName: 'Rajesh Kumar & Care Team',
+    fee: '₹1,400',
+    duration: '50 min',
+    replyParagraph: "When depletion runs deep, more time on the couch isn't enough. We help you reset your nervous system, build healthy boundaries, and restore a daily rhythm that leaves you feeling alive at the end of the day.",
     showTalkFirst: true,
   },
   {
     id: 'sentence-6',
-    sentence: "I think I need medication, or someone to look at mine.",
-    startingServiceSlug: 'psychiatry-consultation',
-    startingServiceName: 'Psychiatry Consultation',
-    replyParagraph: "Neurotransmitter chemistry and circadian biology sometimes require careful medical evaluation. Dr. Arun Nair provides an objective diagnostic workup of your neurochemistry and monitored, conservative medication protocols.",
-    medicalNote: "Important medical safety rule: Never discontinue, start, or alter any psychiatric medication without medical guidance. If you are experiencing acute withdrawal or side effects, seek immediate clinical assistance.",
+    sentence: "My stomach feels uneasy or tight whenever my schedule gets intense.",
+    startingServiceSlug: 'dietetics-nutrition',
+    startingServiceName: 'Gut-Brain Balance with Priya Sharma',
+    practitionerName: 'Priya Sharma',
+    fee: '₹1,500',
+    duration: '45 min',
+    replyParagraph: "Your gut and brain share a direct nervous communication pathway. Priya Sharma helps you nourish your body with wholesome, calming meals that support digestion and steady your daily energy without complicated restrictions.",
     showTalkFirst: true,
   },
   {
     id: 'sentence-7',
-    sentence: "I want to change how I eat and I don't know where to start.",
-    startingServiceSlug: 'dietetics-nutrition',
-    startingServiceName: 'Clinical Dietetics & Gut-Brain Nutrition',
-    replyParagraph: "Food deeply influences brain inflammation and daily energy. Priya Sharma analyzes your routine and designs a realistic, anti-inflammatory dietary plan built around authentic Indian foods to support emotional stability.",
+    sentence: "I want to review my wellness prescriptions or supplements with an expert.",
+    startingServiceSlug: 'psychiatry-consultation',
+    startingServiceName: 'Medical Consultation with Dr. Arun Nair',
+    practitionerName: 'Dr. Arun Nair',
+    fee: '₹2,200',
+    duration: '45 min',
+    replyParagraph: "Dr. Arun Nair provides an unhurried, thoughtful review of your prescriptions, sleep aids, and wellness supplements to ensure everything you take genuinely serves your long-term vitality.",
     showTalkFirst: true,
   },
   {
     id: 'sentence-8',
-    sentence: "I'm tense all day and my body never lets go.",
-    startingServiceSlug: 'therapeutic-yoga',
-    startingServiceName: 'Therapeutic Yoga & Somatic Movement',
-    replyParagraph: "When the body is trapped in sympathetic fight-or-flight, cognitive talk alone cannot release physical fascia tension. Rajesh Kumar guides you through gentle polyvagal somatic movement, vagus nerve stimulation, and restorative autonomic breathwork.",
+    sentence: "Something from the past still feels heavy in my day-to-day decisions.",
+    startingServiceSlug: 'clinical-psychology',
+    startingServiceName: 'Psychotherapy with Dr. Meera Sen',
+    practitionerName: 'Dr. Meera Sen',
+    fee: '₹1,800',
+    duration: '50 min',
+    replyParagraph: "Old experiences can cast long shadows over present confidence. In a warm, judgment-free space, we help you process past events so you can move forward feeling grounded and clear.",
     showTalkFirst: true,
   },
   {
     id: 'sentence-9',
-    sentence: "Work has worn me down and rest doesn't fix it.",
-    startingServiceSlug: 'mindfulness-stress-management',
-    startingServiceName: 'Mindfulness & Stress Management',
-    replyParagraph: "Burnout occurs when nervous system reserves are depleted beyond ordinary sleep recovery. Our wellness sessions rebuild autonomic recovery capacity through circadian nervous system recalibration and practical boundary design.",
+    sentence: "I want to improve how I eat for steady mood and energy, without crazy diets.",
+    startingServiceSlug: 'dietetics-nutrition',
+    startingServiceName: 'Whole-Food Nourishment with Priya Sharma',
+    practitionerName: 'Priya Sharma',
+    fee: '₹1,500',
+    duration: '45 min',
+    replyParagraph: "No extreme restrictions or guilt. Priya Sharma crafts sensible, delicious nutrition strategies using foods you already enjoy to stabilize your focus and keep your energy high all day.",
     showTalkFirst: true,
   }
 ];
 
-// First-Session Timeline (Five Stages)
+// Human, Relatable First-Session Stages
 export const FIRST_SESSION_STAGES = [
   {
     step: '01',
-    title: 'Unhurried Listening',
-    duration: 'First 15 mins',
-    desc: 'You speak at your own pace. There is no interrogation or ticking clock. Your clinician listens to what brought you here without judgment.'
+    title: 'Settle in',
+    duration: 'First 10 mins',
+    desc: 'Take your time. Grab water or tea. There is no checklist, no ticking clock, and no pressure to have everything figured out.'
   },
   {
     step: '02',
-    title: 'Pattern Identification',
-    duration: 'Minutes 15–30',
-    desc: 'Together, we trace the connections between your thoughts, emotional distress, physical body sensations, and lifestyle stressors.'
+    title: 'Unpack without judgment',
+    duration: 'Minutes 10–30',
+    desc: 'You speak, we listen. We explore what has been draining your focus or energy, without any clinical labels.'
   },
   {
     step: '03',
-    title: 'Collaborative Mapping',
+    title: 'Find practical clarity',
     duration: 'Minutes 30–45',
-    desc: 'Your clinician explains what they observe and discusses potential modalities (CBT, somatic release, gut protocol) with you.'
+    desc: 'Together, we identify simple shifts — whether mindful therapy, nourishing food, or physical unwinding — at your speed.'
   },
   {
     step: '04',
-    title: 'Immediate Grounding Tool',
+    title: 'A tool for tonight',
     duration: 'Minutes 45–50',
-    desc: 'You leave session one with one practical, tangible tool to stabilize your nervous system or thinking loops right now.'
+    desc: 'You leave session one with a simple, tangible technique you can use before bed tonight to feel calmer.'
   },
   {
     step: '05',
-    title: 'Care Coordination Note',
-    duration: 'After session',
-    desc: 'Your care plan is documented on your unified chart, coordinating seamlessly with any other specialist you see at Better Mind.'
+    title: 'A quiet, coordinated team',
+    duration: 'Ongoing',
+    desc: 'If you ever explore another specialist here, they coordinate quietly so you never have to repeat your story.'
   }
 ];
+

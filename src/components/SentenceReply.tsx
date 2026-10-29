@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SENTENCE_REPLIES, SentenceReplyItem } from '@/content/sentences';
-import { ArrowRight, Compass, Shield, CheckCircle2 } from '@/components/icons';
+import { ArrowRight, Compass, CheckCircle2, ChevronDown, Clock, ShieldCheck } from '@/components/icons';
 
 export default function SentenceReply() {
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
@@ -13,7 +13,6 @@ export default function SentenceReply() {
 
   const selectedItem: SentenceReplyItem = SENTENCE_REPLIES[selectedIdx];
 
-  // Handle arrow key navigation across the radio group (WCAG 2.1 AA Radiogroup)
   const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
     let nextIndex = index;
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
@@ -41,54 +40,98 @@ export default function SentenceReply() {
   };
 
   return (
-    <section className="bm-sentence-section" aria-labelledby="sentence-heading">
+    <section className="bm-sentence-section" id="thoughts" aria-labelledby="sentence-heading">
       <div className="container">
         <div className="bm-sentence-header">
           <span className="bm-label-mono" style={{ color: 'var(--color-mind)' }}>
-            Sentence-Led Navigator
+            Gentle Starting Points
           </span>
           <h2 id="sentence-heading" className="bm-sentence-title">
-            Pick what is feeling <span className="bm-voice-visitor bm-title-highlight">heaviest right now.</span>
+            What is on your <span className="bm-voice-visitor bm-title-highlight">mind today?</span>
           </h2>
           <p className="bm-sentence-intro">
-            You don’t have to know what service you need. Select the sentence that resonates closest to your lived reality, and our clinic provides your recommended starting point.
+            No need to prepare an agenda or have your thoughts in order. Tap whatever resonates right now to see where we can comfortably begin.
           </p>
         </div>
 
         <div className="bm-sentence-grid">
-          {/* Left Column: Radio Group of 9 First-Person Sentences */}
+          {/* Left Column (or Mobile Accordion Stack) */}
           <div
             className="bm-sentence-list"
             role="radiogroup"
-            aria-label="What are you carrying right now?"
-            aria-describedby="sentence-disclaimer"
+            aria-label="What brings you here today?"
           >
             {SENTENCE_REPLIES.map((item, idx) => {
               const isSelected = selectedIdx === idx;
               return (
-                <div
-                  key={item.id}
-                  ref={el => { radioRefs.current[idx] = el; }}
-                  role="radio"
-                  tabIndex={isSelected ? 0 : -1}
-                  aria-checked={isSelected}
-                  aria-controls={`reply-panel-${item.id}`}
-                  onClick={() => setSelectedIdx(idx)}
-                  onKeyDown={e => handleKeyDown(e, idx)}
-                  className={`bm-sentence-tile ${isSelected ? 'selected' : ''}`}
-                >
-                  <div className="bm-sentence-radio-indicator" aria-hidden="true">
-                    <span className="bm-indicator-dot" />
+                <div key={item.id} className="bm-sentence-wrapper">
+                  <div
+                    ref={el => { radioRefs.current[idx] = el; }}
+                    role="radio"
+                    tabIndex={isSelected ? 0 : -1}
+                    aria-checked={isSelected}
+                    aria-controls={`reply-panel-${item.id}`}
+                    onClick={() => setSelectedIdx(idx)}
+                    onKeyDown={e => handleKeyDown(e, idx)}
+                    className={`bm-sentence-tile ${isSelected ? 'selected' : ''}`}
+                  >
+                    <div className="bm-sentence-radio-indicator" aria-hidden="true">
+                      <span className="bm-indicator-dot" />
+                    </div>
+                    <span className="bm-sentence-text bm-voice-visitor">
+                      "{item.sentence}"
+                    </span>
+                    <ChevronDown size={16} className={`bm-mobile-chevron ${isSelected ? 'open' : ''}`} />
                   </div>
-                  <span className="bm-sentence-text bm-voice-visitor">
-                    "{item.sentence}"
-                  </span>
+
+                  {/* Mobile-Only Inline Expansion (Right under the thumb) */}
+                  {isSelected && (
+                    <div className="bm-mobile-inline-reply">
+                      <div className="bm-mobile-reply-badge-row">
+                        <span className="bm-label-mono bm-service-badge">
+                          Recommended
+                        </span>
+                        <span className="bm-label-mono bm-assigned-badge">
+                          {item.duration} · {item.fee}
+                        </span>
+                      </div>
+
+                      <h3 className="bm-mobile-service-title bm-voice-clinic">
+                        {item.startingServiceName}
+                      </h3>
+
+                      <p className="bm-mobile-reply-text bm-voice-clinic">
+                        {item.replyParagraph}
+                      </p>
+
+                      <div className="bm-mobile-reply-actions">
+                        <button
+                          type="button"
+                          onClick={() => handleBookService(item.startingServiceSlug)}
+                          className="bm-btn-book-this"
+                        >
+                          <span>Reserve this session</span>
+                          <ArrowRight size={15} />
+                        </button>
+
+                        {item.showTalkFirst && (
+                          <Link
+                            href="/book?service=initial-assessment"
+                            className="bm-btn-talk-first"
+                          >
+                            <Compass size={15} />
+                            <span>Free 15m chat first</span>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
 
-          {/* Right Column: Clinic's Live Responsive Reply Panel */}
+          {/* Right Column: Desktop Reply Panel */}
           <div className="bm-reply-column">
             <div
               key={selectedItem.id}
@@ -96,14 +139,14 @@ export default function SentenceReply() {
               className="bm-reply-card bm-reply-animate"
               role="region"
               aria-live="polite"
-              aria-label="Clinic suggestion"
+              aria-label="Suggested starting point"
             >
               <div className="bm-reply-top-meta">
                 <span className="bm-label-mono bm-service-badge">
-                  Recommended Starting Service
+                  Recommended Starting Point
                 </span>
                 <span className="bm-label-mono bm-assigned-badge">
-                  Clinician Assigned at Confirmation
+                  {selectedItem.duration} · {selectedItem.fee}
                 </span>
               </div>
 
@@ -115,14 +158,6 @@ export default function SentenceReply() {
                 {selectedItem.replyParagraph}
               </p>
 
-              {/* Optional Clinical Safety Note */}
-              {selectedItem.medicalNote && (
-                <div className="bm-reply-medical-note">
-                  <Shield size={14} className="bm-note-icon" />
-                  <span>{selectedItem.medicalNote}</span>
-                </div>
-              )}
-
               {/* Action Buttons */}
               <div className="bm-reply-actions">
                 <button
@@ -130,7 +165,7 @@ export default function SentenceReply() {
                   onClick={() => handleBookService(selectedItem.startingServiceSlug)}
                   className="bm-btn-book-this"
                 >
-                  <span>Book this consultation</span>
+                  <span>Reserve this session ({selectedItem.fee})</span>
                   <ArrowRight size={16} />
                 </button>
 
@@ -141,19 +176,19 @@ export default function SentenceReply() {
                     title="Speak with our care coordinator first"
                   >
                     <Compass size={16} />
-                    <span>Talk to someone first (₹0)</span>
+                    <span>Talk with Ananya first (Free)</span>
                   </Link>
                 )}
               </div>
 
               <div className="bm-reply-trust-footer">
-                <CheckCircle2 size={14} />
-                <span>NMC & RCI Accredited · Database Enforced Zero Overlap</span>
+                <CheckCircle2 size={15} />
+                <span>Private 1-on-1 · Video across India or quiet metro suites · 100% confidential</span>
               </div>
             </div>
 
-            <p id="sentence-disclaimer" className="bm-sentence-disclaimer">
-              * The reply above is a clinical navigation recommendation for where to begin your care plan. It does not constitute a medical diagnosis. No personal data typed is stored or analyzed.
+            <p className="bm-sentence-disclaimer">
+              You are always in control of your journey. You can change your focus or switch specialists anytime.
             </p>
           </div>
         </div>

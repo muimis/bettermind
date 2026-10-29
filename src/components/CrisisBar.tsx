@@ -13,10 +13,10 @@ export default function CrisisBar() {
           <div className="crisis-content">
             <span className="crisis-tag">
               <Shield size={13} />
-              <span>Outpatient Care</span>
+              <span>Outpatient Practice</span>
             </span>
             <span className="crisis-text">
-              In acute emotional distress or self-harm emergency, call 24/7 toll-free:
+              24/7 National Support:
               {' '}
               <a href="tel:14416" className="crisis-phone-link">
                 <strong>Tele-MANAS: 14416</strong>
@@ -25,16 +25,17 @@ export default function CrisisBar() {
               <a href="tel:18005990019" className="crisis-phone-link">
                 <strong>KIRAN: 1800-599-0019</strong>
               </a>
+              {' '}(Toll-free, Govt. of India)
             </span>
           </div>
           <button
             type="button"
             className="crisis-info-btn"
             onClick={() => setShowModal(true)}
-            aria-label="View crisis and hospital casualty guidelines"
+            aria-label="View 24/7 national support guide"
           >
             <Info size={13} />
-            <span>Crisis & Safety Guide</span>
+            <span>Support & Safety Guide</span>
           </button>
         </div>
       </aside>

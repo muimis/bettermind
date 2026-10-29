@@ -927,3 +927,240 @@
   line-height: 1.6;
 }
 
+/* ========================================================
+   MOBILE-FIRST ACCORDION & STICKY DOCK RESPONSIVENESS
+   ======================================================== */
+
+.bm-sentence-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.bm-mobile-reply-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.bm-mobile-service-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.bm-mobile-reply-text {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--color-quiet-text);
+  margin-bottom: 14px;
+}
+
+.bm-mobile-dock {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .bm-mobile-chevron {
+    display: none !important;
+  }
+  .bm-mobile-inline-reply {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .bm-site-wrap {
+    padding-bottom: 84px;
+  }
+
+  .bm-hero-heading {
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .bm-hero-lead {
+    font-size: 15.5px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .bm-hero-cta-row {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .bm-hero-btn-primary,
+  .bm-hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  .bm-hero-guarantees {
+    flex-wrap: wrap;
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .bm-hero-guarantees .bm-dot {
+    display: inline;
+  }
+
+  .bm-sentence-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Hide desktop side-by-side reply on mobile — reply is right inline under thumb! */
+  .bm-reply-column {
+    display: none !important;
+  }
+
+  .bm-sentence-tile {
+    padding: 14px 16px;
+    border-radius: 14px;
+    gap: 12px;
+  }
+
+  .bm-sentence-text {
+    font-size: 14.5px;
+    line-height: 1.4;
+  }
+
+  .bm-mobile-chevron {
+    display: inline-flex;
+    margin-left: auto;
+    color: var(--color-quiet-text);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .bm-mobile-chevron.open {
+    transform: rotate(180deg);
+    color: var(--color-mind);
+  }
+
+  .bm-sentence-tile.selected {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-color: transparent;
+  }
+
+  .bm-mobile-inline-reply {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-mind);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    padding: 18px 16px;
+    margin-top: -1px;
+    margin-bottom: 10px;
+    box-shadow: 0 8px 24px rgba(49, 68, 200, 0.08);
+    animation: bmReplyRise 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .bm-mobile-reply-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .bm-mobile-reply-actions .bm-btn-book-this,
+  .bm-mobile-reply-actions .bm-btn-talk-first {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  /* Mobile Sticky Dock Pinned at Bottom */
+  .bm-mobile-dock {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: rgba(250, 251, 248, 0.95);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-top: 1px solid var(--color-line);
+    padding: 10px 14px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    gap: 10px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .bm-dock-btn-primary {
+    flex: 1.35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--color-mind);
+    color: var(--color-on-mind);
+    border-radius: var(--radius-pill);
+    padding: 10px 14px;
+    text-decoration: none;
+    box-shadow: 0 3px 12px rgba(49, 68, 200, 0.25);
+  }
+
+  .bm-dock-text-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    text-align: left;
+  }
+
+  .bm-dock-main {
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .bm-dock-sub {
+    font-size: 10px;
+    opacity: 0.85;
+  }
+
+  .bm-dock-btn-secondary {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    padding: 10px 12px;
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .bm-consultations-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .bm-formats-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .bm-timeline-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+
