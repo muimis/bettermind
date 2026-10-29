@@ -12,8 +12,6 @@ import {
   CheckCircle2,
   Video,
   Building2,
-  Award,
-  Clock,
   Phone
 } from '@/components/icons';
 
@@ -23,14 +21,14 @@ const PRACTICES = [
     num: '01',
     label: 'The Mind',
     title: 'Quiet racing thoughts & cognitive load',
-    lead: 'Psychotherapy with Dr. Meera Sen',
-    desc: 'A safe, confidential space to quiet racing thoughts, process difficult decisions, and regain emotional clarity.',
+    lead: 'Dr. Meera Sen, Ph.D.',
+    credential: 'NIMHANS alumna',
+    desc: 'A confidential, unhurried space to process difficult decisions, quiet mental noise, and restore emotional clarity.',
     duration: '50 min',
     fee: '₹1,800',
     color: 'var(--color-mind)',
     icon: Brain,
     photo: '/images/meera-sen.jpg',
-    credential: 'Ph.D. · NIMHANS alumna',
     slug: 'clinical-psychology',
     actionText: 'Reserve Mind Session'
   },
@@ -38,15 +36,15 @@ const PRACTICES = [
     id: 'therapeutic-yoga',
     num: '02',
     label: 'The Body',
-    title: 'Release stored tension in shoulders & jaw',
-    lead: 'Somatic Bodywork with Rajesh Kumar',
-    desc: 'When your mind is running 24/7, stress locks into your neck, shoulders, and chest. Gentle breath and somatic movement to help your nervous system let go.',
+    title: 'Release stored tension in neck, chest & jaw',
+    lead: 'Rajesh Kumar, M.Sc.',
+    credential: 'SVYASA alumnus',
+    desc: 'When stress locks into your muscles, gentle somatic breathwork and movement helps your nervous system physically exhale.',
     duration: '60 min',
     fee: '₹1,400',
     color: 'var(--color-wellness)',
     icon: Sparkles,
     photo: '/images/rajesh-kumar.jpg',
-    credential: 'M.Sc. · SVYASA alumnus',
     slug: 'therapeutic-yoga',
     actionText: 'Reserve Body Session'
   },
@@ -54,17 +52,17 @@ const PRACTICES = [
     id: 'dietetics-nutrition',
     num: '03',
     label: 'The Rhythm',
-    title: 'Restore daily energy, gut health & sleep',
-    lead: 'Gut-Brain Nutrition with Priya Sharma',
-    desc: 'Realistic, enjoyable food guidance to soothe your digestion, stabilize daytime focus, and restore deep evening rest.',
+    title: 'Restore daytime energy, gut health & restful sleep',
+    lead: 'Priya Sharma, RD',
+    credential: 'Manipal alumna',
+    desc: 'Gut-brain nutritional medicine to steady your daily focus, soothe digestion, and renew deep nighttime recovery.',
     duration: '45 min',
     fee: '₹1,500',
     color: 'var(--color-body)',
     icon: Leaf,
     photo: '/images/priya-sharma.jpg',
-    credential: 'RD · Manipal alumna',
     slug: 'dietetics-nutrition',
-    actionText: 'Reserve Balance Session'
+    actionText: 'Reserve Rhythm Session'
   }
 ];
 
@@ -79,13 +77,13 @@ const SPECIALISTS = [
     fee: '₹1,800'
   },
   {
-    id: 'psychiatry-consultation',
-    name: 'Dr. Arun Nair, MD',
-    role: 'Focus & Medical Prescription Review',
-    credential: 'Senior Psychiatrist · NIMHANS alumnus',
-    photo: '/images/arun-nair.jpg',
-    duration: '45 min',
-    fee: '₹2,200'
+    id: 'therapeutic-yoga',
+    name: 'Rajesh Kumar, M.Sc.',
+    role: 'Somatic Breath & Tension Release',
+    credential: 'Somatic Practitioner · SVYASA alumnus',
+    photo: '/images/rajesh-kumar.jpg',
+    duration: '60 min',
+    fee: '₹1,400'
   },
   {
     id: 'dietetics-nutrition',
@@ -97,13 +95,13 @@ const SPECIALISTS = [
     fee: '₹1,500'
   },
   {
-    id: 'therapeutic-yoga',
-    name: 'Rajesh Kumar, M.Sc.',
-    role: 'Somatic Breath & Tension Release',
-    credential: 'Somatic Practitioner · SVYASA alumnus',
-    photo: '/images/rajesh-kumar.jpg',
-    duration: '60 min',
-    fee: '₹1,400'
+    id: 'psychiatry-consultation',
+    name: 'Dr. Arun Nair, MD',
+    role: 'Focus & Medical Prescription Review',
+    credential: 'Senior Psychiatrist · NIMHANS alumnus',
+    photo: '/images/arun-nair.jpg',
+    duration: '45 min',
+    fee: '₹2,200'
   }
 ];
 
@@ -115,26 +113,26 @@ export default function HomePage() {
         <div className="container bm-hero-inner">
           <div className="bm-hero-badge">
             <span className="bm-live-dot" />
-            <span className="bm-label-mono">Private 1-on-1 Sessions · Online & In-Person</span>
+            <span className="bm-label-mono">Private 1-on-1 Sessions · Online & In-Person · From ₹1,400</span>
           </div>
 
           <h1 className="bm-sanctuary-heading">
-            When life is moving too fast,{' '}
-            <span className="bm-heading-serif">this is where you exhale.</span>
+            A quiet place{' '}
+            <span className="bm-heading-serif">for the overloaded mind.</span>
           </h1>
 
           <p className="bm-sanctuary-lead">
-            An integrated collective of psychotherapy, somatic nervous system release, and gut-brain nourishment. Unhurried, confidential, and completely free of clinical labels.
+            Unhurried psychotherapy, somatic nervous system release, and gut-brain restoration. Completely confidential, and free of clinical labels.
           </p>
 
           <div className="bm-sanctuary-cta-row">
             <Link href="/book" className="bm-btn-sanctuary-primary">
-              <Calendar size={17} />
+              <Calendar size={16} />
               <span>Reserve a 1-on-1 Session</span>
               <ArrowRight size={15} />
             </Link>
             <Link href="/book?service=initial-assessment" className="bm-btn-sanctuary-secondary">
-              <Compass size={17} />
+              <Compass size={16} />
               <span>Speak with Ananya (Free 15m)</span>
             </Link>
           </div>
@@ -142,7 +140,9 @@ export default function HomePage() {
           <div className="bm-sanctuary-reassurances">
             <span>✓ 100% Confidential</span>
             <span className="bm-dot">·</span>
-            <span>✓ Zero Clinical Labels</span>
+            <span>✓ Zero Diagnostic Labels</span>
+            <span className="bm-dot">·</span>
+            <span>✓ NIMHANS & SVYASA Alumni</span>
             <span className="bm-dot">·</span>
             <span>✓ Unhurried Conversations</span>
           </div>
@@ -191,8 +191,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. THE THREE PRACTICES (EDITORIAL MAGAZINE CARDS) */}
-      <section className="bm-practices-section" id="practices">
+      {/* 4. THE THREE CORE DISCIPLINES (EDITORIAL INDEX) */}
+      <section className="bm-disciplines-section" id="disciplines">
         <div className="container">
           <div className="bm-section-intro-clean">
             <span className="bm-label-mono" style={{ color: 'var(--color-mind)' }}>
@@ -200,41 +200,40 @@ export default function HomePage() {
             </span>
             <h2 className="bm-practices-title">Three paths to feeling grounded.</h2>
             <p className="bm-section-sub">
-              Care is tailored to your real life. Choose where you want to start today.
+              Choose where your mind or body needs support today. Transparent fees, unhurried sessions, and zero judgment.
             </p>
           </div>
 
-          <div className="bm-practices-grid">
+          <div className="bm-disciplines-list">
             {PRACTICES.map(item => {
               const IconComp = item.icon;
               return (
-                <div key={item.id} className="bm-practice-card">
-                  <div className="bm-practice-img-frame">
-                    <img src={item.photo} alt={item.lead} className="bm-practice-card-img" />
-                    <span className="bm-practice-card-num">{item.num}</span>
+                <div key={item.id} className="bm-discipline-row">
+                  <span className="bm-discipline-num">{item.num}</span>
+
+                  <div className="bm-discipline-thumb">
+                    <img src={item.photo} alt={item.lead} />
                   </div>
 
-                  <div className="bm-practice-content">
-                    <div className="bm-practice-top">
-                      <span className="bm-label-mono bm-practice-pill" style={{ color: item.color }}>
-                        <IconComp size={14} />
-                        <span>{item.label}</span>
-                      </span>
-                      <span className="bm-label-mono bm-practice-meta">
-                        {item.duration} · {item.fee}
+                  <div className="bm-discipline-info">
+                    <div className="bm-discipline-badge-row">
+                      <span className="bm-discipline-pill" style={{ color: item.color }}>
+                        {item.label}
                       </span>
                     </div>
+                    <h3 className="bm-discipline-title">{item.title}</h3>
+                    <p className="bm-discipline-lead">
+                      {item.lead} <span>· {item.credential}</span>
+                    </p>
+                    <p className="bm-discipline-desc">{item.desc}</p>
+                  </div>
 
-                    <h3 className="bm-practice-card-title">{item.title}</h3>
-                    <p className="bm-practice-practitioner">{item.lead} · <span className="bm-doc-subtle">{item.credential}</span></p>
-                    <p className="bm-practice-desc">{item.desc}</p>
-
-                    <div className="bm-practice-bottom">
-                      <Link href={`/book?service=${item.slug}`} className="bm-practice-action-btn">
-                        <span>{item.actionText}</span>
-                        <ArrowRight size={14} />
-                      </Link>
-                    </div>
+                  <div className="bm-discipline-meta-action">
+                    <span className="bm-discipline-fee">{item.duration} · {item.fee}</span>
+                    <Link href={`/book?service=${item.slug}`} className="bm-discipline-cta">
+                      <span>{item.actionText}</span>
+                      <ArrowRight size={13} />
+                    </Link>
                   </div>
                 </div>
               );
@@ -243,16 +242,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. THE SPECIALISTS ROSTER (EDITORIAL TEAM) */}
-      <section className="bm-team-section" id="team">
+      {/* 5. THE SPECIALISTS ROSTER (EDITORIAL GALLERY) */}
+      <section className="bm-team-section" id="specialists">
         <div className="container">
           <div className="bm-section-intro-clean">
             <span className="bm-label-mono" style={{ color: 'var(--color-mind)' }}>
-              Our Roster
+              The Collective
             </span>
-            <h2 className="bm-practices-title">Experienced specialists in your corner.</h2>
+            <h2 className="bm-practices-title">Quiet expertise in your corner.</h2>
             <p className="bm-section-sub">
-              Every practitioner is an accredited expert dedicated to listening without clinical labels.
+              India's foremost mental health practitioners, dedicated to unhurried, human care.
             </p>
           </div>
 
@@ -309,7 +308,7 @@ export default function HomePage() {
                 <div className="bm-space-icon-badge">
                   <Building2 size={18} />
                 </div>
-                <h3>In a quiet sanctuary</h3>
+                <h3>In our Bangalore sanctuary</h3>
                 <p>Soundproofed, private consultation suites in quiet metro hubs, designed like a serene living room free from clinical sterile cues.</p>
                 <Link href="/book" className="bm-space-link">
                   <span>Book in-person session</span>
@@ -332,8 +331,8 @@ export default function HomePage() {
             </p>
           </div>
           <Link href="/book?service=initial-assessment" className="bm-btn-intro-chat">
-            <span>Talk with Ananya (Free)</span>
-            <ArrowRight size={16} />
+            <span>Talk with Ananya (Free 15m)</span>
+            <ArrowRight size={15} />
           </Link>
         </div>
       </section>
@@ -341,19 +340,17 @@ export default function HomePage() {
       {/* 8. MOBILE-FIRST STICKY THUMB DOCK */}
       <div className="bm-mobile-dock" aria-label="Quick Actions">
         <Link href="/book" className="bm-dock-btn-primary">
-          <Calendar size={16} />
+          <Calendar size={15} />
           <div className="bm-dock-text-group">
             <span className="bm-dock-main">Reserve a Session</span>
-            <span className="bm-dock-sub">From ₹1,400</span>
+            <span className="bm-dock-sub">From ₹1,400 · Online & Hubs</span>
           </div>
         </Link>
         <Link href="/book?service=initial-assessment" className="bm-dock-btn-secondary" title="Free 15-minute introductory call">
-          <Compass size={16} />
-          <span>Free 15m Chat</span>
+          <Compass size={15} />
+          <span>Free 15m Intro</span>
         </Link>
       </div>
     </div>
   );
 }
-
-

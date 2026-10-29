@@ -50,38 +50,30 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav className="desktop-nav" aria-label="Main Navigation">
-          <Link href="/services" className={`nav-link ${pathname === '/services' ? 'active' : ''}`}>
-            All Services
+          <Link href="/#disciplines" className="nav-link">
+            Disciplines
           </Link>
-          <Link href="/#practices" className="nav-link">
-            Practices
+          <Link href="/#specialists" className="nav-link">
+            Specialists
           </Link>
           <Link href="/#sanctuary" className="nav-link">
             Sanctuary
           </Link>
-          <Link href="/#team" className="nav-link">
-            Specialists
-          </Link>
-          <Link href="/#spaces" className="nav-link">
-            Spaces
+          <Link href="/services" className={`nav-link ${pathname === '/services' ? 'active' : ''}`}>
+            All Services
           </Link>
         </nav>
 
         {/* Action Header Group */}
         <div className="header-actions">
-          <a href="tel:+918047182200" className="header-contact-link" title="Call Practice Desk">
-            <Phone size={15} />
+          <a href="tel:+918047182200" className="header-contact-link" title="Call Sanctuary Desk">
+            <Phone size={14} />
             <span className="contact-number">080 4718 2200</span>
           </a>
 
           <Link href="/book" className="btn-book-cta">
-            <Calendar size={16} />
             <span>Reserve a Session</span>
-          </Link>
-
-          <Link href="/staff" className="staff-portal-link" title="Staff & Clinician Login">
-            <UserCheck size={16} />
-            <span className="staff-label">Staff</span>
+            <ArrowRight size={14} />
           </Link>
 
           {/* Mobile menu toggle */}
@@ -92,7 +84,7 @@ export default function Navbar() {
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -115,27 +107,27 @@ export default function Navbar() {
 
             <div className="mobile-nav-links">
               <Link href="/book" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Reserve a 1-on-1 Session</span>
+                <span>Reserve a Session (From ₹1,400)</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#practices" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Core Disciplines</span>
+              <Link href="/#disciplines" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Three Core Disciplines</span>
+                <ArrowRight size={16} />
+              </Link>
+              <Link href="/#specialists" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Our Specialists Roster</span>
                 <ArrowRight size={16} />
               </Link>
               <Link href="/#sanctuary" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>The Sanctuary Experience</span>
-                <ArrowRight size={16} />
-              </Link>
-              <Link href="/#team" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Our Specialists</span>
-                <ArrowRight size={16} />
-              </Link>
-              <Link href="/#spaces" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Online & Metro Hubs</span>
+                <span>The Sanctuary Spaces</span>
                 <ArrowRight size={16} />
               </Link>
               <Link href="/book?service=initial-assessment" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
                 <span>Free 15-Minute Intro with Ananya</span>
+                <ArrowRight size={16} />
+              </Link>
+              <Link href="/services" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>All Disciplines & Fees</span>
                 <ArrowRight size={16} />
               </Link>
               <Link href="/staff" className="mobile-nav-item staff-item" onClick={() => setMobileMenuOpen(false)}>
