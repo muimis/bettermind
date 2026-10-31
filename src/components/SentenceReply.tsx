@@ -2,9 +2,8 @@
 
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { SENTENCE_REPLIES, SentenceReplyItem } from '@/content/sentences';
-import { ArrowRight, Compass, Clock, CheckCircle2, Shield, Sparkles } from '@/components/icons';
+import { ArrowRight, Compass, Clock, CheckCircle2, Shield } from '@/components/icons';
 
 const PRACTITIONER_PHOTOS: Record<string, string> = {
   'Dr. Meera Sen, Ph.D.': '/images/meera-sen.jpg',
@@ -16,7 +15,6 @@ const PRACTITIONER_PHOTOS: Record<string, string> = {
 
 export default function SentenceReply() {
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
-  const router = useRouter();
   const radioRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const activeItem: SentenceReplyItem = SENTENCE_REPLIES[selectedIdx] || SENTENCE_REPLIES[0];
@@ -45,7 +43,7 @@ export default function SentenceReply() {
   };
 
   return (
-    <section className="bm-reflection-atelier" id="reflections" aria-labelledby="reflection-heading">
+    <section className="bm-reflection-atelier" id="discovery" aria-labelledby="reflection-heading">
       <div className="container">
         {/* Section Header */}
         <div className="bm-reflection-header">
@@ -58,7 +56,7 @@ export default function SentenceReply() {
             <em>navigating today?</em>
           </h2>
           <p className="bm-reflection-sub">
-            No diagnostic questionnaires or sterile checklists. Select the reflection that aligns with your present state, and explore the exact clinical mechanism and matched specialist.
+            No diagnostic questionnaires or sterile checklists. Select the reflection that aligns with your present state, and explore the biological mechanism and matched specialist.
           </p>
         </div>
 
@@ -92,7 +90,7 @@ export default function SentenceReply() {
                   </div>
                   <p className="bm-tile-quote">"{item.sentence}"</p>
                   <div className="bm-tile-matched-hint">
-                    <span>Matched: {item.startingServiceName}</span>
+                    <span>Pathway: {item.startingServiceName}</span>
                   </div>
                 </div>
               );
@@ -116,7 +114,7 @@ export default function SentenceReply() {
               </h3>
 
               <div className="bm-dossier-mechanism-box">
-                <span className="bm-mechanism-tag">Clinical Insight</span>
+                <span className="bm-mechanism-tag">Biological Mechanism & Approach</span>
                 <p className="bm-dossier-narrative">
                   {activeItem.replyParagraph}
                 </p>
@@ -130,7 +128,7 @@ export default function SentenceReply() {
                   className="bm-dossier-avatar"
                 />
                 <div className="bm-dossier-clinician-info">
-                  <div className="bm-clinician-label">Attending Faculty Specialist</div>
+                  <div className="bm-clinician-label">Attending Specialist</div>
                   <h4 className="bm-clinician-name">{activeItem.practitionerName}</h4>
                   <span className="bm-clinician-creds">{activeItem.credentials}</span>
                 </div>
@@ -144,15 +142,15 @@ export default function SentenceReply() {
               <div className="bm-dossier-guarantees">
                 <div className="bm-dg-item">
                   <CheckCircle2 size={13} />
-                  <span>100% Confidential · DPDP Compliant</span>
+                  <span>100% Confidential · DPDP Act Compliant</span>
                 </div>
                 <div className="bm-dg-item">
                   <Clock size={13} />
-                  <span>Unhurried Private Session</span>
+                  <span>Unhurried Private Session (No Rush)</span>
                 </div>
                 <div className="bm-dg-item">
                   <Shield size={13} />
-                  <span>Bangalore Suite or Pan-India Video</span>
+                  <span>Bangalore Private Suite or 1080p Encrypted Video</span>
                 </div>
               </div>
 
@@ -171,7 +169,7 @@ export default function SentenceReply() {
                   className="bm-btn-dossier-secondary"
                 >
                   <Compass size={14} />
-                  <span>Or Request 15m Orientation (Free)</span>
+                  <span>Or Request 15m Intake with Ananya (Free)</span>
                 </Link>
               </div>
             </div>

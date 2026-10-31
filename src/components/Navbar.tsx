@@ -44,33 +44,39 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav className="desktop-nav" aria-label="Main Navigation">
-          <Link href="/#reflections" className="nav-link">
-            Care Discovery
-          </Link>
-          <Link href="/#disciplines" className="nav-link">
-            Disciplines
-          </Link>
-          <Link href="/#specialists" className="nav-link">
-            The Collective
-          </Link>
-          <Link href="/#sanctuary" className="nav-link">
-            Sanctuary
-          </Link>
-          <Link href="/services" className={`nav-link ${pathname === '/services' ? 'active' : ''}`}>
-            All Practices
-          </Link>
+          <div className="nav-capsule">
+            <Link href="/#discovery" className="nav-link">
+              Care Discovery
+            </Link>
+            <span className="nav-capsule-divider">·</span>
+            <Link href="/#disciplines" className="nav-link">
+              Disciplines
+            </Link>
+            <span className="nav-capsule-divider">·</span>
+            <Link href="/#specialists" className="nav-link">
+              The Specialists
+            </Link>
+            <span className="nav-capsule-divider">·</span>
+            <Link href="/#sanctuary" className="nav-link">
+              Sanctuary
+            </Link>
+            <span className="nav-capsule-divider">·</span>
+            <Link href="/services" className={`nav-link ${pathname === '/services' ? 'active' : ''}`}>
+              All Practices
+            </Link>
+          </div>
         </nav>
 
         {/* Action Header Group */}
         <div className="header-actions">
           <a href="tel:+918047182200" className="header-contact-link" title="Call Sanctuary Desk">
-            <Phone size={14} />
+            <Phone size={13} />
             <span className="contact-number">080 4718 2200</span>
           </a>
 
           <Link href="/book" className="btn-book-cta">
             <span>Reserve Consultation</span>
-            <ArrowRight size={14} />
+            <ArrowRight size={13} />
           </Link>
 
           {/* Mobile menu toggle */}

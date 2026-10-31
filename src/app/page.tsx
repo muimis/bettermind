@@ -17,7 +17,8 @@ import {
   Shield,
   Clock,
   Award,
-  Phone
+  Phone,
+  Heart
 } from '@/components/icons';
 
 const PRACTICES = [
@@ -139,17 +140,17 @@ const SPECIALISTS = [
 export default function HomePage() {
   return (
     <div className="bm-site-wrap">
-      {/* 1. EDITORIAL SANCTUARY HERO */}
+      {/* 1. SERENE SANCTUARY HERO */}
       <section className="bm-sanctuary-hero" id="start">
         <div className="container bm-hero-inner">
-          <div className="bm-hero-eyebrow">
+          <div className="bm-hero-badge-pill">
             <span className="bm-live-beacon" />
-            <span>INTEGRATED SANCTUARY & COLLECTIVE · BANGALORE SUITES & PAN-INDIA ENCRYPTED VIDEO</span>
+            <span>A quiet space where the noise stops · Bangalore Suites & Pan-India Video</span>
           </div>
 
           <h1 className="bm-sanctuary-heading">
-            A quiet sanctuary <br />
-            <em>for the overloaded mind.</em>
+            You do not have to carry <br />
+            <em>the weight of the world alone.</em>
           </h1>
 
           <p className="bm-sanctuary-lead">
@@ -157,14 +158,14 @@ export default function HomePage() {
           </p>
 
           <div className="bm-sanctuary-cta-row">
-            <Link href="/book" className="bm-btn-sanctuary-primary">
-              <Calendar size={15} />
-              <span>Request Private Consultation</span>
+            <Link href="/book?service=initial-assessment" className="bm-btn-sanctuary-primary">
+              <Compass size={16} />
+              <span>Begin with a Free 15-Minute Conversation</span>
               <ArrowRight size={14} />
             </Link>
-            <Link href="/book?service=initial-assessment" className="bm-btn-sanctuary-secondary">
-              <Compass size={15} />
-              <span>Complimentary 15m Intake</span>
+            <Link href="/book" className="bm-btn-sanctuary-secondary">
+              <Calendar size={15} />
+              <span>Reserve a 50-Min Session</span>
             </Link>
           </div>
 
@@ -177,10 +178,45 @@ export default function HomePage() {
             <span className="bm-dot">·</span>
             <span>DPDP Act 2023 Compliant</span>
           </div>
+
+          {/* Hero Fine-Art Illustration Frame */}
+          <div className="bm-hero-art-showcase">
+            <div className="bm-hero-art-frame">
+              <img
+                src="/images/sanctuary-art.jpg"
+                alt="Sanctuary living space overlooking serene bamboo garden in soft daylight"
+                className="bm-hero-art-image"
+              />
+            </div>
+            <div className="bm-hero-art-caption">
+              <span>Indiranagar Bangalore Private Suites & High-Definition Encrypted Video Across India</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 2. INSTITUTIONAL ACCREDITATION & HERITAGE REGISTRY (ELEVATED ALTERNATIVE TO MARQUEE) */}
+      {/* 2. SENSORY BREATHING PAUSE (INTERACTIVE CALM) */}
+      <section className="bm-breath-section" aria-label="Interactive Breathing Moment">
+        <div className="container">
+          <div className="bm-breath-card">
+            <div className="bm-breath-visual">
+              <div className="bm-breath-ring" />
+              <div className="bm-breath-orb">
+                <span className="bm-breath-word">Breathe</span>
+              </div>
+            </div>
+            <div className="bm-breath-content">
+              <span className="bm-breath-tag">A Gentle Moment for Your Nervous System</span>
+              <h3 className="bm-breath-title">If your mind is racing right now, take a slow breath.</h3>
+              <p className="bm-breath-text">
+                Notice the tension in your shoulders and chest. There is no checklist here, no ticking timer, and zero pressure. Take all the time you need.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. FOUR INSTITUTIONAL PILLARS */}
       <section className="bm-standards-strip" aria-label="Clinical Standards and Accreditations">
         <div className="container">
           <div className="bm-standards-grid">
@@ -194,7 +230,7 @@ export default function HomePage() {
 
             <div className="bm-standard-card">
               <span className="bm-standard-num">02</span>
-              <h4 className="bm-standard-heading">Unified Care Record</h4>
+              <h4 className="bm-standard-heading">One Unified Care Record</h4>
               <p className="bm-standard-desc">
                 Our 4 faculties coordinate quietly on one medical record so you never have to repeat your story.
               </p>
@@ -202,7 +238,7 @@ export default function HomePage() {
 
             <div className="bm-standard-card">
               <span className="bm-standard-num">03</span>
-              <h4 className="bm-standard-heading">Zero Scheduling Clash</h4>
+              <h4 className="bm-standard-heading">Zero Scheduling Conflict</h4>
               <p className="bm-standard-desc">
                 Atomic database concurrency guarantees no overlapping slots across multiple disciplines.
               </p>
@@ -210,7 +246,7 @@ export default function HomePage() {
 
             <div className="bm-standard-card">
               <span className="bm-standard-num">04</span>
-              <h4 className="bm-standard-heading">Discreet Discretion</h4>
+              <h4 className="bm-standard-heading">Acoustic & Digital Discretion</h4>
               <p className="bm-standard-desc">
                 1080p encrypted video with zero downloads, or soundproofed suites in Indiranagar, Bangalore.
               </p>
@@ -219,35 +255,69 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. INTERACTIVE BESPOKE REFLECTION ATELIER (THE CENTERPIECE) */}
+      {/* 4. INTERACTIVE BESPOKE CARE DISCOVERY */}
       <SentenceReply />
 
-      {/* 4. FULL-BLEED ARCHITECTURAL SANCTUARY SHOWCASE */}
-      <section className="bm-hero-media-wrap" id="sanctuary">
+      {/* 5. STORY: THERAPY AS AN EXHALE */}
+      <section className="bm-story-section" id="philosophy">
         <div className="container">
-          <div className="bm-hero-media-card">
-            <img
-              src="/images/sanctuary.jpg"
-              alt="Better Mind quiet sanctuary living room with wood slats and botanical daylight"
-              className="bm-media-img"
-            />
-            <div className="bm-media-overlay">
-              <span className="bm-overlay-tag">Indiranagar · Bangalore Private Suites</span>
-              <h2 className="bm-media-title">Step into a space where the noise of the world stops.</h2>
-              <p className="bm-media-text">
-                Whether connecting from your home via encrypted video or visiting our acoustic-soundproofed Bangalore suites, you experience unhurried human medicine designed to restore equilibrium.
+          <div className="bm-story-grid">
+            <div className="bm-story-image-wrap">
+              <img
+                src="/images/serene-mind-art.jpg"
+                alt="Person resting comfortably in sunlit room with tea and soft breeze"
+                className="bm-story-image"
+              />
+            </div>
+            <div className="bm-story-body">
+              <span className="bm-eyebrow-label">Our Philosophy of Care</span>
+              <h2 className="bm-story-title">
+                Therapy should feel like an exhale, <br />
+                <em>never an interrogation.</em>
+              </h2>
+              <p className="bm-story-lead">
+                Most healthcare environments treat you like a broken machine with a diagnostic code. At Better Mind, we understand that high-performing leaders, founders, and creators carry enormous cognitive and emotional friction.
               </p>
+              <p className="bm-story-text">
+                We do not pathologize your exhaustion. We give your nervous system, your racing thoughts, and your biological rhythms the unhurried space to unwind, with deeply compassionate clinicians who listen without judgment.
+              </p>
+
+              <div className="bm-story-features">
+                <div className="bm-story-feat-item">
+                  <Clock size={18} className="bm-feat-icon" />
+                  <div>
+                    <strong>Unhurried 50–60 Min Sessions</strong>
+                    <p>No 10-minute rushed consultations. Plenty of time to speak, reflect, and be heard.</p>
+                  </div>
+                </div>
+
+                <div className="bm-story-feat-item">
+                  <Heart size={18} className="bm-feat-icon" />
+                  <div>
+                    <strong>Zero Diagnostic Stigma</strong>
+                    <p>We treat you as a whole person navigating a complex life, not a pathological case.</p>
+                  </div>
+                </div>
+
+                <div className="bm-story-feat-item">
+                  <Shield size={18} className="bm-feat-icon" />
+                  <div>
+                    <strong>100% Confidential Care</strong>
+                    <p>Protected under the DPDP Act 2023 with strict patient-practitioner privilege.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. THE FOUR UNIFIED DISCIPLINES (EDITORIAL ATELIER INDEX) */}
+      {/* 6. THE FOUR UNIFIED DISCIPLINES */}
       <section className="bm-disciplines-section" id="disciplines">
         <div className="container">
           <div className="bm-section-intro-clean">
-            <span className="bm-eyebrow-label">Practices & Disciplines</span>
-            <h2 className="bm-practices-title">Four paths to complete equilibrium.</h2>
+            <span className="bm-eyebrow-label">Unified Faculties</span>
+            <h2 className="bm-practices-title">Four disciplines. One coordinated care plan.</h2>
             <p className="bm-section-sub">
               Choose where your mind or body requires support today. Transparent fees, unhurried consultations, and zero clinical labels.
             </p>
@@ -278,7 +348,7 @@ export default function HomePage() {
                 <div className="bm-discipline-meta-action">
                   <span className="bm-discipline-fee">{item.duration} · {item.fee}</span>
                   <Link href={`/book?service=${item.slug}`} className="bm-discipline-cta">
-                    <span>Reserve</span>
+                    <span>Reserve Session</span>
                     <ArrowRight size={13} />
                   </Link>
                 </div>
@@ -288,14 +358,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. WHAT TO EXPECT: THE FIRST SESSION FLOW */}
+      {/* 7. WHAT TO EXPECT: FIRST SESSION FLOW */}
       <section className="bm-flow-section" id="first-session">
         <div className="container">
           <div className="bm-section-intro-clean">
             <span className="bm-eyebrow-label">Session Architecture</span>
             <h2 className="bm-practices-title">What happens when you arrive.</h2>
             <p className="bm-section-sub">
-              Therapy should never feel like an interrogation. Here is how your first 50 minutes unfold:
+              Therapy should never feel intimidating. Here is how your first 50 minutes unfold:
             </p>
           </div>
 
@@ -312,14 +382,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. THE SPECIALISTS ROSTER (EDITORIAL PORTRAIT GALLERY) */}
+      {/* 8. THE SPECIALISTS ROSTER */}
       <section className="bm-team-section" id="specialists">
         <div className="container">
           <div className="bm-section-intro-clean">
-            <span className="bm-eyebrow-label">The Collective</span>
-            <h2 className="bm-practices-title">Quiet expertise in your corner.</h2>
+            <span className="bm-eyebrow-label">The Specialists</span>
+            <h2 className="bm-practices-title">India's most thoughtful mental health collective.</h2>
             <p className="bm-section-sub">
-              India's foremost mental health practitioners, dedicated to unhurried, human care.
+              Senior faculty dedicated to unhurried, evidence-based, compassionate care.
             </p>
           </div>
 
@@ -347,12 +417,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. WHERE WE MEET (DUAL SPACES) */}
-      <section className="bm-spaces-section" id="spaces">
+      {/* 9. WHERE WE MEET (DUAL SPACES) */}
+      <section className="bm-spaces-section" id="sanctuary">
         <div className="container">
           <div className="bm-section-intro-clean">
             <span className="bm-eyebrow-label">Where We Meet</span>
-            <h2 className="bm-practices-title">From your private room or in our quiet suites.</h2>
+            <h2 className="bm-practices-title">From your private room or in our quiet Bangalore suites.</h2>
             <p className="bm-section-sub">
               Care designed around your schedule, without clinical waiting rooms or bureaucratic friction.
             </p>
@@ -396,7 +466,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. KIND FIRST STEP BANNER (ANANYA ROY) */}
+      {/* 10. KIND FIRST STEP BANNER (ANANYA ROY) */}
       <section className="container bm-intro-chat-section" id="intro">
         <div className="bm-intro-chat-card">
           <div className="bm-intro-chat-avatar-wrap">
@@ -407,7 +477,7 @@ export default function HomePage() {
             />
           </div>
           <div className="bm-intro-chat-content">
-            <span className="bm-eyebrow-label">A Gentle First Step</span>
+            <span className="bm-intro-badge">✦ A GENTLE FIRST STEP</span>
             <h3 className="bm-intro-heading">Not sure where to begin? Have an unhurried 15-minute conversation.</h3>
             <p className="bm-intro-desc">
               Speak privately with our Practice Coordinator, Ananya Roy (MSW, TISS alumna). No cost, no clinical questionnaires, and zero obligation. Just a kind human conversation to help you navigate your options.
@@ -420,18 +490,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. MOBILE-FIRST STICKY THUMB DOCK */}
+      {/* 11. MOBILE-FIRST STICKY THUMB DOCK */}
       <div className="bm-mobile-dock" aria-label="Quick Actions">
-        <Link href="/book" className="bm-dock-btn-primary">
-          <Calendar size={15} />
+        <Link href="/book?service=initial-assessment" className="bm-dock-btn-primary">
+          <Compass size={15} />
           <div className="bm-dock-text-group">
-            <span className="bm-dock-main">Reserve Consultation</span>
-            <span className="bm-dock-sub">Online Video & Bangalore Suites</span>
+            <span className="bm-dock-main">Free 15m Intake</span>
+            <span className="bm-dock-sub">Talk with Ananya Roy</span>
           </div>
         </Link>
-        <Link href="/book?service=initial-assessment" className="bm-dock-btn-secondary" title="Complimentary 15-minute introductory call">
-          <Compass size={15} />
-          <span>Free 15m Intake</span>
+        <Link href="/book" className="bm-dock-btn-secondary" title="Reserve a Consultation">
+          <Calendar size={15} />
+          <span>Reserve Session</span>
         </Link>
       </div>
     </div>

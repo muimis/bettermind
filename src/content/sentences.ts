@@ -7,6 +7,7 @@
 
 export interface SentenceReplyItem {
   id: string;
+  roman: string;
   category: string;
   sentence: string;
   startingServiceSlug: string;
@@ -23,6 +24,7 @@ export interface SentenceReplyItem {
 export const SENTENCE_REPLIES: SentenceReplyItem[] = [
   {
     id: 'sentence-1',
+    roman: 'I',
     category: 'Cognitive Rhythm',
     sentence: "My mind operates at relentless speed and will not switch off at night.",
     startingServiceSlug: 'clinical-psychology',
@@ -37,6 +39,7 @@ export const SENTENCE_REPLIES: SentenceReplyItem[] = [
   },
   {
     id: 'sentence-2',
+    roman: 'II',
     category: 'Autonomic System',
     sentence: "I carry persistent physical tension in my neck, chest, and jaw all day.",
     startingServiceSlug: 'therapeutic-yoga',
@@ -51,6 +54,7 @@ export const SENTENCE_REPLIES: SentenceReplyItem[] = [
   },
   {
     id: 'sentence-3',
+    roman: 'III',
     category: 'Energy & Resilience',
     sentence: "Deep exhaustion has set in, and a weekend away no longer restores me.",
     startingServiceSlug: 'initial-assessment',
@@ -65,6 +69,7 @@ export const SENTENCE_REPLIES: SentenceReplyItem[] = [
   },
   {
     id: 'sentence-4',
+    roman: 'IV',
     category: 'Gut-Brain Axis',
     sentence: "High-pressure weeks immediately trigger stomach distress and brain fog.",
     startingServiceSlug: 'dietetics-nutrition',
@@ -79,6 +84,7 @@ export const SENTENCE_REPLIES: SentenceReplyItem[] = [
   },
   {
     id: 'sentence-5',
+    roman: 'V',
     category: 'Neurobiology',
     sentence: "I want an expert medical review of my sleep, medications, or neurobiology.",
     startingServiceSlug: 'psychiatry-consultation',
@@ -93,6 +99,7 @@ export const SENTENCE_REPLIES: SentenceReplyItem[] = [
   },
   {
     id: 'sentence-6',
+    roman: 'VI',
     category: 'Private Counsel',
     sentence: "I need an unhurried, confidential sounding board to navigate complex life demands.",
     startingServiceSlug: 'clinical-psychology',
