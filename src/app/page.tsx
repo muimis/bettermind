@@ -1,14 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import SentenceReply from '@/components/SentenceReply';
-import { FIRST_SESSION_STAGES } from '@/content/sentences';
 import {
+  Compass,
   Brain,
   Leaf,
   Sparkles,
-  Compass,
+  Award,
   ArrowRight,
   Calendar,
   CheckCircle2,
@@ -16,339 +15,311 @@ import {
   Building2,
   Shield,
   Clock,
-  Award,
   Phone,
+  MapPin,
   Heart
 } from '@/components/icons';
 
-const PRACTICES = [
-  {
-    id: 'clinical-psychology',
-    num: '01',
-    label: 'The Mind',
-    title: 'Quiet racing thoughts & restore cognitive clarity',
-    lead: 'Dr. Meera Sen, Ph.D.',
-    credential: 'Senior Clinical Psychologist · NIMHANS alumna',
-    desc: 'An unhurried, deeply confidential space to process complex life decisions, resolve recurring worry loops, and untangle chronic mental noise.',
-    duration: '50 min',
-    fee: '₹1,800',
-    color: '#163A32',
-    icon: Brain,
-    photo: '/images/meera-sen.jpg',
-    slug: 'clinical-psychology'
-  },
-  {
-    id: 'therapeutic-yoga',
-    num: '02',
-    label: 'The Body',
-    title: 'Release stored tension in neck, chest & jaw',
-    lead: 'Rajesh Kumar, M.Sc.',
-    credential: 'Somatic Therapist · SVYASA alumnus',
-    desc: 'When cognitive stress locks into your musculature, targeted polyvagal breathwork and somatic movement guide your autonomic nervous system out of fight-or-flight freeze.',
-    duration: '60 min',
-    fee: '₹1,400',
-    color: '#8C5835',
-    icon: Sparkles,
-    photo: '/images/rajesh-kumar.jpg',
-    slug: 'therapeutic-yoga'
-  },
-  {
-    id: 'dietetics-nutrition',
-    num: '03',
-    label: 'The Rhythm',
-    title: 'Restore daytime stamina, gut comfort & sleep',
-    lead: 'Priya Sharma, RD',
-    credential: 'Lead Clinical Dietitian · Manipal alumna',
-    desc: 'Clinical nutrition targeting the enteric gut-brain axis to soothe stress-induced digestion, eliminate afternoon brain fog, and optimize natural serotonin synthesis.',
-    duration: '45 min',
-    fee: '₹1,500',
-    color: '#8C5835',
-    icon: Leaf,
-    photo: '/images/priya-sharma.jpg',
-    slug: 'dietetics-nutrition'
-  },
-  {
-    id: 'psychiatry-consultation',
-    num: '04',
-    label: 'The Biology',
-    title: 'Considerate medical review of neurobiology & sleep',
-    lead: 'Dr. Arun Nair, MD',
-    credential: 'Senior Consultant Psychiatrist · NIMHANS alumnus',
-    desc: 'Conservative, thoughtful psychiatric evaluation of neurochemical factors, severe insomnia, or safe medication reviews, closely coordinated with psychological care.',
-    duration: '45 min',
-    fee: '₹2,200',
-    color: '#163A32',
-    icon: Award,
-    photo: '/images/arun-nair.jpg',
-    slug: 'psychiatry-consultation'
-  }
-];
-
-const SPECIALISTS = [
-  {
-    id: 'clinical-psychology',
-    name: 'Dr. Meera Sen, Ph.D.',
-    role: 'Psychotherapy & Cognitive Clarity',
-    credential: 'Senior Clinical Psychologist · NIMHANS alumna',
-    experience: '11+ yrs clinical experience · RCI Licensed',
-    photo: '/images/meera-sen.jpg',
-    duration: '50 min',
-    fee: '₹1,800'
-  },
-  {
-    id: 'therapeutic-yoga',
-    name: 'Rajesh Kumar, M.Sc.',
-    role: 'Somatic Breath & Tension Release',
-    credential: 'Somatic Therapist · SVYASA alumnus',
-    experience: 'Vagal tonus practitioner · Certified SEP',
-    photo: '/images/rajesh-kumar.jpg',
-    duration: '60 min',
-    fee: '₹1,400'
-  },
-  {
-    id: 'dietetics-nutrition',
-    name: 'Priya Sharma, RD',
-    role: 'Gut-Brain Nutrition & Metabolism',
-    credential: 'Lead Clinical Dietitian · Manipal alumna',
-    experience: 'IDA Certified Gut-Brain Specialist',
-    photo: '/images/priya-sharma.jpg',
-    duration: '45 min',
-    fee: '₹1,500'
-  },
-  {
-    id: 'psychiatry-consultation',
-    name: 'Dr. Arun Nair, MD',
-    role: 'Neuropsychiatry & Prescription Review',
-    credential: 'Senior Psychiatrist · NIMHANS alumnus',
-    experience: '14+ yrs practice · NMC Registered',
-    photo: '/images/arun-nair.jpg',
-    duration: '45 min',
-    fee: '₹2,200'
-  },
+// 5 Core Booking Disciplines
+const BOOKING_SERVICES = [
   {
     id: 'initial-assessment',
-    name: 'Ananya Roy, MSW',
-    role: 'Practice Coordinator & Intake Bridge',
-    credential: 'Lead Care Coordinator · TISS alumna',
-    experience: 'Psychiatric social work · Patient advocacy',
-    photo: '/images/ananya-roy.jpg',
+    slug: 'initial-assessment',
+    tabName: 'Free 15m Intro',
+    name: 'Complimentary Care Orientation',
+    badge: 'RECOMMENDED FOR FIRST-TIME VISITORS',
+    clinician: 'Ananya Roy, MSW',
+    credentials: 'Lead Care Coordinator · TISS alumna',
+    experience: '8+ yrs patient advocacy & triage',
     duration: '15 min',
-    fee: 'Complimentary'
+    fee: '₹0 · Free',
+    feeRaw: 0,
+    photo: '/images/ananya-roy.jpg',
+    summary: 'Speak privately with our Practice Coordinator to discuss your situation, ask any questions, and co-design your care pathway before committing.',
+    modes: ['1080p Encrypted Video', 'Phone Call'],
+    nextSlot: 'Today at 4:00 PM & 5:30 PM IST',
+    icon: Compass,
+    color: '#124E47'
+  },
+  {
+    id: 'clinical-psychology',
+    slug: 'clinical-psychology',
+    tabName: 'Psychotherapy',
+    name: 'Psychotherapy & Cognitive Clarity',
+    badge: 'THE MIND',
+    clinician: 'Dr. Meera Sen, Ph.D.',
+    credentials: 'Senior Clinical Psychologist · NIMHANS alumna',
+    experience: '11+ yrs clinical experience · RCI Licensed',
+    duration: '50 min',
+    fee: '₹1,800',
+    feeRaw: 1800,
+    photo: '/images/meera-sen.jpg',
+    summary: 'An unhurried, private space to process complex life challenges, resolve persistent worry loops, and untangle burnout without clinical judgment.',
+    modes: ['1080p Encrypted Video', 'Bangalore Private Suites'],
+    nextSlot: 'Tomorrow at 10:30 AM & 3:00 PM IST',
+    icon: Brain,
+    color: '#163A32'
+  },
+  {
+    id: 'therapeutic-yoga',
+    slug: 'therapeutic-yoga',
+    tabName: 'Somatic Release',
+    name: 'Somatic Breath & Tension Release',
+    badge: 'THE BODY',
+    clinician: 'Rajesh Kumar, M.Sc.',
+    credentials: 'Somatic Therapist · SVYASA alumnus',
+    experience: 'Vagal tonus practitioner · Certified SEP',
+    duration: '60 min',
+    fee: '₹1,400',
+    feeRaw: 1400,
+    photo: '/images/rajesh-kumar.jpg',
+    summary: 'When chronic stress locks into your musculature, polyvagal breathwork and somatic movement gently down-regulate your autonomic nervous system.',
+    modes: ['1080p Encrypted Video', 'Bangalore Private Suites'],
+    nextSlot: 'Today at 6:00 PM & Tomorrow at 9:00 AM IST',
+    icon: Sparkles,
+    color: '#8C5835'
+  },
+  {
+    id: 'dietetics-nutrition',
+    slug: 'dietetics-nutrition',
+    tabName: 'Gut-Brain Nutrition',
+    name: 'Gut-Brain Clinical Nutrition',
+    badge: 'THE RHYTHM',
+    clinician: 'Priya Sharma, RD',
+    credentials: 'Lead Clinical Dietitian · Manipal alumna',
+    experience: 'IDA Certified Gut-Brain Specialist',
+    duration: '45 min',
+    fee: '₹1,500',
+    feeRaw: 1500,
+    photo: '/images/priya-sharma.jpg',
+    summary: 'Targeted nutrition for the enteric nervous system to soothe stress-induced digestion, eliminate afternoon brain fog, and optimize natural sleep cycles.',
+    modes: ['1080p Encrypted Video', 'Bangalore Private Suites'],
+    nextSlot: 'Tomorrow at 11:30 AM & 4:00 PM IST',
+    icon: Leaf,
+    color: '#8C5835'
+  },
+  {
+    id: 'psychiatry-consultation',
+    slug: 'psychiatry-consultation',
+    tabName: 'Psychiatry & Sleep',
+    name: 'Consultant Neuropsychiatry & Sleep',
+    badge: 'THE BIOLOGY',
+    clinician: 'Dr. Arun Nair, MD',
+    credentials: 'Senior Psychiatrist · NIMHANS alumnus',
+    experience: '14+ yrs practice · NMC Registered',
+    duration: '45 min',
+    fee: '₹2,200',
+    feeRaw: 2200,
+    photo: '/images/arun-nair.jpg',
+    summary: 'Conservative, considerate medical evaluation of neurochemistry, chronic insomnia, and safe medication reviews in coordination with your therapy.',
+    modes: ['1080p Encrypted Video', 'Bangalore Private Suites'],
+    nextSlot: 'Tomorrow at 2:00 PM & 5:00 PM IST',
+    icon: Award,
+    color: '#163A32'
   }
 ];
 
 export default function HomePage() {
+  const [selectedServiceId, setSelectedServiceId] = useState<string>('initial-assessment');
+  const [selectedMode, setSelectedMode] = useState<'online' | 'in_person'>('online');
+
+  const activeService = BOOKING_SERVICES.find(s => s.id === selectedServiceId) || BOOKING_SERVICES[0];
+  const ActiveIcon = activeService.icon;
+
   return (
-    <div className="bm-site-wrap">
-      {/* 1. SERENE SANCTUARY HERO */}
-      <section className="bm-sanctuary-hero" id="start">
-        <div className="container bm-hero-inner">
-          <div className="bm-hero-badge-pill">
-            <span className="bm-live-beacon" />
-            <span>A quiet space where the noise stops · Bangalore Suites & Pan-India Video</span>
-          </div>
-
-          <h1 className="bm-sanctuary-heading">
-            You do not have to carry <br />
-            <em>the weight of the world alone.</em>
-          </h1>
-
-          <p className="bm-sanctuary-lead">
-            Unhurried psychotherapy, somatic nervous system release, gut-brain medicine, and consultative psychiatry. Completely confidential, and free of clinical labels.
-          </p>
-
-          <div className="bm-sanctuary-cta-row">
-            <Link href="/book?service=initial-assessment" className="bm-btn-sanctuary-primary">
-              <Compass size={16} />
-              <span>Begin with a Free 15-Minute Conversation</span>
-              <ArrowRight size={14} />
-            </Link>
-            <Link href="/book" className="bm-btn-sanctuary-secondary">
-              <Calendar size={15} />
-              <span>Reserve a 50-Min Session</span>
-            </Link>
-          </div>
-
-          <div className="bm-sanctuary-reassurances">
-            <span>NIMHANS, TISS & SVYASA Alumni</span>
-            <span className="bm-dot">·</span>
-            <span>100% Confidential</span>
-            <span className="bm-dot">·</span>
-            <span>Zero Diagnostic Labels</span>
-            <span className="bm-dot">·</span>
-            <span>DPDP Act 2023 Compliant</span>
-          </div>
-
-          {/* Hero Fine-Art Illustration Frame */}
-          <div className="bm-hero-art-showcase">
-            <div className="bm-hero-art-frame">
-              <img
-                src="/images/sanctuary-art.jpg"
-                alt="Sanctuary living space overlooking serene bamboo garden in soft daylight"
-                className="bm-hero-art-image"
-              />
-            </div>
-            <div className="bm-hero-art-caption">
-              <span>Indiranagar Bangalore Private Suites & High-Definition Encrypted Video Across India</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. SENSORY BREATHING PAUSE (INTERACTIVE CALM) */}
-      <section className="bm-breath-section" aria-label="Interactive Breathing Moment">
+    <div className="bm-booking-site-wrap">
+      {/* 1. HERO WITH BUILT-IN INSTANT BOOKING CONSOLE */}
+      <section className="bm-book-hero" id="book-now">
         <div className="container">
-          <div className="bm-breath-card">
-            <div className="bm-breath-visual">
-              <div className="bm-breath-ring" />
-              <div className="bm-breath-orb">
-                <span className="bm-breath-word">Breathe</span>
-              </div>
-            </div>
-            <div className="bm-breath-content">
-              <span className="bm-breath-tag">A Gentle Moment for Your Nervous System</span>
-              <h3 className="bm-breath-title">If your mind is racing right now, take a slow breath.</h3>
-              <p className="bm-breath-text">
-                Notice the tension in your shoulders and chest. There is no checklist here, no ticking timer, and zero pressure. Take all the time you need.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. FOUR INSTITUTIONAL PILLARS */}
-      <section className="bm-standards-strip" aria-label="Clinical Standards and Accreditations">
-        <div className="container">
-          <div className="bm-standards-grid">
-            <div className="bm-standard-card">
-              <span className="bm-standard-num">01</span>
-              <h4 className="bm-standard-heading">Institutional Pedigree</h4>
-              <p className="bm-standard-desc">
-                Clinicians trained at NIMHANS, TISS, Manipal, and SVYASA with verified statutory registrations.
-              </p>
+          <div className="bm-hero-content-stack">
+            <div className="bm-hero-badge-pill">
+              <span className="bm-live-beacon" />
+              <span>Direct Appointments · NIMHANS & TISS Clinicians · No Subscription Needed</span>
             </div>
 
-            <div className="bm-standard-card">
-              <span className="bm-standard-num">02</span>
-              <h4 className="bm-standard-heading">One Unified Care Record</h4>
-              <p className="bm-standard-desc">
-                Our 4 faculties coordinate quietly on one medical record so you never have to repeat your story.
-              </p>
-            </div>
+            <h1 className="bm-hero-main-title">
+              Book Private Mental Health Consultations <br className="bm-br-desktop" />
+              <em>in 60 Seconds.</em>
+            </h1>
 
-            <div className="bm-standard-card">
-              <span className="bm-standard-num">03</span>
-              <h4 className="bm-standard-heading">Zero Scheduling Conflict</h4>
-              <p className="bm-standard-desc">
-                Atomic database concurrency guarantees no overlapping slots across multiple disciplines.
-              </p>
-            </div>
-
-            <div className="bm-standard-card">
-              <span className="bm-standard-num">04</span>
-              <h4 className="bm-standard-heading">Acoustic & Digital Discretion</h4>
-              <p className="bm-standard-desc">
-                1080p encrypted video with zero downloads, or soundproofed suites in Indiranagar, Bangalore.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. INTERACTIVE BESPOKE CARE DISCOVERY */}
-      <SentenceReply />
-
-      {/* 5. STORY: THERAPY AS AN EXHALE */}
-      <section className="bm-story-section" id="philosophy">
-        <div className="container">
-          <div className="bm-story-grid">
-            <div className="bm-story-image-wrap">
-              <img
-                src="/images/serene-mind-art.jpg"
-                alt="Person resting comfortably in sunlit room with tea and soft breeze"
-                className="bm-story-image"
-              />
-            </div>
-            <div className="bm-story-body">
-              <span className="bm-eyebrow-label">Our Philosophy of Care</span>
-              <h2 className="bm-story-title">
-                Therapy should feel like an exhale, <br />
-                <em>never an interrogation.</em>
-              </h2>
-              <p className="bm-story-lead">
-                Most healthcare environments treat you like a broken machine with a diagnostic code. At Better Mind, we understand that high-performing leaders, founders, and creators carry enormous cognitive and emotional friction.
-              </p>
-              <p className="bm-story-text">
-                We do not pathologize your exhaustion. We give your nervous system, your racing thoughts, and your biological rhythms the unhurried space to unwind, with deeply compassionate clinicians who listen without judgment.
-              </p>
-
-              <div className="bm-story-features">
-                <div className="bm-story-feat-item">
-                  <Clock size={18} className="bm-feat-icon" />
-                  <div>
-                    <strong>Unhurried 50–60 Min Sessions</strong>
-                    <p>No 10-minute rushed consultations. Plenty of time to speak, reflect, and be heard.</p>
-                  </div>
-                </div>
-
-                <div className="bm-story-feat-item">
-                  <Heart size={18} className="bm-feat-icon" />
-                  <div>
-                    <strong>Zero Diagnostic Stigma</strong>
-                    <p>We treat you as a whole person navigating a complex life, not a pathological case.</p>
-                  </div>
-                </div>
-
-                <div className="bm-story-feat-item">
-                  <Shield size={18} className="bm-feat-icon" />
-                  <div>
-                    <strong>100% Confidential Care</strong>
-                    <p>Protected under the DPDP Act 2023 with strict patient-practitioner privilege.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. THE FOUR UNIFIED DISCIPLINES */}
-      <section className="bm-disciplines-section" id="disciplines">
-        <div className="container">
-          <div className="bm-section-intro-clean">
-            <span className="bm-eyebrow-label">Unified Faculties</span>
-            <h2 className="bm-practices-title">Four disciplines. One coordinated care plan.</h2>
-            <p className="bm-section-sub">
-              Choose where your mind or body requires support today. Transparent fees, unhurried consultations, and zero clinical labels.
+            <p className="bm-hero-subtitle">
+              Unhurried 50-minute clinical sessions. Zero diagnostic labels, 100% confidential.
+              Meet on encrypted 1080p video pan-India or in our private Indiranagar, Bangalore suites.
             </p>
           </div>
 
-          <div className="bm-disciplines-list">
-            {PRACTICES.map(item => (
-              <div key={item.id} className="bm-discipline-row">
-                <span className="bm-discipline-num">{item.num}</span>
+          {/* Interactive Fast Booking Console */}
+          <div className="bm-fast-book-console" aria-label="Interactive Quick Booking Console">
+            <div className="bm-console-header">
+              <span className="bm-console-step-indicator">STEP 1 OF 2 · SELECT DISCIPLINE & MODE</span>
+              <span className="bm-console-instant-tag">⚡ Live Availability</span>
+            </div>
 
-                <div className="bm-discipline-thumb">
-                  <img src={item.photo} alt={item.lead} />
-                </div>
+            {/* Quick Service Tabs */}
+            <div className="bm-console-tabs-row" role="tablist">
+              {BOOKING_SERVICES.map(s => {
+                const isSelected = s.id === selectedServiceId;
+                const TabIcon = s.icon;
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isSelected}
+                    onClick={() => setSelectedServiceId(s.id)}
+                    className={`bm-console-tab ${isSelected ? 'active' : ''}`}
+                  >
+                    <TabIcon size={14} />
+                    <span className="bm-tab-name">{s.tabName}</span>
+                    <span className="bm-tab-fee">{s.feeRaw === 0 ? 'Free' : `₹${s.feeRaw}`}</span>
+                  </button>
+                );
+              })}
+            </div>
 
-                <div className="bm-discipline-info">
-                  <div className="bm-discipline-badge-row">
-                    <span className="bm-discipline-pill" style={{ color: item.color }}>
-                      {item.label}
-                    </span>
+            {/* Active Service Card Preview */}
+            <div className="bm-console-preview-body">
+              <div className="bm-preview-clinician-col">
+                <img
+                  src={activeService.photo}
+                  alt={activeService.clinician}
+                  className="bm-preview-avatar"
+                />
+                <div className="bm-preview-clinician-info">
+                  <span className="bm-preview-badge">{activeService.badge}</span>
+                  <h3 className="bm-preview-title">{activeService.name}</h3>
+                  <div className="bm-preview-doctor-name">
+                    <strong>{activeService.clinician}</strong>
+                    <span> · {activeService.credentials}</span>
                   </div>
-                  <h3 className="bm-discipline-title">{item.title}</h3>
-                  <p className="bm-discipline-lead">
-                    {item.lead} <span>· {item.credential}</span>
-                  </p>
-                  <p className="bm-discipline-desc">{item.desc}</p>
+                  <p className="bm-preview-desc">{activeService.summary}</p>
+                </div>
+              </div>
+
+              {/* Booking Action Column */}
+              <div className="bm-preview-action-col">
+                {/* Format / Mode Selector */}
+                <div className="bm-mode-selector-wrap">
+                  <span className="bm-field-label">Consultation Format:</span>
+                  <div className="bm-mode-toggle-group">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedMode('online')}
+                      className={`bm-mode-btn ${selectedMode === 'online' ? 'active' : ''}`}
+                    >
+                      <Video size={14} />
+                      <span>Online Video</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedMode('in_person')}
+                      className={`bm-mode-btn ${selectedMode === 'in_person' ? 'active' : ''}`}
+                    >
+                      <Building2 size={14} />
+                      <span>Bangalore Suite</span>
+                    </button>
+                  </div>
                 </div>
 
-                <div className="bm-discipline-meta-action">
-                  <span className="bm-discipline-fee">{item.duration} · {item.fee}</span>
-                  <Link href={`/book?service=${item.slug}`} className="bm-discipline-cta">
-                    <span>Reserve Session</span>
+                {/* Next Available Slot Preview */}
+                <div className="bm-slot-preview-box">
+                  <div className="bm-slot-label-row">
+                    <Clock size={13} />
+                    <span>Next Open Slot:</span>
+                  </div>
+                  <strong className="bm-slot-highlight">{activeService.nextSlot}</strong>
+                  <span className="bm-slot-subtext">Instant calendar lock · Zero double-booking</span>
+                </div>
+
+                {/* Investment & Direct CTA Button */}
+                <div className="bm-console-cta-row">
+                  <div className="bm-rate-block">
+                    <span className="bm-rate-duration">{activeService.duration} Consultation</span>
+                    <strong className="bm-rate-price">{activeService.fee}</strong>
+                  </div>
+
+                  <Link
+                    href={`/book?service=${activeService.slug}`}
+                    className="bm-btn-console-book"
+                  >
+                    <span>Choose Time & Book</span>
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Guarantees Footer inside Console */}
+            <div className="bm-console-guarantees-bar">
+              <div className="bm-cgb-item">
+                <CheckCircle2 size={13} />
+                <span>NIMHANS, TISS & SVYASA Alumni</span>
+              </div>
+              <div className="bm-cgb-item">
+                <Shield size={13} />
+                <span>100% Confidential (DPDP Act 2023)</span>
+              </div>
+              <div className="bm-cgb-item">
+                <Heart size={13} />
+                <span>Zero Diagnostic Stigma</span>
+              </div>
+              <div className="bm-cgb-item">
+                <Calendar size={13} />
+                <span>Free Rescheduling up to 4h Prior</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. ALL SPECIALISTS & DISCIPLINES CATALOGUE */}
+      <section className="bm-catalogue-section" id="specialists">
+        <div className="container">
+          <div className="bm-section-header-compact">
+            <span className="bm-eyebrow-accent">CLINICAL SPECIALISTS & DISCIPLINES</span>
+            <h2 className="bm-section-title">Select a Specialist & Reserve Your Slot</h2>
+            <p className="bm-section-desc">
+              All appointments are 1-on-1, strictly confidential, and conducted without clinical labeling.
+              Pay per consultation with zero recurring subscriptions.
+            </p>
+          </div>
+
+          <div className="bm-cards-grid">
+            {BOOKING_SERVICES.map(item => (
+              <div key={item.id} className="bm-service-booking-card">
+                <div className="bm-sbc-header">
+                  <div className="bm-sbc-avatar-wrap">
+                    <img src={item.photo} alt={item.clinician} className="bm-sbc-avatar" />
+                  </div>
+                  <div className="bm-sbc-meta">
+                    <span className="bm-sbc-badge">{item.badge}</span>
+                    <h3 className="bm-sbc-title">{item.name}</h3>
+                    <div className="bm-sbc-doctor">{item.clinician}</div>
+                    <span className="bm-sbc-cred">{item.credentials}</span>
+                  </div>
+                </div>
+
+                <p className="bm-sbc-desc">{item.summary}</p>
+
+                <div className="bm-sbc-specs">
+                  <div className="bm-spec-tag">
+                    <Clock size={12} />
+                    <span>{item.duration}</span>
+                  </div>
+                  <div className="bm-spec-tag">
+                    <Video size={12} />
+                    <span>Online & In-Clinic</span>
+                  </div>
+                </div>
+
+                <div className="bm-sbc-footer">
+                  <div className="bm-sbc-fee-block">
+                    <span className="bm-sbc-fee-label">Consultation Fee</span>
+                    <strong className="bm-sbc-fee-val">{item.fee}</strong>
+                  </div>
+
+                  <Link href={`/book?service=${item.slug}`} className="bm-sbc-book-btn">
+                    <span>Book Now</span>
                     <ArrowRight size={13} />
                   </Link>
                 </div>
@@ -358,150 +329,93 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. WHAT TO EXPECT: FIRST SESSION FLOW */}
-      <section className="bm-flow-section" id="first-session">
+      {/* 3. HOW IT WORKS (3 CLEAR STEPS) */}
+      <section className="bm-how-section" id="how-it-works">
         <div className="container">
-          <div className="bm-section-intro-clean">
-            <span className="bm-eyebrow-label">Session Architecture</span>
-            <h2 className="bm-practices-title">What happens when you arrive.</h2>
-            <p className="bm-section-sub">
-              Therapy should never feel intimidating. Here is how your first 50 minutes unfold:
-            </p>
+          <div className="bm-section-header-compact">
+            <span className="bm-eyebrow-accent">SIMPLE, STREAMLINED CARE</span>
+            <h2 className="bm-section-title">How Your Booking Works</h2>
+            <p className="bm-section-desc">No complicated intake questionnaires, no bureaucratic waiting.</p>
           </div>
 
-          <div className="bm-flow-grid">
-            {FIRST_SESSION_STAGES.map(stage => (
-              <div key={stage.step} className="bm-flow-card">
-                <div className="bm-flow-step-num">{stage.step}</div>
-                <div className="bm-flow-duration">{stage.duration}</div>
-                <h4 className="bm-flow-title">{stage.title}</h4>
-                <p className="bm-flow-desc">{stage.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. THE SPECIALISTS ROSTER */}
-      <section className="bm-team-section" id="specialists">
-        <div className="container">
-          <div className="bm-section-intro-clean">
-            <span className="bm-eyebrow-label">The Specialists</span>
-            <h2 className="bm-practices-title">India's most thoughtful mental health collective.</h2>
-            <p className="bm-section-sub">
-              Senior faculty dedicated to unhurried, evidence-based, compassionate care.
-            </p>
-          </div>
-
-          <div className="bm-team-grid">
-            {SPECIALISTS.map(spec => (
-              <div key={spec.id} className="bm-team-member-card">
-                <div className="bm-team-img-wrap">
-                  <img src={spec.photo} alt={spec.name} className="bm-team-img" />
-                </div>
-                <div className="bm-team-meta">
-                  <strong className="bm-team-name">{spec.name}</strong>
-                  <span className="bm-team-role">{spec.role}</span>
-                  <span className="bm-team-cred">{spec.credential}</span>
-                  <div className="bm-team-rate-row">
-                    <span className="bm-team-fee">{spec.fee} · {spec.duration}</span>
-                    <Link href={`/book?service=${spec.id}`} className="bm-team-book-link">
-                      <span>Reserve</span>
-                      <ArrowRight size={12} />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 9. WHERE WE MEET (DUAL SPACES) */}
-      <section className="bm-spaces-section" id="sanctuary">
-        <div className="container">
-          <div className="bm-section-intro-clean">
-            <span className="bm-eyebrow-label">Where We Meet</span>
-            <h2 className="bm-practices-title">From your private room or in our quiet Bangalore suites.</h2>
-            <p className="bm-section-sub">
-              Care designed around your schedule, without clinical waiting rooms or bureaucratic friction.
-            </p>
-          </div>
-
-          <div className="bm-spaces-editorial-grid">
-            <div className="bm-space-card">
-              <div className="bm-space-img-wrap">
-                <img src="/images/telehealth.jpg" alt="Comfortable telehealth session in private room" className="bm-space-photo" />
-              </div>
-              <div className="bm-space-body">
-                <div className="bm-space-icon-badge">
-                  <Video size={18} />
-                </div>
-                <h3>Pan-India Encrypted Video</h3>
-                <p>Launch high-definition 1080p video with one tap on your laptop or phone. Zero apps to download, zero waiting rooms, and end-to-end encrypted under the DPDP Act.</p>
-                <Link href="/book" className="bm-space-link">
-                  <span>Schedule online session</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
+          <div className="bm-steps-row">
+            <div className="bm-step-item">
+              <div className="bm-step-num">01</div>
+              <h4 className="bm-step-heading">Choose Your Discipline</h4>
+              <p className="bm-step-text">
+                Select psychotherapy, somatic work, gut-brain medicine, or a free 15-minute intake. Transparent pricing with zero hidden charges.
+              </p>
             </div>
 
-            <div className="bm-space-card">
-              <div className="bm-space-img-wrap">
-                <img src="/images/sanctuary.jpg" alt="In-person quiet sanctuary suite" className="bm-space-photo" />
-              </div>
-              <div className="bm-space-body">
-                <div className="bm-space-icon-badge">
-                  <Building2 size={18} />
-                </div>
-                <h3>Bangalore Sanctuary Suites</h3>
-                <p>Acoustic-soundproofed consultation suites in quiet Indiranagar hubs, curated with warm natural woods, linen upholstery, and discreet private check-in.</p>
-                <Link href="/book" className="bm-space-link">
-                  <span>Schedule in-person session</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
+            <div className="bm-step-item">
+              <div className="bm-step-num">02</div>
+              <h4 className="bm-step-heading">Pick Your Slot</h4>
+              <p className="bm-step-text">
+                Live calendar integration guarantees your preferred time is locked immediately. Receive direct calendar invites with zero friction.
+              </p>
+            </div>
+
+            <div className="bm-step-item">
+              <div className="bm-step-num">03</div>
+              <h4 className="bm-step-heading">Private 1-on-1 Consultation</h4>
+              <p className="bm-step-text">
+                Join high-definition encrypted 1080p video with zero app downloads, or arrive at our private, soundproofed Indiranagar suites in Bangalore.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 10. KIND FIRST STEP BANNER (ANANYA ROY) */}
-      <section className="container bm-intro-chat-section" id="intro">
-        <div className="bm-intro-chat-card">
-          <div className="bm-intro-chat-avatar-wrap">
-            <img
-              src="/images/ananya-roy.jpg"
-              alt="Ananya Roy, Lead Care Coordinator"
-              className="bm-intro-chat-avatar"
-            />
+      {/* 4. LOCATION & HELPLINE BAR */}
+      <section className="bm-location-strip" id="location">
+        <div className="container bm-location-grid">
+          <div className="bm-loc-col">
+            <div className="bm-loc-icon-wrap">
+              <Building2 size={20} />
+            </div>
+            <div>
+              <h4 className="bm-loc-title">Indiranagar Bangalore Suites</h4>
+              <p className="bm-loc-desc">100-Ft Road, Indiranagar, Bangalore 560038 · Private valet & discreet check-in.</p>
+            </div>
           </div>
-          <div className="bm-intro-chat-content">
-            <span className="bm-intro-badge">✦ A GENTLE FIRST STEP</span>
-            <h3 className="bm-intro-heading">Not sure where to begin? Have an unhurried 15-minute conversation.</h3>
-            <p className="bm-intro-desc">
-              Speak privately with our Practice Coordinator, Ananya Roy (MSW, TISS alumna). No cost, no clinical questionnaires, and zero obligation. Just a kind human conversation to help you navigate your options.
-            </p>
+
+          <div className="bm-loc-col">
+            <div className="bm-loc-icon-wrap">
+              <Video size={20} />
+            </div>
+            <div>
+              <h4 className="bm-loc-title">Pan-India Telehealth Video</h4>
+              <p className="bm-loc-desc">Encrypted 1080p WebRTC consultations across Mumbai, Delhi NCR, Hyderabad & all India.</p>
+            </div>
           </div>
-          <Link href="/book?service=initial-assessment" className="bm-btn-intro-chat">
-            <span>Talk with Ananya (Free 15m)</span>
-            <ArrowRight size={15} />
-          </Link>
+
+          <div className="bm-loc-col">
+            <div className="bm-loc-icon-wrap">
+              <Phone size={20} />
+            </div>
+            <div>
+              <h4 className="bm-loc-title">Direct Clinic Desk</h4>
+              <p className="bm-loc-desc">
+                Call <a href="tel:+918047182200" className="bm-phone-link">080 4718 2200</a> · Mon – Sat: 8:30 AM – 8:30 PM IST.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 11. MOBILE-FIRST STICKY THUMB DOCK */}
-      <div className="bm-mobile-dock" aria-label="Quick Actions">
-        <Link href="/book?service=initial-assessment" className="bm-dock-btn-primary">
-          <Compass size={15} />
-          <div className="bm-dock-text-group">
-            <span className="bm-dock-main">Free 15m Intake</span>
-            <span className="bm-dock-sub">Talk with Ananya Roy</span>
+      {/* 5. STICKY MOBILE BOOKING DOCK */}
+      <div className="bm-mobile-booking-dock" aria-label="Mobile Quick Booking">
+        <Link href="/book?service=initial-assessment" className="bm-mbd-free-btn">
+          <Compass size={14} />
+          <div className="bm-mbd-text">
+            <strong>Free 15m Intake</strong>
+            <span>Talk with Ananya</span>
           </div>
         </Link>
-        <Link href="/book" className="bm-dock-btn-secondary" title="Reserve a Consultation">
-          <Calendar size={15} />
-          <span>Reserve Session</span>
+        <Link href="/book" className="bm-mbd-book-btn">
+          <Calendar size={14} />
+          <span>Book Session</span>
+          <ArrowRight size={13} />
         </Link>
       </div>
     </div>

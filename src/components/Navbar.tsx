@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Calendar, Phone, ArrowRight, ShieldCheck, UserCheck } from './icons';
+import { Menu, X, Calendar, Phone, ArrowRight } from './icons';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,7 +27,7 @@ export default function Navbar() {
     <header className={`site-header ${scrolled ? 'header-scrolled' : ''}`}>
       <div className="container header-container">
         {/* Brand Logo */}
-        <Link href="/" className="brand-logo" aria-label="Better Mind Sanctuary Home">
+        <Link href="/" className="brand-logo" aria-label="Better Mind Home">
           <div className="brand-symbol">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="brand-svg">
               <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="1.2" strokeOpacity="0.3" />
@@ -38,27 +38,27 @@ export default function Navbar() {
           </div>
           <div className="brand-text-group">
             <span className="brand-title">Better Mind</span>
-            <span className="brand-subtitle">Sanctuary & Collective</span>
+            <span className="brand-subtitle">Mental Health & Care Collective</span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="desktop-nav" aria-label="Main Navigation">
           <div className="nav-capsule">
-            <Link href="/#discovery" className="nav-link">
-              Care Discovery
-            </Link>
-            <span className="nav-capsule-divider">·</span>
-            <Link href="/#disciplines" className="nav-link">
-              Disciplines
+            <Link href="/#book-now" className="nav-link">
+              Quick Book
             </Link>
             <span className="nav-capsule-divider">·</span>
             <Link href="/#specialists" className="nav-link">
-              The Specialists
+              Specialists & Fees
             </Link>
             <span className="nav-capsule-divider">·</span>
-            <Link href="/#sanctuary" className="nav-link">
-              Sanctuary
+            <Link href="/#how-it-works" className="nav-link">
+              How It Works
+            </Link>
+            <span className="nav-capsule-divider">·</span>
+            <Link href="/#location" className="nav-link">
+              Bangalore Clinic
             </Link>
             <span className="nav-capsule-divider">·</span>
             <Link href="/services" className={`nav-link ${pathname === '/services' ? 'active' : ''}`}>
@@ -69,13 +69,14 @@ export default function Navbar() {
 
         {/* Action Header Group */}
         <div className="header-actions">
-          <a href="tel:+918047182200" className="header-contact-link" title="Call Sanctuary Desk">
+          <a href="tel:+918047182200" className="header-contact-link" title="Call Clinic Desk">
             <Phone size={13} />
             <span className="contact-number">080 4718 2200</span>
           </a>
 
           <Link href="/book" className="btn-book-cta">
-            <span>Reserve Consultation</span>
+            <Calendar size={13} />
+            <span>Book Appointment</span>
             <ArrowRight size={13} />
           </Link>
 
@@ -97,7 +98,7 @@ export default function Navbar() {
         <div className="mobile-drawer" role="dialog" aria-modal="true">
           <div className="mobile-drawer-inner">
             <div className="mobile-drawer-header">
-              <span className="drawer-clinic-name">Better Mind Sanctuary</span>
+              <span className="drawer-clinic-name">Better Mind</span>
               <button
                 type="button"
                 className="drawer-close-btn"
@@ -109,28 +110,24 @@ export default function Navbar() {
             </div>
 
             <div className="mobile-nav-links">
-              <Link href="/book" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Reserve a Session (From ₹1,400)</span>
-                <ArrowRight size={16} />
-              </Link>
-              <Link href="/#disciplines" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Three Core Disciplines</span>
+              <Link href="/book?service=initial-assessment" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Free 15-Minute Orientation with Ananya</span>
                 <ArrowRight size={16} />
               </Link>
               <Link href="/#specialists" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Our Specialists Roster</span>
+                <span>Specialists Roster & Fees (From ₹1,400)</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/#sanctuary" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>The Sanctuary Spaces</span>
+              <Link href="/#how-it-works" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>How Your Session Works</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/book?service=initial-assessment" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>Free 15-Minute Intro with Ananya</span>
+              <Link href="/#location" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
+                <span>Indiranagar Bangalore Clinic & Video</span>
                 <ArrowRight size={16} />
               </Link>
               <Link href="/services" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>
-                <span>All Disciplines & Fees</span>
+                <span>All Disciplines & Services</span>
                 <ArrowRight size={16} />
               </Link>
               <Link href="/staff" className="mobile-nav-item staff-item" onClick={() => setMobileMenuOpen(false)}>
@@ -145,7 +142,7 @@ export default function Navbar() {
                 <span>Book an Appointment</span>
               </Link>
               <div className="mobile-clinic-quick-info">
-                <p>🌐 Online Video Pan-India & Partner Clinic Hubs</p>
+                <p>🌐 Online Video Pan-India & Indiranagar Bangalore Hub</p>
                 <p>🕒 Mon – Sat: 8:30 AM – 8:30 PM IST</p>
                 <p>📞 <a href="tel:+918047182200">+91 80 4718 2200</a></p>
               </div>
