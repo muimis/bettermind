@@ -4,14 +4,23 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SENTENCE_REPLIES, SentenceReplyItem } from '@/content/sentences';
-import { ArrowRight, Compass, CheckCircle2, ChevronDown, Clock, ShieldCheck } from '@/components/icons';
+import { ArrowRight, Compass, Clock, CheckCircle2, Shield, Sparkles } from '@/components/icons';
+
+const PRACTITIONER_PHOTOS: Record<string, string> = {
+  'Dr. Meera Sen, Ph.D.': '/images/meera-sen.jpg',
+  'Rajesh Kumar, M.Sc.': '/images/rajesh-kumar.jpg',
+  'Priya Sharma, RD': '/images/priya-sharma.jpg',
+  'Dr. Arun Nair, MD': '/images/arun-nair.jpg',
+  'Ananya Roy, MSW': '/images/ananya-roy.jpg'
+};
 
 export default function SentenceReply() {
   const [selectedIdx, setSelectedIdx] = useState<number>(0);
   const router = useRouter();
   const radioRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const selectedItem: SentenceReplyItem = SENTENCE_REPLIES[selectedIdx];
+  const activeItem: SentenceReplyItem = SENTENCE_REPLIES[selectedIdx] || SENTENCE_REPLIES[0];
+  const photoUrl = PRACTITIONER_PHOTOS[activeItem.practitionerName] || '/images/meera-sen.jpg';
 
   const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
     let nextIndex = index;
@@ -35,161 +44,137 @@ export default function SentenceReply() {
     }
   };
 
-  const handleBookService = (slug: string) => {
-    router.push(`/book?service=${slug}`);
-  };
-
   return (
-    <section className="bm-sentence-section" id="thoughts" aria-labelledby="sentence-heading">
+    <section className="bm-reflection-atelier" id="reflections" aria-labelledby="reflection-heading">
       <div className="container">
-        <div className="bm-sentence-header">
-          <span className="bm-label-mono" style={{ color: 'var(--color-mind)' }}>
-            Gentle Starting Points
-          </span>
-          <h2 id="sentence-heading" className="bm-sentence-title">
-            What is on your <span className="bm-voice-visitor bm-title-highlight">mind today?</span>
+        {/* Section Header */}
+        <div className="bm-reflection-header">
+          <div className="bm-eyebrow-luxury">
+            <span className="bm-eyebrow-accent">✦</span>
+            <span>BESPOKE CARE DISCOVERY</span>
+          </div>
+          <h2 id="reflection-heading" className="bm-reflection-title">
+            What is your mind or body <br />
+            <em>navigating today?</em>
           </h2>
-          <p className="bm-sentence-intro">
-            No need to prepare an agenda or have your thoughts in order. Tap whatever resonates right now to see where we can comfortably begin.
+          <p className="bm-reflection-sub">
+            No diagnostic questionnaires or sterile checklists. Select the reflection that aligns with your present state, and explore the exact clinical mechanism and matched specialist.
           </p>
         </div>
 
-        <div className="bm-sentence-grid">
-          {/* Left Column (or Mobile Accordion Stack) */}
+        {/* Interactive Atelier Interface */}
+        <div className="bm-reflection-layout">
+          {/* Left Column: Reflection Selector Tiles */}
           <div
-            className="bm-sentence-list"
+            className="bm-reflection-selector-list"
             role="radiogroup"
-            aria-label="What brings you here today?"
+            aria-label="Select what you are navigating today"
           >
             {SENTENCE_REPLIES.map((item, idx) => {
               const isSelected = selectedIdx === idx;
               return (
-                <div key={item.id} className="bm-sentence-wrapper">
-                  <div
-                    ref={el => { radioRefs.current[idx] = el; }}
-                    role="radio"
-                    tabIndex={isSelected ? 0 : -1}
-                    aria-checked={isSelected}
-                    aria-controls={`reply-panel-${item.id}`}
-                    onClick={() => setSelectedIdx(idx)}
-                    onKeyDown={e => handleKeyDown(e, idx)}
-                    className={`bm-sentence-tile ${isSelected ? 'selected' : ''}`}
-                  >
-                    <div className="bm-sentence-radio-indicator" aria-hidden="true">
-                      <span className="bm-indicator-dot" />
-                    </div>
-                    <span className="bm-sentence-text bm-voice-visitor">
-                      "{item.sentence}"
+                <div
+                  key={item.id}
+                  ref={el => { radioRefs.current[idx] = el; }}
+                  role="radio"
+                  tabIndex={isSelected ? 0 : -1}
+                  aria-checked={isSelected}
+                  aria-controls={`reflection-dossier-${item.id}`}
+                  onClick={() => setSelectedIdx(idx)}
+                  onKeyDown={e => handleKeyDown(e, idx)}
+                  className={`bm-reflection-tile ${isSelected ? 'active' : ''}`}
+                >
+                  <div className="bm-tile-top-row">
+                    <span className="bm-tile-category">{item.category}</span>
+                    <span className="bm-tile-indicator" aria-hidden="true">
+                      <span className="bm-indicator-core" />
                     </span>
-                    <ChevronDown size={16} className={`bm-mobile-chevron ${isSelected ? 'open' : ''}`} />
                   </div>
-
-                  {/* Mobile-Only Inline Expansion (Right under the thumb) */}
-                  {isSelected && (
-                    <div className="bm-mobile-inline-reply">
-                      <div className="bm-mobile-reply-badge-row">
-                        <span className="bm-label-mono bm-service-badge">
-                          Recommended
-                        </span>
-                        <span className="bm-label-mono bm-assigned-badge">
-                          {item.duration} · {item.fee}
-                        </span>
-                      </div>
-
-                      <h3 className="bm-mobile-service-title bm-voice-clinic">
-                        {item.startingServiceName}
-                      </h3>
-
-                      <p className="bm-mobile-reply-text bm-voice-clinic">
-                        {item.replyParagraph}
-                      </p>
-
-                      <div className="bm-mobile-reply-actions">
-                        <button
-                          type="button"
-                          onClick={() => handleBookService(item.startingServiceSlug)}
-                          className="bm-btn-book-this"
-                        >
-                          <span>Reserve this session</span>
-                          <ArrowRight size={15} />
-                        </button>
-
-                        {item.showTalkFirst && (
-                          <Link
-                            href="/book?service=initial-assessment"
-                            className="bm-btn-talk-first"
-                          >
-                            <Compass size={15} />
-                            <span>Free 15m chat first</span>
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  )}
+                  <p className="bm-tile-quote">"{item.sentence}"</p>
+                  <div className="bm-tile-matched-hint">
+                    <span>Matched: {item.startingServiceName}</span>
+                  </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Right Column: Desktop Reply Panel */}
-          <div className="bm-reply-column">
-            <div
-              key={selectedItem.id}
-              id={`reply-panel-${selectedItem.id}`}
-              className="bm-reply-card bm-reply-animate"
-              role="region"
-              aria-live="polite"
-              aria-label="Suggested starting point"
-            >
-              <div className="bm-reply-top-meta">
-                <span className="bm-label-mono bm-service-badge">
-                  Recommended Starting Point
+          {/* Right Column: Dynamic Clinical Dossier */}
+          <div className="bm-reflection-dossier-wrap">
+            <div className="bm-reflection-dossier" id={`reflection-dossier-${activeItem.id}`}>
+              <div className="bm-dossier-badge-row">
+                <span className="bm-dossier-faculty-pill">
+                  {activeItem.category}
                 </span>
-                <span className="bm-label-mono bm-assigned-badge">
-                  {selectedItem.duration} · {selectedItem.fee}
+                <span className="bm-dossier-mechanism">
+                  {activeItem.mechanism}
                 </span>
               </div>
 
-              <h3 className="bm-reply-service-title bm-voice-clinic">
-                {selectedItem.startingServiceName}
+              <h3 className="bm-dossier-service-title">
+                {activeItem.startingServiceName}
               </h3>
 
-              <p className="bm-reply-text bm-voice-clinic">
-                {selectedItem.replyParagraph}
-              </p>
+              <div className="bm-dossier-mechanism-box">
+                <span className="bm-mechanism-tag">Clinical Insight</span>
+                <p className="bm-dossier-narrative">
+                  {activeItem.replyParagraph}
+                </p>
+              </div>
+
+              {/* Attending Specialist Ledger */}
+              <div className="bm-dossier-clinician-card">
+                <img
+                  src={photoUrl}
+                  alt={activeItem.practitionerName}
+                  className="bm-dossier-avatar"
+                />
+                <div className="bm-dossier-clinician-info">
+                  <div className="bm-clinician-label">Attending Faculty Specialist</div>
+                  <h4 className="bm-clinician-name">{activeItem.practitionerName}</h4>
+                  <span className="bm-clinician-creds">{activeItem.credentials}</span>
+                </div>
+                <div className="bm-dossier-investment-badge">
+                  <span className="bm-invest-time">{activeItem.duration}</span>
+                  <span className="bm-invest-fee">{activeItem.fee}</span>
+                </div>
+              </div>
+
+              {/* Guarantees Bar */}
+              <div className="bm-dossier-guarantees">
+                <div className="bm-dg-item">
+                  <CheckCircle2 size={13} />
+                  <span>100% Confidential · DPDP Compliant</span>
+                </div>
+                <div className="bm-dg-item">
+                  <Clock size={13} />
+                  <span>Unhurried Private Session</span>
+                </div>
+                <div className="bm-dg-item">
+                  <Shield size={13} />
+                  <span>Bangalore Suite or Pan-India Video</span>
+                </div>
+              </div>
 
               {/* Action Buttons */}
-              <div className="bm-reply-actions">
-                <button
-                  type="button"
-                  onClick={() => handleBookService(selectedItem.startingServiceSlug)}
-                  className="bm-btn-book-this"
+              <div className="bm-dossier-actions">
+                <Link
+                  href={`/book?service=${activeItem.startingServiceSlug}`}
+                  className="bm-btn-dossier-primary"
                 >
-                  <span>Reserve this session ({selectedItem.fee})</span>
-                  <ArrowRight size={16} />
-                </button>
+                  <span>{activeItem.actionLabel}</span>
+                  <ArrowRight size={14} />
+                </Link>
 
-                {selectedItem.showTalkFirst && (
-                  <Link
-                    href="/book?service=initial-assessment"
-                    className="bm-btn-talk-first"
-                    title="Speak with our care coordinator first"
-                  >
-                    <Compass size={16} />
-                    <span>Talk with Ananya first (Free)</span>
-                  </Link>
-                )}
-              </div>
-
-              <div className="bm-reply-trust-footer">
-                <CheckCircle2 size={15} />
-                <span>Private 1-on-1 · Video across India or quiet metro suites · 100% confidential</span>
+                <Link
+                  href="/book?service=initial-assessment"
+                  className="bm-btn-dossier-secondary"
+                >
+                  <Compass size={14} />
+                  <span>Or Request 15m Orientation (Free)</span>
+                </Link>
               </div>
             </div>
-
-            <p className="bm-sentence-disclaimer">
-              You are always in control of your journey. You can change your focus or switch specialists anytime.
-            </p>
           </div>
         </div>
       </div>

@@ -1300,34 +1300,417 @@
 }
 
 /* ========================================================
-   2. THE EDITORIAL MARQUEE TICKER (WHISPER AUTHORITY)
+   2. INSTITUTIONAL ACCREDITATION & HERITAGE REGISTRY
    ======================================================== */
-.bm-marquee-wrap {
-  overflow: hidden;
-  white-space: nowrap;
-  background: #FAF9F6;
+.bm-standards-strip {
+  background: #FFFFFF;
   border-top: 1px solid var(--color-line);
   border-bottom: 1px solid var(--color-line);
-  padding: 14px 0;
-  margin: 24px 0 56px;
-  user-select: none;
+  padding: 44px 0;
+  margin: 20px 0 72px;
 }
 
-.bm-marquee-track {
-  display: inline-flex;
+.bm-standards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 36px;
-  animation: bmMarqueeScroll 32s linear infinite;
+}
+
+.bm-standard-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  padding-right: 16px;
+  border-right: 1px solid rgba(19, 22, 24, 0.08);
+}
+
+.bm-standard-card:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.bm-standard-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--color-wellness);
+}
+
+.bm-standard-heading {
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.bm-standard-desc {
+  font-size: 13px;
+  color: var(--color-quiet-text);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ========================================================
+   3. INTERACTIVE BESPOKE REFLECTION ATELIER (SENTENCE REPLY)
+   ======================================================== */
+.bm-reflection-atelier {
+  padding: 20px 0 88px;
+}
+
+.bm-reflection-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 52px;
+}
+
+.bm-eyebrow-luxury {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-wellness);
+  margin-bottom: 14px;
+}
+
+.bm-eyebrow-accent {
+  color: var(--color-wellness);
+}
+
+.bm-reflection-title {
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 4.4vw, 52px);
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 16px;
+}
+
+.bm-reflection-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.bm-reflection-sub {
+  font-size: 16px;
+  color: var(--color-quiet-text);
+  line-height: 1.62;
+  margin: 0;
+}
+
+.bm-reflection-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.bm-reflection-selector-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bm-reflection-tile {
+  background: #FFFFFF;
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  padding: 22px 26px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(19, 22, 24, 0.02);
+  outline: none;
+}
+
+.bm-reflection-tile:hover {
+  border-color: rgba(19, 22, 24, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(19, 22, 24, 0.05);
+}
+
+.bm-reflection-tile.active {
+  background: #131618;
+  border-color: #131618;
+  color: #FFFFFF;
+  box-shadow: 0 12px 36px rgba(19, 22, 24, 0.16);
+  transform: translateY(-2px);
+}
+
+.bm-tile-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.bm-tile-category {
   font-family: var(--font-sans);
   font-size: 10.5px;
-  font-weight: 650;
-  letter-spacing: 0.18em;
-  color: #727A82;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-wellness);
 }
 
-@keyframes bmMarqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.bm-reflection-tile.active .bm-tile-category {
+  color: #F8E3C0;
+}
+
+.bm-tile-indicator {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(19, 22, 24, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bm-reflection-tile.active .bm-tile-indicator {
+  border-color: #F8E3C0;
+}
+
+.bm-indicator-core {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+
+.bm-reflection-tile.active .bm-indicator-core {
+  background: #F8E3C0;
+}
+
+.bm-tile-quote {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.42;
+  font-style: italic;
+  margin: 0 0 10px;
+  color: var(--color-text);
+}
+
+.bm-reflection-tile.active .bm-tile-quote {
+  color: #FFFFFF;
+}
+
+.bm-tile-matched-hint {
+  font-size: 12px;
+  color: var(--color-quiet-text);
+  font-weight: 500;
+}
+
+.bm-reflection-tile.active .bm-tile-matched-hint {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Dossier Card on the Right */
+.bm-reflection-dossier-wrap {
+  position: sticky;
+  top: 96px;
+}
+
+.bm-reflection-dossier {
+  background: #FDFCF9;
+  border: 1px solid rgba(140, 88, 53, 0.22);
+  border-radius: 24px;
+  padding: 38px 42px;
+  box-shadow: 0 16px 48px rgba(19, 22, 24, 0.05);
+  position: relative;
+}
+
+.bm-dossier-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.bm-dossier-faculty-pill {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  background: rgba(140, 88, 53, 0.1);
+  color: var(--color-wellness);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.bm-dossier-mechanism {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-quiet-text);
+}
+
+.bm-dossier-service-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 450;
+  color: var(--color-text);
+  letter-spacing: -0.015em;
+  margin: 0 0 20px;
+}
+
+.bm-dossier-mechanism-box {
+  background: #FFFFFF;
+  border: 1px solid rgba(19, 22, 24, 0.06);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 24px;
+}
+
+.bm-mechanism-tag {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-mind);
+  margin-bottom: 6px;
+}
+
+.bm-dossier-narrative {
+  font-size: 14.5px;
+  line-height: 1.62;
+  color: #38424B;
+  margin: 0;
+}
+
+.bm-dossier-clinician-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(19, 22, 24, 0.08);
+  border-bottom: 1px solid rgba(19, 22, 24, 0.08);
+  margin-bottom: 20px;
+}
+
+.bm-dossier-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(140, 88, 53, 0.25);
+  flex-shrink: 0;
+}
+
+.bm-dossier-clinician-info {
+  flex-grow: 1;
+}
+
+.bm-clinician-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-wellness);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.bm-clinician-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 2px;
+}
+
+.bm-clinician-creds {
+  font-size: 12px;
+  color: var(--color-quiet-text);
+}
+
+.bm-dossier-investment-badge {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.bm-invest-time {
+  display: block;
+  font-size: 11.5px;
+  color: var(--color-quiet-text);
+}
+
+.bm-invest-fee {
+  font-size: 15px;
+  font-weight: 750;
+  color: var(--color-text);
+}
+
+.bm-dossier-guarantees {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.bm-dg-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--color-quiet-text);
+}
+
+.bm-dg-item svg {
+  color: var(--color-mind);
+  flex-shrink: 0;
+}
+
+.bm-dossier-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bm-btn-dossier-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--color-text);
+  color: #FFFFFF;
+  padding: 14px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(19, 22, 24, 0.14);
+}
+
+.bm-btn-dossier-primary:hover {
+  background: var(--color-mind);
+  transform: translateY(-1px);
+}
+
+.bm-btn-dossier-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--color-quiet-text);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 0;
+  transition: color 0.15s ease;
+}
+
+.bm-btn-dossier-secondary:hover {
+  color: var(--color-text);
 }
 
 /* ========================================================
@@ -1600,8 +1983,8 @@
 
 .bm-team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
 }
 
 .bm-team-member-card {
@@ -1641,7 +2024,7 @@
 }
 
 .bm-team-meta {
-  padding: 22px 20px;
+  padding: 20px 18px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -1649,10 +2032,71 @@
 
 .bm-team-name {
   font-family: var(--font-serif);
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--color-text);
   margin-bottom: 2px;
+}
+
+/* ========================================================
+   6. FIRST SESSION FLOW (SESSION ARCHITECTURE)
+   ======================================================== */
+.bm-flow-section {
+  padding: 30px 0 72px;
+}
+
+.bm-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.bm-flow-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.22s ease;
+}
+
+.bm-flow-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(19, 22, 24, 0.2);
+  box-shadow: 0 8px 24px rgba(19, 22, 24, 0.04);
+}
+
+.bm-flow-step-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--color-wellness);
+  line-height: 1;
+}
+
+.bm-flow-duration {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-mind);
+}
+
+.bm-flow-title {
+  font-family: var(--font-sans);
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.bm-flow-desc {
+  font-size: 13px;
+  color: var(--color-quiet-text);
+  line-height: 1.55;
+  margin: 0;
 }
 
 .bm-team-role {
@@ -1814,6 +2258,25 @@
   justify-content: space-between;
   align-items: center;
   gap: 36px;
+}
+
+.bm-intro-chat-avatar-wrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(140, 88, 53, 0.3);
+  flex-shrink: 0;
+}
+
+.bm-intro-chat-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bm-intro-chat-content {
+  flex-grow: 1;
 }
 
 .bm-intro-badge {
@@ -2167,6 +2630,41 @@
 
   .bm-space-body {
     padding: 22px 20px;
+  }
+
+  .bm-standards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .bm-standard-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(19, 22, 24, 0.08);
+    padding-bottom: 16px;
+    padding-right: 0;
+  }
+
+  .bm-standard-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .bm-reflection-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .bm-reflection-dossier-wrap {
+    position: static;
+  }
+
+  .bm-reflection-dossier {
+    padding: 24px 20px;
+  }
+
+  .bm-flow-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .bm-intro-chat-card {

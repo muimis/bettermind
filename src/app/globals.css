@@ -2100,6 +2100,100 @@ a {
   color: var(--text-muted);
 }
 
+/* Concierge Orientation Quick Banner */
+.b-concierge-quick-banner {
+  background: #FDFCF9;
+  border: 1px solid rgba(140, 88, 53, 0.22);
+  border-radius: 18px;
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 16px rgba(19, 22, 24, 0.03);
+}
+
+.bcqb-avatar-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid rgba(140, 88, 53, 0.3);
+  flex-shrink: 0;
+}
+
+.bcqb-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bcqb-info {
+  flex-grow: 1;
+}
+
+.bcqb-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #8C5835;
+  margin-bottom: 4px;
+}
+
+.bcqb-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #131618;
+  margin: 0 0 4px;
+}
+
+.bcqb-desc {
+  font-size: 13.5px;
+  color: #5A626A;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.bcqb-btn {
+  background: #131618;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+
+.bcqb-btn:hover {
+  background: #163A32;
+  transform: translateY(-1px);
+}
+
+.bcqb-btn.active {
+  background: #163A32;
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .b-concierge-quick-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 18px;
+    gap: 16px;
+  }
+  .bcqb-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* Step 1: Services Selector */
 .b-filter-pills-row {
   display: flex;

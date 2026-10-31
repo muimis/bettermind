@@ -117,10 +117,34 @@ function StepServices({
   return (
     <div className="booking-step-content">
       <div className="step-intro-box">
-        <h2 className="step-main-title">Select Your Care Services</h2>
+        <h2 className="step-main-title">Select Your Care Discipline(s)</h2>
         <p className="step-sub-desc">
-          You can select multiple disciplines in one appointment. Our booking engine ensures your times never clash.
+          You can select one or more disciplines in one appointment. Our scheduling engine ensures your consultations never clash.
         </p>
+      </div>
+
+      {/* Concierge Orientation Quick Banner */}
+      <div className="b-concierge-quick-banner">
+        <div className="bcqb-avatar-wrap">
+          <img src="/images/ananya-roy.jpg" alt="Ananya Roy" className="bcqb-avatar" />
+        </div>
+        <div className="bcqb-info">
+          <span className="bcqb-tag">Recommended for First-Time Visitors</span>
+          <h4 className="bcqb-title">Complimentary 15-Minute Care Orientation</h4>
+          <p className="bcqb-desc">
+            Speak privately with our Practice Coordinator Ananya Roy (MSW, TISS alumna). We listen to your context, answer all questions, and map your tailored care pathway.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            const triage = services.find(s => s.slug === 'initial-assessment' || s.id === '11111111-1111-1111-1111-111111111111');
+            if (triage) onToggle(triage);
+          }}
+          className={`bcqb-btn ${basket.some(b => b.service.slug === 'initial-assessment' || b.service.id === '11111111-1111-1111-1111-111111111111') ? 'active' : ''}`}
+        >
+          {basket.some(b => b.service.slug === 'initial-assessment' || b.service.id === '11111111-1111-1111-1111-111111111111') ? '✓ Orientation Added' : '+ Add Free Orientation'}
+        </button>
       </div>
 
       {/* Quick filter pills */}
@@ -1082,13 +1106,13 @@ export default function BookPage() {
         <div className="container">
           <div className="bhs-inner">
             <div>
-              <h1 className="bhs-title">Book an Appointment</h1>
+              <h1 className="bhs-title">Private Consultation Concierge</h1>
               <p className="bhs-sub">
-                Online video sessions across India and in-person visits at partner clinic hubs. All times in IST.
+                Discreet scheduling with India's foremost clinical psychologists, psychiatrists, and somatic practitioners. Encrypted video suites pan-India or private appointments in Bangalore suites.
               </p>
             </div>
             <div className="bhs-contact-support">
-              <span>Need help booking?</span>
+              <span>Discreet Practice Desk</span>
               <a href="tel:+918047182200" className="bhs-phone-link">
                 <Phone size={14} /> 080 4718 2200
               </a>

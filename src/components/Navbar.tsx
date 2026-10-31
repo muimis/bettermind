@@ -44,17 +44,20 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav className="desktop-nav" aria-label="Main Navigation">
+          <Link href="/#reflections" className="nav-link">
+            Care Discovery
+          </Link>
           <Link href="/#disciplines" className="nav-link">
             Disciplines
           </Link>
           <Link href="/#specialists" className="nav-link">
-            Specialists
+            The Collective
           </Link>
           <Link href="/#sanctuary" className="nav-link">
             Sanctuary
           </Link>
           <Link href="/services" className={`nav-link ${pathname === '/services' ? 'active' : ''}`}>
-            All Services
+            All Practices
           </Link>
         </nav>
 
@@ -66,7 +69,7 @@ export default function Navbar() {
           </a>
 
           <Link href="/book" className="btn-book-cta">
-            <span>Reserve a Session</span>
+            <span>Reserve Consultation</span>
             <ArrowRight size={14} />
           </Link>
 
